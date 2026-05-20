@@ -1,0 +1,14 @@
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+.venv-py312-backup/
+.env
+
+backend/storage/app.db
+backend/storage/uploads/
+
+frontend/.next/
+frontend/node_modules/
+
+/node_modules/

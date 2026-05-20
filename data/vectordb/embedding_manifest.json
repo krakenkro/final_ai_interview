@@ -1,0 +1,10 @@
+{
+  "enabled": true,
+  "backend": "chroma_persistent",
+  "collection_name": "knowledge_chunks",
+  "embedding_model": "text-embedding-3-large",
+  "embedding_dimensions": 3072,
+  "chunks_embedded": 525,
+  "notes": "OpenAI embeddings were generated and stored in the local Chroma collection.",
+  "error": ""
+}

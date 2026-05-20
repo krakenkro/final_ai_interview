@@ -1,0 +1,35 @@
+{
+  "generated_at": "2026-05-20T12:59:25.896554+00:00",
+  "dataset_path": "backend/evals/golden_dataset.jsonl",
+  "experiment": "follow_up_threshold_ab",
+  "variants": [
+    {
+      "follow_up_threshold": 7,
+      "total_cases": 36,
+      "score_range_accuracy": 91.67,
+      "follow_up_accuracy": 94.44,
+      "primary_pass_rate": 91.67,
+      "false_positive": 0,
+      "false_negative": 2
+    },
+    {
+      "follow_up_threshold": 8,
+      "total_cases": 36,
+      "score_range_accuracy": 91.67,
+      "follow_up_accuracy": 100.0,
+      "primary_pass_rate": 91.67,
+      "false_positive": 0,
+      "false_negative": 0
+    }
+  ],
+  "winner": {
+    "follow_up_threshold": 8,
+    "total_cases": 36,
+    "score_range_accuracy": 91.67,
+    "follow_up_accuracy": 100.0,
+    "primary_pass_rate": 91.67,
+    "false_positive": 0,
+    "false_negative": 0
+  },
+  "decision": "Порог follow-up `8` выбран как baseline, потому что он даёт лучшую точность follow-up без роста false positive."
+}
