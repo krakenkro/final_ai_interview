@@ -2,6 +2,10 @@
 
 Working MVP for the final LLM engineering project: a web app for mock technical interviews with document upload, intake parsing, candidate/job profiling, a curated RAG knowledge base, LangGraph orchestration, custom MCP tools, voice mode, and evaluation pipelines.
 
+## Demo
+
+- Video demo: [Loom walkthrough](https://www.loom.com/share/3d4dfdcc58114e01afcd43803952bcb4)
+
 ## Что уже реализовано
 
 - frontend на `Next.js + React + TypeScript`
