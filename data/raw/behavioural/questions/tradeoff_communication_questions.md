@@ -11,7 +11,7 @@
 
 ## Curated Question Set
 
-1. Tell me about a time you had to explain a difficult trade-off to a stakeholder.
+1. Расскажи о случае, когда тебе пришлось объяснять сложный компромисс стейкхолдеру.
 2. Describe a situation where the best technical choice was not the fastest one.
 3. Tell me about a time you had to push back on a risky request.
 4. Describe a decision where you had to balance quality, speed, and scope.
@@ -19,11 +19,11 @@
 
 ## Follow-up Prompts
 
-- How did you frame the trade-off?
+- Как ты объяснил этот компромисс?
 - What options did you compare?
 - How did you gain alignment?
 - What risk did you explicitly accept?
 
 ## Retrieval Keywords
 
-`trade-off communication`, `stakeholders`, `push back`, `quality vs speed`, `alignment`, `decision framing`
+`объяснение компромиссов`, `stakeholders`, `push back`, `quality vs speed`, `alignment`, `decision framing`

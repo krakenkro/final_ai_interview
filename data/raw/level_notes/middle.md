@@ -11,7 +11,7 @@
 
 ## Evaluation Lens
 
-- trade-off reasoning should be explicit
+- кандидат должен явно проговаривать компромиссы
 - examples should reflect production constraints
 - ownership should be visible end-to-end
 - answers should show debugging and prioritization maturity

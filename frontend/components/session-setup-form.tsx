@@ -261,7 +261,6 @@ export function SessionSetupForm() {
                 <span className="fieldLabel">Роль</span>
                 <select className="inputSurface select" name="role" defaultValue="Frontend Developer" required>
                   <option>Frontend Developer</option>
-                  <option>Java Backend Developer</option>
                 </select>
               </label>
 

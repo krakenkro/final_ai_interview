@@ -17,7 +17,7 @@
 2. Ownership:
    понятен ли личный вклад.
 3. Decision quality:
-   видны ли reasoning и trade-offs.
+   видны ли reasoning и компромиссы.
 4. Result and reflection:
    есть ли outcome и выводы.
 5. Communication:

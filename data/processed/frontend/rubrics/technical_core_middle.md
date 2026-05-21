@@ -8,16 +8,16 @@
 - source_url: internal curated rubric
 - source_language: ru
 - normalized_language: ru
-- normalized_on: 2026-05-10
+- normalized_on: 2026-05-21
 
 ## Критерии оценки
 
 1. Корректность:
    правильность фактов и терминов.
 2. Глубина:
-   наличие причинно-следственных объяснений и trade-offs.
+   наличие причинно-следственных объяснений и компромиссов.
 3. Практичность:
-   связь с реальными UI, performance, state, API или debugging кейсами.
+   связь с реальными Vue/Nuxt, browser, API или debugging кейсами.
 4. Коммуникация:
    структура, ясность, отсутствие противоречий.
 

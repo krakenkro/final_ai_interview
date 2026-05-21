@@ -41,12 +41,12 @@ def _canonical_role(role: Optional[str], question_type: str) -> str:
     aliases = {
         "frontend developer": "frontend_developer",
         "frontend_developer": "frontend_developer",
-        "java backend developer": "java_backend_developer",
-        "java_backend_developer": "java_backend_developer",
         "cross_role": "cross_role",
         "cross-role": "cross_role",
     }
-    return aliases.get(normalized, normalized)
+    if normalized in aliases:
+        return aliases[normalized]
+    return "cross_role" if question_type == "behavioural" else "frontend_developer"
 
 
 def _extract_questions(text: str) -> List[str]:
@@ -234,7 +234,7 @@ def get_evaluation_rubric(
     }
 
 
-@mcp.tool(description="Return candidate follow-up questions using follow-up banks and answer outlines.")
+@mcp.tool(description="Return candidate follow-up questions using only the curated follow-up bank.")
 def get_followup_questions(
     topic: str,
     previous_answer_summary: str = "",
@@ -253,14 +253,14 @@ def get_followup_questions(
             role=role_slug,
             seniority=_canonical_level(level),
             interview_type=question_type,
-            document_types=["followup_bank", "answer_outline", "rubric"],
+            document_types=["followup_bank"],
             layer="processed",
         )
     )
 
     prompts: List[str] = []
     for result in results:
-        prompts.extend(_extract_bullets(str(result.get("text", ""))))
+        prompts.extend(_extract_questions(str(result.get("text", ""))))
 
     deduped: List[str] = []
     seen = set()

@@ -1,52 +1,50 @@
 {
-  "generated_at": "2026-05-10T21:18:04.011926+00:00",
+  "generated_at": "2026-05-21T15:39:26.533775+00:00",
   "documents_path": "data/vectordb/documents.jsonl",
   "chunks_path": "data/vectordb/chunks.jsonl",
-  "total_documents": 196,
-  "total_chunks": 525,
+  "total_documents": 130,
+  "total_chunks": 335,
   "documents_by_layer": {
-    "raw": 98,
-    "processed": 98
+    "raw": 65,
+    "processed": 65
   },
   "documents_by_role": {
     "cross_role": 52,
-    "frontend_developer": 70,
-    "java_backend_developer": 74
+    "frontend_developer": 78
   },
   "documents_by_document_type": {
-    "answer_outline": 54,
-    "cheatsheet": 10,
-    "followup_bank": 18,
-    "question_bank": 50,
-    "rubric": 20,
-    "theory_note": 22,
+    "answer_outline": 30,
+    "cheatsheet": 8,
+    "followup_bank": 20,
+    "question_bank": 28,
+    "rubric": 12,
+    "theory_note": 16,
     "interview_mode_note": 6,
     "level_note": 4,
-    "role_note": 4,
-    "vacancy_archetype": 8
+    "role_note": 2,
+    "vacancy_archetype": 4
   },
   "chunks_by_layer": {
-    "raw": 314,
-    "processed": 211
+    "raw": 204,
+    "processed": 131
   },
   "chunks_by_role": {
     "cross_role": 121,
-    "frontend_developer": 215,
-    "java_backend_developer": 189
+    "frontend_developer": 214
   },
   "chunks_by_document_type": {
-    "answer_outline": 65,
-    "cheatsheet": 32,
+    "answer_outline": 37,
+    "cheatsheet": 25,
     "followup_bank": 30,
-    "question_bank": 150,
-    "rubric": 71,
-    "theory_note": 144,
+    "question_bank": 73,
+    "rubric": 43,
+    "theory_note": 103,
     "interview_mode_note": 9,
     "level_note": 6,
-    "role_note": 6,
-    "vacancy_archetype": 12
+    "role_note": 3,
+    "vacancy_archetype": 6
   },
-  "topics_indexed": 162,
+  "topics_indexed": 112,
   "layers_indexed": [
     "raw",
     "processed"
@@ -62,13 +60,31 @@
     "batch_size": 64
   },
   "vector_store_status": {
-    "backend": "chroma_persistent",
+    "backend": "jsonl_artifacts",
     "collection_name": "knowledge_chunks",
-    "embeddings_built": true,
-    "embedding_dimensions": 3072,
-    "chunks_embedded": 525,
+    "embeddings_built": false,
+    "embedding_dimensions": null,
+    "chunks_embedded": 0,
     "chroma_path": "data/vectordb/chroma",
-    "notes": "OpenAI embeddings were generated and stored in the local Chroma collection.",
+    "notes": "Embeddings were skipped. Retrieval can still use lexical JSONL fallback.",
     "error": ""
+  },
+  "active_scope": {
+    "roles": [
+      "frontend_developer",
+      "cross_role"
+    ],
+    "roots": [
+      "behavioural",
+      "frontend",
+      "interview_modes",
+      "level_notes"
+    ],
+    "role_notes": [
+      "frontend_developer"
+    ],
+    "vacancy_archetypes": [
+      "frontend_*"
+    ]
   }
 }

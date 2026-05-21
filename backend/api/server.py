@@ -33,6 +33,18 @@ ALLOWED_ORIGINS = {
 }
 
 
+def _normalize_question_key(value: str) -> str:
+    return " ".join((value or "").strip().lower().rstrip("?").split())
+
+
+def _question_kind_for_turn(session_data: Dict[str, object], current_question: str) -> str:
+    previous_evaluation = session_data.get("workflow", {}).get("last_evaluation", {})
+    suggested_follow_up = str(previous_evaluation.get("suggested_follow_up") or "").strip()
+    if suggested_follow_up and _normalize_question_key(suggested_follow_up) == _normalize_question_key(current_question):
+        return "followup"
+    return "main"
+
+
 class InterviewAppHandler(BaseHTTPRequestHandler):
     server_version = "InterviewApp/0.1"
 
@@ -348,12 +360,20 @@ class InterviewAppHandler(BaseHTTPRequestHandler):
             return
 
         result = run_answer_workflow(session_data, answer_text)
+        evaluation = result.get("evaluation", {})
         record_turn(
             session_id=session_id,
             question=current_question,
             answer=answer_text,
             feedback=result["feedback"],
             next_question=result["next_question"],
+            topic=str(evaluation.get("topic") or ""),
+            question_kind=_question_kind_for_turn(session_data, current_question),
+            evaluation_summary={
+                "score_0_10": evaluation.get("score_0_10"),
+                "follow_up_needed": evaluation.get("follow_up_needed"),
+                "detected_gaps": evaluation.get("detected_gaps", []),
+            },
         )
         updated_session = advance_session(
             session_id=session_id,

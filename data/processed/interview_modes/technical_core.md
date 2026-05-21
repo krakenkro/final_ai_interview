@@ -13,5 +13,5 @@
 ## Цели режима
 
 - проверить technical correctness
-- посмотреть reasoning и trade-offs
+- посмотреть аргументацию и умение проговаривать компромиссы
 - понять debugging depth

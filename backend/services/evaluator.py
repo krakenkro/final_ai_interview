@@ -14,14 +14,13 @@ def answer_quality(answer_text: str) -> Dict[str, Any]:
         for marker in (
             "props",
             "state",
-            "react",
+            "vue",
+            "nuxt",
             "typescript",
-            "spring",
-            "sql",
-            "transaction",
-            "concurrency",
+            "ssr",
+            "hydration",
+            "composable",
             "кэш",
-            "транзак",
             "компонент",
         )
     )
@@ -76,9 +75,9 @@ def build_heuristic_evaluation(
         justification = "Ответ пока слишком поверхностный для уверенного перехода к следующей теме."
 
     fallback_follow_up = (
-        f'Можешь раскрыть ответ по теме "{current_topic}" глубже и добавить пример, trade-offs, риски и итог?'
+        f'Можешь раскрыть ответ по теме "{current_topic}" глубже и добавить пример, компромиссы, риски и итог?'
         if current_topic
-        else "Можешь раскрыть ответ глубже и добавить пример, trade-offs, риски и итог?"
+        else "Можешь раскрыть ответ глубже и добавить пример, компромиссы, риски и итог?"
     )
 
     return {

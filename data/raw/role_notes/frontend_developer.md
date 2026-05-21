@@ -7,16 +7,17 @@
 - Document Type: role_note
 - Source URL: internal curated note
 - Language: Russian
-- Collected On: 2026-05-10
+- Collected On: 2026-05-21
 
 ## Role Focus
 
-- UI composition and component reasoning
-- state and data flow
+- UI composition and component reasoning in Vue/Nuxt
+- reactivity, state ownership, and data flow
+- routing, rendering strategy, and data loading
 - browser and runtime behavior
 - API integration and user-facing error handling
-- performance and testing awareness
-- ability to explain product-facing trade-offs
+- performance awareness and debugging judgment
+- умение объяснять продуктовые компромиссы
 
 ## What Interviewers Often Probe
 
@@ -24,3 +25,4 @@
 - debugging approach
 - ownership of shipped UI decisions
 - communication with backend and design counterparts
+- judgment around SSR/CSR, hydration, and data freshness

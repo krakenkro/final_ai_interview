@@ -13,6 +13,6 @@
 
 1. Name the decision and options.
 2. Explain risks and constraints.
-3. Show how the candidate communicated trade-offs.
+3. Покажи, как кандидат объяснил компромиссы.
 4. Describe alignment or pushback handling.
 5. End with outcome and reflection.

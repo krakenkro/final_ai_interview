@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-11T10:33:40.605970+00:00",
+  "generated_at": "2026-05-21T15:39:26.565084+00:00",
   "dataset_path": "backend/evals/rag_queries.jsonl",
-  "total_cases": 14,
+  "total_cases": 12,
   "summary": {
-    "passed_cases": 14,
+    "passed_cases": 12,
     "failed_cases": 0,
     "pass_rate": 100.0,
     "topic_hit_rate": 100.0,
@@ -12,42 +12,42 @@
     "filters_ok_rate": 100.0
   },
   "observed_backends": {
-    "chroma_openai": 14
+    "jsonl_lexical": 12
   },
   "cases": [
     {
-      "case_id": "frontend_react_core_junior",
-      "query": "react state и props",
-      "notes": "Core frontend React retrieval for junior technical flow.",
+      "case_id": "frontend_vue_core_junior",
+      "query": "vue props emits slots и границы компонентов",
+      "notes": "Core Vue retrieval for junior frontend technical flow.",
       "filters": {
         "role": "frontend_developer",
         "seniority": "junior",
         "interview_type": "technical_core",
         "layer": "processed"
       },
-      "expected_backend": "chroma_openai",
+      "expected_backend": null,
       "expected_topics": [
-        "react_basics",
-        "react_cheatsheet",
-        "react_questions"
+        "vue_basics",
+        "vue_cheatsheet",
+        "vue_questions"
       ],
       "expected_document_types": [
         "cheatsheet",
         "question_bank",
         "theory_note"
       ],
-      "observed_backend": "chroma_openai",
+      "observed_backend": "jsonl_lexical",
       "observed_topics": [
-        "react_cheatsheet",
-        "react_questions",
-        "react_cheatsheet",
-        "react_basics",
-        "react_basics"
+        "vue_basics",
+        "vue_questions",
+        "vue_questions",
+        "vue_basics",
+        "vue_basics"
       ],
       "observed_document_types": [
-        "cheatsheet",
+        "theory_note",
         "question_bank",
-        "cheatsheet",
+        "question_bank",
         "theory_note",
         "theory_note"
       ],
@@ -59,13 +59,13 @@
       "passed": true,
       "results": [
         {
-          "chunk_id": "fddd2080a35bc1d3:0",
-          "document_id": "fddd2080a35bc1d3",
-          "path": "data/processed/frontend/cheatsheets/react_cheatsheet.md",
-          "title": "React cheatsheet",
-          "section": "Краткий справочник",
-          "topic": "react_cheatsheet",
-          "document_type": "cheatsheet",
+          "chunk_id": "8603882fad84bf04:0",
+          "document_id": "8603882fad84bf04",
+          "path": "data/processed/frontend/theory_notes/vue_basics.md",
+          "title": "Vue basics",
+          "section": "Краткое резюме",
+          "topic": "vue_basics",
+          "document_type": "theory_note",
           "role": "frontend_developer",
           "seniority": [
             "junior",
@@ -75,17 +75,17 @@
             "technical_core",
             "mixed"
           ],
-          "score": 0.622314453125,
-          "retrieval_backend": "chroma_openai",
-          "text": "Краткий справочник\n\n- Компонент: переиспользуемая единица UI\n- Props: входные данные от родителя\n- State: изменяемые данные компонента\n- JSX: разметка внутри JavaScript\n- Conditional rendering: `if`, ternary, `&&`\n- Lists: `map` + стабильный `key`\n- Lift state up: перенос общего состояния в общего родителя"
+          "score": 6.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Краткое резюме\n\nVue строит интерфейс из компонентов, которые обмениваются данными через `props` и события, а реактивность синхронизирует состояние с отображением. Для повседневной разработки важнее всего границы ответственности компонента, `computed`, `watch`, `ref`, `reactive`, slots и composables."
         },
         {
-          "chunk_id": "d4d73f3dda57861b:3",
-          "document_id": "d4d73f3dda57861b",
-          "path": "data/processed/frontend/questions/react_questions.md",
-          "title": "React questions",
-          "section": "Retrieval tags",
-          "topic": "react_questions",
+          "chunk_id": "6b476e8670481a13:0",
+          "document_id": "6b476e8670481a13",
+          "path": "data/processed/frontend/questions/vue_questions.md",
+          "title": "Vue questions",
+          "section": "Основные вопросы",
+          "topic": "vue_questions",
           "document_type": "question_bank",
           "role": "frontend_developer",
           "seniority": [
@@ -96,17 +96,125 @@
             "technical_core",
             "mixed"
           ],
-          "score": 0.6108522415161133,
-          "retrieval_backend": "chroma_openai",
-          "text": "Retrieval tags\n\n`react interview`, `props`, `state`, `jsx`, `keys`, `conditional rendering`, `state ownership`"
+          "score": 5.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Основные вопросы\n\n1. Как вы обычно решаете, что во Vue-приложении должно стать отдельным компонентом?\n2. В чём разница между `props`, `emits` и локальным состоянием компонента?\n3. Почему `props` во Vue нельзя просто мутировать внутри дочернего компонента?\n4. Когда `computed` лучше, чем обычный метод?\n5. Когда вы бы использовали `watch`, и какие проблемы начинаются, если им злоупотреблять?\n6. Чем `ref` и `reactive` отличаются в повседневной разработке?\n7. Как slots влияют на дизайн API компонента?\n8. Какие баги появляются, когда один компонент начинает владеть слишком большим количеством логики?\n9. Как бы вы объяснили однонаправленный поток данных во Vue на примере реальной фичи?\n10. Что делает composable действительно полезным, а не просто ещё одним местом, куда перенесли код?"
         },
         {
-          "chunk_id": "fddd2080a35bc1d3:1",
-          "document_id": "fddd2080a35bc1d3",
-          "path": "data/processed/frontend/cheatsheets/react_cheatsheet.md",
-          "title": "React cheatsheet",
+          "chunk_id": "6b476e8670481a13:1",
+          "document_id": "6b476e8670481a13",
+          "path": "data/processed/frontend/questions/vue_questions.md",
+          "title": "Vue questions",
           "section": "Retrieval tags",
-          "topic": "react_cheatsheet",
+          "topic": "vue_questions",
+          "document_type": "question_bank",
+          "role": "frontend_developer",
+          "seniority": [
+            "junior",
+            "middle"
+          ],
+          "interview_type": [
+            "technical_core",
+            "mixed"
+          ],
+          "score": 5.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Retrieval tags\n\n`vue`, `props`, `emits`, `computed`, `watch`, `ref`, `reactive`, `slots`, `components`, `composables`"
+        },
+        {
+          "chunk_id": "8603882fad84bf04:4",
+          "document_id": "8603882fad84bf04",
+          "path": "data/processed/frontend/theory_notes/vue_basics.md",
+          "title": "Vue basics",
+          "section": "Retrieval tags",
+          "topic": "vue_basics",
+          "document_type": "theory_note",
+          "role": "frontend_developer",
+          "seniority": [
+            "junior",
+            "middle"
+          ],
+          "interview_type": [
+            "technical_core",
+            "mixed"
+          ],
+          "score": 5.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Retrieval tags\n\n`vue`, `components`, `props`, `emits`, `computed`, `watch`, `ref`, `reactive`, `slots`, `composables`"
+        },
+        {
+          "chunk_id": "8603882fad84bf04:1",
+          "document_id": "8603882fad84bf04",
+          "path": "data/processed/frontend/theory_notes/vue_basics.md",
+          "title": "Vue basics",
+          "section": "Ключевые идеи",
+          "topic": "vue_basics",
+          "document_type": "theory_note",
+          "role": "frontend_developer",
+          "seniority": [
+            "junior",
+            "middle"
+          ],
+          "interview_type": [
+            "technical_core",
+            "mixed"
+          ],
+          "score": 4.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Ключевые идеи\n\n1. Границы компонента:\n   компоненту нужна чёткая UI-ответственность.\n2. Поток данных:\n   `props` приходят сверху, события сообщают о действиях наружу.\n3. Реактивность:\n   `ref` удобен для отдельных значений, `reactive` — для объектного состояния.\n4. Вычисляемые значения:\n   `computed` лучше подходит для производных данных, чем ручной пересчёт в шаблоне.\n5. Побочные эффекты:\n   `watch` полезен, когда нужно реагировать на изменение данных, но он не должен заменять всё подряд.\n6. Переиспользование:\n   slots формируют API компонента, composables помогают делить логику без тяжёлой глобальной абстракции."
+        }
+      ]
+    },
+    {
+      "case_id": "frontend_nuxt_middle",
+      "query": "nuxt ssr hydration useasyncdata и middleware",
+      "notes": "Nuxt fundamentals retrieval for middle frontend interviews.",
+      "filters": {
+        "role": "frontend_developer",
+        "seniority": "middle",
+        "interview_type": "technical_core",
+        "layer": "processed"
+      },
+      "expected_backend": null,
+      "expected_topics": [
+        "nuxt_basics",
+        "nuxt_cheatsheet",
+        "nuxt_questions"
+      ],
+      "expected_document_types": [
+        "cheatsheet",
+        "question_bank",
+        "theory_note"
+      ],
+      "observed_backend": "jsonl_lexical",
+      "observed_topics": [
+        "nuxt_cheatsheet",
+        "nuxt_cheatsheet",
+        "nuxt_basics",
+        "nuxt_basics",
+        "nuxt_questions"
+      ],
+      "observed_document_types": [
+        "cheatsheet",
+        "cheatsheet",
+        "theory_note",
+        "theory_note",
+        "question_bank"
+      ],
+      "result_count": 5,
+      "topic_hit": true,
+      "document_type_hit": true,
+      "backend_ok": true,
+      "filters_ok": true,
+      "passed": true,
+      "results": [
+        {
+          "chunk_id": "14edcc0c3320b8e1:0",
+          "document_id": "14edcc0c3320b8e1",
+          "path": "data/processed/frontend/cheatsheets/nuxt_cheatsheet.md",
+          "title": "Nuxt cheatsheet",
+          "section": "Краткий справочник",
+          "topic": "nuxt_cheatsheet",
           "document_type": "cheatsheet",
           "role": "frontend_developer",
           "seniority": [
@@ -117,17 +225,38 @@
             "technical_core",
             "mixed"
           ],
-          "score": 0.5987780690193176,
-          "retrieval_backend": "chroma_openai",
-          "text": "Retrieval tags\n\n`react`, `props`, `state`, `jsx`, `keys`, `lift state up`"
+          "score": 6.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Краткий справочник\n\n- page file: маршрут по соглашению\n- layout: общая оболочка страницы\n- SSR: рендер на сервере под запрос\n- CSR: рендер на клиенте\n- SSG: заранее собранная статическая страница\n- `useFetch`: загрузка данных с интеграцией Nuxt\n- `useAsyncData`: асинхронные данные с ключом в runtime-контексте\n- middleware: логика уровня маршрута\n- hydration: подключение клиентского поведения к HTML с сервера"
         },
         {
-          "chunk_id": "ee6cd78ec94df4cb:0",
-          "document_id": "ee6cd78ec94df4cb",
-          "path": "data/processed/frontend/theory_notes/react_basics.md",
-          "title": "React basics",
+          "chunk_id": "14edcc0c3320b8e1:1",
+          "document_id": "14edcc0c3320b8e1",
+          "path": "data/processed/frontend/cheatsheets/nuxt_cheatsheet.md",
+          "title": "Nuxt cheatsheet",
+          "section": "Retrieval tags",
+          "topic": "nuxt_cheatsheet",
+          "document_type": "cheatsheet",
+          "role": "frontend_developer",
+          "seniority": [
+            "junior",
+            "middle"
+          ],
+          "interview_type": [
+            "technical_core",
+            "mixed"
+          ],
+          "score": 6.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Retrieval tags\n\n`nuxt`, `pages`, `layouts`, `ssr`, `csr`, `ssg`, `useFetch`, `useAsyncData`, `middleware`, `hydration`"
+        },
+        {
+          "chunk_id": "d7739d907e45947b:0",
+          "document_id": "d7739d907e45947b",
+          "path": "data/processed/frontend/theory_notes/nuxt_basics.md",
+          "title": "Nuxt basics",
           "section": "Краткое резюме",
-          "topic": "react_basics",
+          "topic": "nuxt_basics",
           "document_type": "theory_note",
           "role": "frontend_developer",
           "seniority": [
@@ -138,17 +267,17 @@
             "technical_core",
             "mixed"
           ],
-          "score": 0.5839582085609436,
-          "retrieval_backend": "chroma_openai",
-          "text": "Краткое резюме\n\nReact строит интерфейс из независимых компонентов. Компонент обычно представляет маленький кусок UI, получает данные через props и хранит изменяемые данные через state. UI обновляется как реакция на изменения state и пользовательские события."
+          "score": 6.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Краткое резюме\n\nNuxt расширяет Vue file-based routing, вариантами рендеринга и встроенными сценариями загрузки данных. Для интервью важнее всего понимать маршруты, SSR/CSR/SSG, `useFetch`, `useAsyncData`, middleware, hydration и границу между серверным и браузерным кодом."
         },
         {
-          "chunk_id": "ee6cd78ec94df4cb:1",
-          "document_id": "ee6cd78ec94df4cb",
-          "path": "data/processed/frontend/theory_notes/react_basics.md",
-          "title": "React basics",
-          "section": "Ключевые идеи",
-          "topic": "react_basics",
+          "chunk_id": "d7739d907e45947b:4",
+          "document_id": "d7739d907e45947b",
+          "path": "data/processed/frontend/theory_notes/nuxt_basics.md",
+          "title": "Nuxt basics",
+          "section": "Retrieval tags",
+          "topic": "nuxt_basics",
           "document_type": "theory_note",
           "role": "frontend_developer",
           "seniority": [
@@ -159,9 +288,30 @@
             "technical_core",
             "mixed"
           ],
-          "score": 0.5791378021240234,
-          "retrieval_backend": "chroma_openai",
-          "text": "Ключевые идеи\n\n1. Компоненты:\n   JavaScript-функции, которые возвращают JSX и могут вкладываться друг в друга.\n2. JSX:\n   Разметка внутри JavaScript. Требует корректного синтаксиса и общего родителя для соседних узлов.\n3. Props:\n   Канал передачи данных сверху вниз.\n4. State:\n   Внутренняя память компонента для изменяемых значений.\n5. Условный рендеринг:\n   Используются обычные конструкции JavaScript: `if`, ternary, `&&`.\n6. Списки:\n   Обычно строятся через `map`; каждому элементу нужен стабильный `key`.\n7. Подъём состояния:\n   Если одни и те же данные нужны нескольким дочерним компонентам, состояние поднимают в ближайший общий родитель."
+          "score": 6.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Retrieval tags\n\n`nuxt`, `routing`, `ssr`, `csr`, `ssg`, `useFetch`, `useAsyncData`, `middleware`, `hydration`, `server client boundary`"
+        },
+        {
+          "chunk_id": "de4ec99590d1aa8a:0",
+          "document_id": "de4ec99590d1aa8a",
+          "path": "data/processed/frontend/questions/nuxt_questions.md",
+          "title": "Nuxt questions",
+          "section": "Основные вопросы",
+          "topic": "nuxt_questions",
+          "document_type": "question_bank",
+          "role": "frontend_developer",
+          "seniority": [
+            "junior",
+            "middle"
+          ],
+          "interview_type": [
+            "technical_core",
+            "mixed"
+          ],
+          "score": 6.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Основные вопросы\n\n1. В каком случае вы бы выбрали Nuxt 3, а в каком хватило бы обычного SPA на Vue?\n2. Как file-based routing влияет на архитектуру Nuxt-приложения?\n3. В чём разница между `useFetch`, `useAsyncData` и клиентской загрузкой данных после монтирования?\n4. Когда данные лучше грузить на сервере, а когда на клиенте?\n5. Как SSR, CSR и SSG меняют SEO, первую загрузку и сложность реализации?\n6. Из-за чего в Nuxt могут появляться повторные запросы при навигации или hydration?\n7. О чём вы подумаете, прежде чем вынести логику в middleware?\n8. Как вы рассуждаете про stale data и кэширование на Nuxt-страницах?\n9. Что может сломаться, если страница зависит от `window`, `document` или `localStorage` во время SSR?"
         }
       ]
     },
@@ -175,26 +325,26 @@
         "interview_type": "technical_core",
         "layer": "processed"
       },
-      "expected_backend": "chroma_openai",
+      "expected_backend": null,
       "expected_topics": [
         "javascript_event_loop"
       ],
       "expected_document_types": [
         "theory_note"
       ],
-      "observed_backend": "chroma_openai",
+      "observed_backend": "jsonl_lexical",
       "observed_topics": [
         "javascript_event_loop",
         "javascript_event_loop",
         "javascript_event_loop",
-        "javascript_event_loop_answer_outlines",
+        "javascript_event_loop",
         "javascript_event_loop"
       ],
       "observed_document_types": [
         "theory_note",
         "theory_note",
         "theory_note",
-        "answer_outline",
+        "theory_note",
         "theory_note"
       ],
       "result_count": 5,
@@ -204,27 +354,6 @@
       "filters_ok": true,
       "passed": true,
       "results": [
-        {
-          "chunk_id": "424ebad828a0899f:0",
-          "document_id": "424ebad828a0899f",
-          "path": "data/processed/frontend/theory_notes/javascript_event_loop.md",
-          "title": "JavaScript event loop",
-          "section": "Краткое резюме",
-          "topic": "javascript_event_loop",
-          "document_type": "theory_note",
-          "role": "frontend_developer",
-          "seniority": [
-            "junior",
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.701784610748291,
-          "retrieval_backend": "chroma_openai",
-          "text": "Краткое резюме\n\nJavaScript в браузере обычно выполняет задачи на одном основном потоке. Пока текущая задача не завершится, следующая из очереди не начнётся. Поэтому длинный синхронный код напрямую бьёт по отзывчивости интерфейса."
-        },
         {
           "chunk_id": "424ebad828a0899f:1",
           "document_id": "424ebad828a0899f",
@@ -242,51 +371,9 @@
             "technical_core",
             "mixed"
           ],
-          "score": 0.6937366724014282,
-          "retrieval_backend": "chroma_openai",
+          "score": 8.75,
+          "retrieval_backend": "jsonl_lexical",
           "text": "Ключевые идеи\n\n1. Есть стек вызовов:\n   туда попадают текущие функции и execution contexts.\n2. Есть очередь задач:\n   туда попадают новые сообщения, колбэки и отложенные работы.\n3. Event loop:\n   берёт следующую задачу только когда стек свободен.\n4. Run-to-completion:\n   текущий обработчик выполняется до конца без прерывания другой задачей.\n5. Blocking:\n   тяжёлые циклы и CPU-bound работа стопорят ввод, рендер и таймеры."
-        },
-        {
-          "chunk_id": "424ebad828a0899f:4",
-          "document_id": "424ebad828a0899f",
-          "path": "data/processed/frontend/theory_notes/javascript_event_loop.md",
-          "title": "JavaScript event loop",
-          "section": "Retrieval tags",
-          "topic": "javascript_event_loop",
-          "document_type": "theory_note",
-          "role": "frontend_developer",
-          "seniority": [
-            "junior",
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.661006510257721,
-          "retrieval_backend": "chroma_openai",
-          "text": "Retrieval tags\n\n`event loop`, `call stack`, `queue`, `main thread`, `blocking`, `run to completion`, `setTimeout`"
-        },
-        {
-          "chunk_id": "42e1674951f1566f:0",
-          "document_id": "42e1674951f1566f",
-          "path": "data/processed/frontend/answer_outlines/javascript_event_loop_answer_outlines.md",
-          "title": "JavaScript event loop answer outlines",
-          "section": "Сильные паттерны ответа",
-          "topic": "javascript_event_loop_answer_outlines",
-          "document_type": "answer_outline",
-          "role": "frontend_developer",
-          "seniority": [
-            "junior",
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.6473185420036316,
-          "retrieval_backend": "chroma_openai",
-          "text": "Сильные паттерны ответа\n\n1. Стек и очередь\n2. Run-to-completion\n3. Почему блокируется UI\n4. Почему scheduled work всё равно ждёт\n5. Практическое следствие"
         },
         {
           "chunk_id": "424ebad828a0899f:2",
@@ -305,15 +392,78 @@
             "technical_core",
             "mixed"
           ],
-          "score": 0.6298059821128845,
-          "retrieval_backend": "chroma_openai",
+          "score": 6.75,
+          "retrieval_backend": "jsonl_lexical",
           "text": "Что важно для интервью\n\n- Объяснить, почему `setTimeout(fn, 0)` не выполняется мгновенно.\n- Уметь связать event loop с лагами UI.\n- Показать, как разбивать тяжёлую работу или выносить её с main thread."
+        },
+        {
+          "chunk_id": "424ebad828a0899f:4",
+          "document_id": "424ebad828a0899f",
+          "path": "data/processed/frontend/theory_notes/javascript_event_loop.md",
+          "title": "JavaScript event loop",
+          "section": "Retrieval tags",
+          "topic": "javascript_event_loop",
+          "document_type": "theory_note",
+          "role": "frontend_developer",
+          "seniority": [
+            "junior",
+            "middle"
+          ],
+          "interview_type": [
+            "technical_core",
+            "mixed"
+          ],
+          "score": 6.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Retrieval tags\n\n`event loop`, `call stack`, `queue`, `main thread`, `blocking`, `run to completion`, `setTimeout`"
+        },
+        {
+          "chunk_id": "424ebad828a0899f:0",
+          "document_id": "424ebad828a0899f",
+          "path": "data/processed/frontend/theory_notes/javascript_event_loop.md",
+          "title": "JavaScript event loop",
+          "section": "Краткое резюме",
+          "topic": "javascript_event_loop",
+          "document_type": "theory_note",
+          "role": "frontend_developer",
+          "seniority": [
+            "junior",
+            "middle"
+          ],
+          "interview_type": [
+            "technical_core",
+            "mixed"
+          ],
+          "score": 5.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Краткое резюме\n\nJavaScript в браузере обычно выполняет задачи на одном основном потоке. Пока текущая задача не завершится, следующая из очереди не начнётся. Поэтому длинный синхронный код напрямую бьёт по отзывчивости интерфейса."
+        },
+        {
+          "chunk_id": "424ebad828a0899f:3",
+          "document_id": "424ebad828a0899f",
+          "path": "data/processed/frontend/theory_notes/javascript_event_loop.md",
+          "title": "JavaScript event loop",
+          "section": "Сигналы сильного ответа",
+          "topic": "javascript_event_loop",
+          "document_type": "theory_note",
+          "role": "frontend_developer",
+          "seniority": [
+            "junior",
+            "middle"
+          ],
+          "interview_type": [
+            "technical_core",
+            "mixed"
+          ],
+          "score": 5.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Сигналы сильного ответа\n\n- Кандидат упоминает стек, очередь и освобождение main thread.\n- Связывает модель с реальными проблемами: freeze UI, delayed click handlers, jank.\n- Не сводит всё к заученной фразе про \"однопоточность\" без последствий для продукта."
         }
       ]
     },
     {
       "case_id": "frontend_api_integration_mixed",
-      "query": "api integration и обработка ошибок на клиенте",
+      "query": "fetch 401 403 retry таймаут и обработка ошибок на клиенте",
       "notes": "Mixed-mode frontend retrieval around API handling.",
       "filters": {
         "role": "frontend_developer",
@@ -321,7 +471,7 @@
         "interview_type": "mixed",
         "layer": "processed"
       },
-      "expected_backend": "chroma_openai",
+      "expected_backend": null,
       "expected_topics": [
         "api_integration_answer_outlines",
         "api_integration_questions",
@@ -332,20 +482,20 @@
         "question_bank",
         "theory_note"
       ],
-      "observed_backend": "chroma_openai",
+      "observed_backend": "jsonl_lexical",
       "observed_topics": [
-        "api_integration_questions",
-        "api_integration_answer_outlines",
-        "api_integration_questions",
-        "api_integration_questions",
-        "http_api_basics"
+        "http_api_basics",
+        "api_integration_followups",
+        "nuxt_cheatsheet",
+        "http_api_basics",
+        "api_integration_questions"
       ],
       "observed_document_types": [
-        "question_bank",
-        "answer_outline",
-        "question_bank",
-        "question_bank",
-        "theory_note"
+        "theory_note",
+        "followup_bank",
+        "cheatsheet",
+        "theory_note",
+        "question_bank"
       ],
       "result_count": 5,
       "topic_hit": true,
@@ -355,13 +505,13 @@
       "passed": true,
       "results": [
         {
-          "chunk_id": "6cc7e3a30c48e3ba:1",
-          "document_id": "6cc7e3a30c48e3ba",
-          "path": "data/processed/frontend/questions/api_integration_questions.md",
-          "title": "API integration questions",
-          "section": "Follow-up идеи",
-          "topic": "api_integration_questions",
-          "document_type": "question_bank",
+          "chunk_id": "41ac97ce52f522bc:2",
+          "document_id": "41ac97ce52f522bc",
+          "path": "data/processed/frontend/theory_notes/http_api_basics.md",
+          "title": "HTTP API basics",
+          "section": "Что важно для интервью",
+          "topic": "http_api_basics",
+          "document_type": "theory_note",
           "role": "frontend_developer",
           "seniority": [
             "junior",
@@ -371,18 +521,18 @@
             "technical_core",
             "mixed"
           ],
-          "score": 0.5905846953392029,
-          "retrieval_backend": "chroma_openai",
-          "text": "Follow-up идеи\n\n- Что делать при `401`, `403`, `404`, `500`?\n- Что можно ретраить автоматически, а что нет?\n- Как представить loading/success/error состояния в UI?"
+          "score": 4.25,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Что важно для интервью\n\n- Уметь объяснить различие между `PUT` и `PATCH`.\n- Понимать, почему `204`, `400`, `401`, `403`, `404`, `500` несут разный смысл.\n- Показать, как HTTP влияет на клиентскую обработку ошибок и retry-логику."
         },
         {
-          "chunk_id": "ac30a4fe08227020:0",
-          "document_id": "ac30a4fe08227020",
-          "path": "data/processed/frontend/answer_outlines/api_integration_answer_outlines.md",
-          "title": "API integration answer outlines",
-          "section": "Сильные паттерны ответа",
-          "topic": "api_integration_answer_outlines",
-          "document_type": "answer_outline",
+          "chunk_id": "ac75b9b2391f4175:0",
+          "document_id": "ac75b9b2391f4175",
+          "path": "data/processed/frontend/followups/api_integration_followups.md",
+          "title": "API integration follow-ups",
+          "section": "Follow-up prompts",
+          "topic": "api_integration_followups",
+          "document_type": "followup_bank",
           "role": "frontend_developer",
           "seniority": [
             "junior",
@@ -392,9 +542,51 @@
             "technical_core",
             "mixed"
           ],
-          "score": 0.5702962279319763,
-          "retrieval_backend": "chroma_openai",
-          "text": "Сильные паттерны ответа\n\n1. Request-response flow\n2. Loading/success/error states\n3. Headers/status/CORS when relevant\n4. UX or correctness trade-off\n5. Поведение клиента при ошибке"
+          "score": 2.25,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Follow-up prompts\n\n1. Как бы ты разделила обработку `401`, `403`, `404` и `500` в интерфейсе?\n2. Что здесь можно ретраить автоматически, а что лучше не ретраить?\n3. Как бы ты показала loading, empty, success и error состояния на реальном экране?\n4. Какой риск появляется, если сделать optimistic UI в этом сценарии?\n5. Что изменится, если запрос может завершиться позже, чем пользователь ожидает?\n6. Какие headers, status codes или CORS-ограничения здесь важно учитывать?\n7. Как бы ты отлаживала этот сценарий, если проблема проявляется только у части пользователей?"
+        },
+        {
+          "chunk_id": "14edcc0c3320b8e1:0",
+          "document_id": "14edcc0c3320b8e1",
+          "path": "data/processed/frontend/cheatsheets/nuxt_cheatsheet.md",
+          "title": "Nuxt cheatsheet",
+          "section": "Краткий справочник",
+          "topic": "nuxt_cheatsheet",
+          "document_type": "cheatsheet",
+          "role": "frontend_developer",
+          "seniority": [
+            "junior",
+            "middle"
+          ],
+          "interview_type": [
+            "technical_core",
+            "mixed"
+          ],
+          "score": 1.25,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Краткий справочник\n\n- page file: маршрут по соглашению\n- layout: общая оболочка страницы\n- SSR: рендер на сервере под запрос\n- CSR: рендер на клиенте\n- SSG: заранее собранная статическая страница\n- `useFetch`: загрузка данных с интеграцией Nuxt\n- `useAsyncData`: асинхронные данные с ключом в runtime-контексте\n- middleware: логика уровня маршрута\n- hydration: подключение клиентского поведения к HTML с сервера"
+        },
+        {
+          "chunk_id": "41ac97ce52f522bc:0",
+          "document_id": "41ac97ce52f522bc",
+          "path": "data/processed/frontend/theory_notes/http_api_basics.md",
+          "title": "HTTP API basics",
+          "section": "Краткое резюме",
+          "topic": "http_api_basics",
+          "document_type": "theory_note",
+          "role": "frontend_developer",
+          "seniority": [
+            "junior",
+            "middle"
+          ],
+          "interview_type": [
+            "technical_core",
+            "mixed"
+          ],
+          "score": 1.25,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Краткое резюме\n\nHTTP определяет, как клиент и сервер обмениваются запросами и ответами. Для frontend-интервью это база для разговоров про `fetch`, REST API, ошибки, заголовки, авторизацию, кэширование и CORS."
         },
         {
           "chunk_id": "6cc7e3a30c48e3ba:0",
@@ -413,87 +605,45 @@
             "technical_core",
             "mixed"
           ],
-          "score": 0.514964759349823,
-          "retrieval_backend": "chroma_openai",
-          "text": "Основные вопросы\n\n1. Как `fetch()` работает на высоком уровне?\n2. Почему `fetch()` резолвится даже при HTTP error status?\n3. Как бы ты организовал обработку API-ошибок во frontend-приложении?\n4. Какую роль играют `Request` и `Response`?\n5. Как CORS и origin rules влияют на интеграцию?\n6. Как не допустить UI-хаоса во время ожидания ответа?\n7. Какие trade-offs между optimistic UI и ожиданием подтверждения от сервера?\n8. Как headers и content types влияют на клиент-серверную интеграцию?"
-        },
-        {
-          "chunk_id": "6cc7e3a30c48e3ba:2",
-          "document_id": "6cc7e3a30c48e3ba",
-          "path": "data/processed/frontend/questions/api_integration_questions.md",
-          "title": "API integration questions",
-          "section": "Retrieval tags",
-          "topic": "api_integration_questions",
-          "document_type": "question_bank",
-          "role": "frontend_developer",
-          "seniority": [
-            "junior",
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.4886719584465027,
-          "retrieval_backend": "chroma_openai",
-          "text": "Retrieval tags\n\n`api integration`, `fetch`, `request`, `response`, `cors`, `error handling`, `headers`, `optimistic ui`"
-        },
-        {
-          "chunk_id": "41ac97ce52f522bc:2",
-          "document_id": "41ac97ce52f522bc",
-          "path": "data/processed/frontend/theory_notes/http_api_basics.md",
-          "title": "HTTP API basics",
-          "section": "Что важно для интервью",
-          "topic": "http_api_basics",
-          "document_type": "theory_note",
-          "role": "frontend_developer",
-          "seniority": [
-            "junior",
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.4837989807128906,
-          "retrieval_backend": "chroma_openai",
-          "text": "Что важно для интервью\n\n- Уметь объяснить различие между `PUT` и `PATCH`.\n- Понимать, почему `204`, `400`, `401`, `403`, `404`, `500` несут разный смысл.\n- Показать, как HTTP влияет на клиентскую обработку ошибок и retry-логику."
+          "score": 1.25,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Основные вопросы\n\n1. Как бы вы объяснили, что происходит после вызова `fetch()` в компоненте?\n2. Почему `fetch()` не бросает исключение автоматически на `404` или `500`?\n3. Как вы обычно разделяете ошибки сети, ошибки доступа и ошибки бизнес-логики в интерфейсе?\n4. Когда запрос стоит ретраить автоматически, а когда лучше не делать этого?\n5. Что меняют для фронтенда `Request`, `Response`, headers и `Content-Type`?\n6. Как вы моделируете состояния loading, empty, success и error в интерфейсе?\n7. Когда optimistic UI оправдан, а какие риски он приносит?\n8. Как CORS и детали авторизации меняют отладку интеграции?"
         }
       ]
     },
     {
-      "case_id": "frontend_performance_questions",
-      "query": "лишние рендеры и performance в react",
-      "notes": "Performance-oriented retrieval for frontend middle.",
+      "case_id": "frontend_performance_nuxt",
+      "query": "гидратация, jank и производительность в nuxt",
+      "notes": "Performance-oriented retrieval for Nuxt-heavy frontend interviews.",
       "filters": {
         "role": "frontend_developer",
         "seniority": "middle",
         "interview_type": "technical_core",
         "layer": "processed"
       },
-      "expected_backend": "chroma_openai",
+      "expected_backend": null,
       "expected_topics": [
+        "nuxt_cheatsheet",
         "performance_answer_outlines",
-        "performance_questions",
-        "react_cheatsheet"
+        "performance_questions"
       ],
       "expected_document_types": [
         "answer_outline",
         "cheatsheet",
         "question_bank"
       ],
-      "observed_backend": "chroma_openai",
+      "observed_backend": "jsonl_lexical",
       "observed_topics": [
-        "react_cheatsheet",
-        "performance_questions",
-        "performance_questions",
-        "react_basics",
-        "react_basics"
+        "nuxt_cheatsheet",
+        "nuxt_cheatsheet",
+        "nuxt_answer_outlines",
+        "nuxt_basics",
+        "nuxt_basics"
       ],
       "observed_document_types": [
         "cheatsheet",
-        "question_bank",
-        "question_bank",
+        "cheatsheet",
+        "answer_outline",
         "theory_note",
         "theory_note"
       ],
@@ -505,12 +655,12 @@
       "passed": true,
       "results": [
         {
-          "chunk_id": "fddd2080a35bc1d3:0",
-          "document_id": "fddd2080a35bc1d3",
-          "path": "data/processed/frontend/cheatsheets/react_cheatsheet.md",
-          "title": "React cheatsheet",
+          "chunk_id": "14edcc0c3320b8e1:0",
+          "document_id": "14edcc0c3320b8e1",
+          "path": "data/processed/frontend/cheatsheets/nuxt_cheatsheet.md",
+          "title": "Nuxt cheatsheet",
           "section": "Краткий справочник",
-          "topic": "react_cheatsheet",
+          "topic": "nuxt_cheatsheet",
           "document_type": "cheatsheet",
           "role": "frontend_developer",
           "seniority": [
@@ -521,57 +671,59 @@
             "technical_core",
             "mixed"
           ],
-          "score": 0.5497151613235474,
-          "retrieval_backend": "chroma_openai",
-          "text": "Краткий справочник\n\n- Компонент: переиспользуемая единица UI\n- Props: входные данные от родителя\n- State: изменяемые данные компонента\n- JSX: разметка внутри JavaScript\n- Conditional rendering: `if`, ternary, `&&`\n- Lists: `map` + стабильный `key`\n- Lift state up: перенос общего состояния в общего родителя"
+          "score": 2.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Краткий справочник\n\n- page file: маршрут по соглашению\n- layout: общая оболочка страницы\n- SSR: рендер на сервере под запрос\n- CSR: рендер на клиенте\n- SSG: заранее собранная статическая страница\n- `useFetch`: загрузка данных с интеграцией Nuxt\n- `useAsyncData`: асинхронные данные с ключом в runtime-контексте\n- middleware: логика уровня маршрута\n- hydration: подключение клиентского поведения к HTML с сервера"
         },
         {
-          "chunk_id": "f99f62a408fb7224:1",
-          "document_id": "f99f62a408fb7224",
-          "path": "data/processed/frontend/questions/performance_questions.md",
-          "title": "Frontend performance questions",
-          "section": "Follow-up идеи",
-          "topic": "performance_questions",
-          "document_type": "question_bank",
+          "chunk_id": "14edcc0c3320b8e1:1",
+          "document_id": "14edcc0c3320b8e1",
+          "path": "data/processed/frontend/cheatsheets/nuxt_cheatsheet.md",
+          "title": "Nuxt cheatsheet",
+          "section": "Retrieval tags",
+          "topic": "nuxt_cheatsheet",
+          "document_type": "cheatsheet",
           "role": "frontend_developer",
           "seniority": [
+            "junior",
             "middle"
           ],
           "interview_type": [
             "technical_core",
             "mixed"
           ],
-          "score": 0.5454875826835632,
-          "retrieval_backend": "chroma_openai",
-          "text": "Follow-up идеи\n\n- На какой слой ты бы смотрел первым: JavaScript, layout, paint или network?\n- Что бы ты изменил первым без premature optimization?\n- Как отличить React bottleneck от browser rendering bottleneck?"
+          "score": 2.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Retrieval tags\n\n`nuxt`, `pages`, `layouts`, `ssr`, `csr`, `ssg`, `useFetch`, `useAsyncData`, `middleware`, `hydration`"
         },
         {
-          "chunk_id": "f99f62a408fb7224:0",
-          "document_id": "f99f62a408fb7224",
-          "path": "data/processed/frontend/questions/performance_questions.md",
-          "title": "Frontend performance questions",
-          "section": "Основные вопросы",
-          "topic": "performance_questions",
-          "document_type": "question_bank",
+          "chunk_id": "935230d4c08da096:0",
+          "document_id": "935230d4c08da096",
+          "path": "data/processed/frontend/answer_outlines/nuxt_answer_outlines.md",
+          "title": "Nuxt answer outlines",
+          "section": "Сильные паттерны ответа",
+          "topic": "nuxt_answer_outlines",
+          "document_type": "answer_outline",
           "role": "frontend_developer",
           "seniority": [
+            "junior",
             "middle"
           ],
           "interview_type": [
             "technical_core",
             "mixed"
           ],
-          "score": 0.543147087097168,
-          "retrieval_backend": "chroma_openai",
-          "text": "Основные вопросы\n\n1. Что происходит между React state update и появлением нового UI на экране?\n2. Чем React render отличается от DOM commit?\n3. Почему re-render не всегда означает реальное обновление DOM?\n4. Как бы ты диагностировал страницу, которая лагает при взаимодействиях?\n5. Почему блокировка main thread ломает UX даже при \"правильной\" логике?\n6. Что такое critical rendering path и почему он важен?\n7. Почему одни CSS-свойства анимировать дороже, чем другие?\n8. Почему `transform` и `opacity` обычно предпочтительнее layout-affecting свойств?\n9. Когда `requestAnimationFrame()` лучше, чем `setInterval()`?\n10. Как связаны responsiveness, frame rate и perceived performance?"
+          "score": 2.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Сильные паттерны ответа\n\n1. Какую часть Nuxt runtime или page lifecycle ты сейчас разбираешь?\n2. Что здесь происходит на сервере, а что на клиенте?\n3. Как это влияет на SEO, первую загрузку, hydration или свежесть данных?\n4. На каком экране или маршруте это проще всего объяснить?\n5. Какой здесь есть компромисс или риск при отладке?"
         },
         {
-          "chunk_id": "ee6cd78ec94df4cb:0",
-          "document_id": "ee6cd78ec94df4cb",
-          "path": "data/processed/frontend/theory_notes/react_basics.md",
-          "title": "React basics",
+          "chunk_id": "d7739d907e45947b:0",
+          "document_id": "d7739d907e45947b",
+          "path": "data/processed/frontend/theory_notes/nuxt_basics.md",
+          "title": "Nuxt basics",
           "section": "Краткое резюме",
-          "topic": "react_basics",
+          "topic": "nuxt_basics",
           "document_type": "theory_note",
           "role": "frontend_developer",
           "seniority": [
@@ -582,17 +734,17 @@
             "technical_core",
             "mixed"
           ],
-          "score": 0.5272403359413147,
-          "retrieval_backend": "chroma_openai",
-          "text": "Краткое резюме\n\nReact строит интерфейс из независимых компонентов. Компонент обычно представляет маленький кусок UI, получает данные через props и хранит изменяемые данные через state. UI обновляется как реакция на изменения state и пользовательские события."
+          "score": 2.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Краткое резюме\n\nNuxt расширяет Vue file-based routing, вариантами рендеринга и встроенными сценариями загрузки данных. Для интервью важнее всего понимать маршруты, SSR/CSR/SSG, `useFetch`, `useAsyncData`, middleware, hydration и границу между серверным и браузерным кодом."
         },
         {
-          "chunk_id": "ee6cd78ec94df4cb:1",
-          "document_id": "ee6cd78ec94df4cb",
-          "path": "data/processed/frontend/theory_notes/react_basics.md",
-          "title": "React basics",
-          "section": "Ключевые идеи",
-          "topic": "react_basics",
+          "chunk_id": "d7739d907e45947b:4",
+          "document_id": "d7739d907e45947b",
+          "path": "data/processed/frontend/theory_notes/nuxt_basics.md",
+          "title": "Nuxt basics",
+          "section": "Retrieval tags",
+          "topic": "nuxt_basics",
           "document_type": "theory_note",
           "role": "frontend_developer",
           "seniority": [
@@ -603,47 +755,46 @@
             "technical_core",
             "mixed"
           ],
-          "score": 0.5175856351852417,
-          "retrieval_backend": "chroma_openai",
-          "text": "Ключевые идеи\n\n1. Компоненты:\n   JavaScript-функции, которые возвращают JSX и могут вкладываться друг в друга.\n2. JSX:\n   Разметка внутри JavaScript. Требует корректного синтаксиса и общего родителя для соседних узлов.\n3. Props:\n   Канал передачи данных сверху вниз.\n4. State:\n   Внутренняя память компонента для изменяемых значений.\n5. Условный рендеринг:\n   Используются обычные конструкции JavaScript: `if`, ternary, `&&`.\n6. Списки:\n   Обычно строятся через `map`; каждому элементу нужен стабильный `key`.\n7. Подъём состояния:\n   Если одни и те же данные нужны нескольким дочерним компонентам, состояние поднимают в ближайший общий родитель."
+          "score": 2.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Retrieval tags\n\n`nuxt`, `routing`, `ssr`, `csr`, `ssg`, `useFetch`, `useAsyncData`, `middleware`, `hydration`, `server client boundary`"
         }
       ]
     },
     {
-      "case_id": "java_collections_core",
-      "query": "collections list set map и когда что выбирать",
-      "notes": "Core Java collections retrieval.",
+      "case_id": "frontend_typescript_narrowing",
+      "query": "typescript narrowing union type guards во фронтенде",
+      "notes": "TypeScript narrowing retrieval for frontend middle.",
       "filters": {
-        "role": "java_backend_developer",
-        "seniority": "junior",
+        "role": "frontend_developer",
+        "seniority": "middle",
         "interview_type": "technical_core",
         "layer": "processed"
       },
-      "expected_backend": "chroma_openai",
+      "expected_backend": null,
       "expected_topics": [
-        "collections_questions",
-        "java_basics",
-        "java_cheatsheet"
+        "typescript_basics",
+        "typescript_narrowing",
+        "typescript_questions"
       ],
       "expected_document_types": [
-        "cheatsheet",
         "question_bank",
         "theory_note"
       ],
-      "observed_backend": "chroma_openai",
+      "observed_backend": "jsonl_lexical",
       "observed_topics": [
-        "collections_questions",
-        "collections_questions",
-        "collections_answer_outlines",
-        "collections_questions",
-        "java_cheatsheet"
+        "typescript_questions",
+        "typescript_narrowing",
+        "typescript_cheatsheet",
+        "typescript_basics",
+        "typescript_basics"
       ],
       "observed_document_types": [
         "question_bank",
-        "question_bank",
-        "answer_outline",
-        "question_bank",
-        "cheatsheet"
+        "theory_note",
+        "cheatsheet",
+        "theory_note",
+        "theory_note"
       ],
       "result_count": 5,
       "topic_hit": true,
@@ -653,14 +804,14 @@
       "passed": true,
       "results": [
         {
-          "chunk_id": "fe7c7d73fdbe81be:0",
-          "document_id": "fe7c7d73fdbe81be",
-          "path": "data/processed/java_backend/questions/collections_questions.md",
-          "title": "Collections questions",
+          "chunk_id": "f1fb9cb2faa53365:0",
+          "document_id": "f1fb9cb2faa53365",
+          "path": "data/processed/frontend/questions/typescript_questions.md",
+          "title": "TypeScript questions",
           "section": "Основные вопросы",
-          "topic": "collections_questions",
+          "topic": "typescript_questions",
           "document_type": "question_bank",
-          "role": "java_backend_developer",
+          "role": "frontend_developer",
           "seniority": [
             "junior",
             "middle"
@@ -669,82 +820,39 @@
             "technical_core",
             "mixed"
           ],
-          "score": 0.6266105771064758,
-          "retrieval_backend": "chroma_openai",
-          "text": "Основные вопросы\n\n1. Чем `List`, `Set` и `Map` отличаются на практике?\n2. Когда выбрать `ArrayList`, а когда `LinkedList`?\n3. Зачем нужен `Set` по сравнению с `List`?\n4. В чём практическая разница между `HashMap` и `ConcurrentHashMap`?\n5. Как выбор коллекции влияет на latency endpoint-а и memory usage?\n6. Что может пойти не так, если структура данных не совпадает с access pattern?\n7. Как просто объяснить порядок обхода, уникальность и стоимость lookup?"
+          "score": 8.25,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Основные вопросы\n\n1. Зачем фронтенд-кодовой базе TypeScript вместо обычного JavaScript?\n2. В чём разница между `any` и union type?\n3. Что такое type inference и почему он полезен?\n4. Когда использовать `interface`, а когда `type`?\n5. Как optional properties помогают описывать реальные данные UI или API?\n6. Что такое narrowing?\n7. Как `typeof`, `in` и truthiness checks помогают с union-типами?\n8. Почему discriminated unions полезны для async UI-state?\n9. Какую проблему решают generics?\n10. Почему generic helper безопаснее, чем `any`?\n11. Что такое generic constraint и когда он нужен?\n12. Приведи пример generic utility, composable helper или generic component во фронтенде."
         },
         {
-          "chunk_id": "fe7c7d73fdbe81be:2",
-          "document_id": "fe7c7d73fdbe81be",
-          "path": "data/processed/java_backend/questions/collections_questions.md",
-          "title": "Collections questions",
+          "chunk_id": "e20a1b2b9c4db9fd:0",
+          "document_id": "e20a1b2b9c4db9fd",
+          "path": "data/processed/frontend/theory_notes/typescript_narrowing.md",
+          "title": "TypeScript narrowing",
+          "section": "Краткое резюме",
+          "topic": "typescript_narrowing",
+          "document_type": "theory_note",
+          "role": "frontend_developer",
+          "seniority": [
+            "middle"
+          ],
+          "interview_type": [
+            "technical_core",
+            "mixed"
+          ],
+          "score": 7.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Краткое резюме\n\nNarrowing нужен для безопасной работы с union-типами. TypeScript уточняет тип значения, когда код доказывает, что возможна только часть вариантов: через `typeof`, проверки на truthy, `in`, `instanceof`, discriminated unions и анализ control flow."
+        },
+        {
+          "chunk_id": "b89b889017eb86f0:1",
+          "document_id": "b89b889017eb86f0",
+          "path": "data/processed/frontend/cheatsheets/typescript_cheatsheet.md",
+          "title": "TypeScript cheatsheet",
           "section": "Retrieval tags",
-          "topic": "collections_questions",
-          "document_type": "question_bank",
-          "role": "java_backend_developer",
-          "seniority": [
-            "junior",
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.5789541602134705,
-          "retrieval_backend": "chroma_openai",
-          "text": "Retrieval tags\n\n`collections`, `list`, `set`, `map`, `arraylist`, `linkedlist`, `hashmap`, `concurrenthashmap`"
-        },
-        {
-          "chunk_id": "e1c0767fd15d4507:0",
-          "document_id": "e1c0767fd15d4507",
-          "path": "data/processed/java_backend/answer_outlines/collections_answer_outlines.md",
-          "title": "Collections answer outlines",
-          "section": "Сильные паттерны ответа",
-          "topic": "collections_answer_outlines",
-          "document_type": "answer_outline",
-          "role": "java_backend_developer",
-          "seniority": [
-            "junior",
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.5575763583183289,
-          "retrieval_backend": "chroma_openai",
-          "text": "Сильные паттерны ответа\n\n1. Назвать dominant operation\n2. Выбрать коллекцию и объяснить почему\n3. Сравнить с худшей альтернативой\n4. Упомянуть performance or memory trade-off"
-        },
-        {
-          "chunk_id": "fe7c7d73fdbe81be:1",
-          "document_id": "fe7c7d73fdbe81be",
-          "path": "data/processed/java_backend/questions/collections_questions.md",
-          "title": "Collections questions",
-          "section": "Follow-up идеи",
-          "topic": "collections_questions",
-          "document_type": "question_bank",
-          "role": "java_backend_developer",
-          "seniority": [
-            "junior",
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.5449294447898865,
-          "retrieval_backend": "chroma_openai",
-          "text": "Follow-up идеи\n\n- Какая операция тут доминирует: lookup, append, insert, deduplication?\n- Какой production-баг или неэффективность даст неверный выбор?\n- Как concurrency меняет ответ?"
-        },
-        {
-          "chunk_id": "028d1baea1c1ec5c:0",
-          "document_id": "028d1baea1c1ec5c",
-          "path": "data/processed/java_backend/cheatsheets/java_cheatsheet.md",
-          "title": "Java cheatsheet",
-          "section": "Краткий справочник",
-          "topic": "java_cheatsheet",
+          "topic": "typescript_cheatsheet",
           "document_type": "cheatsheet",
-          "role": "java_backend_developer",
+          "role": "frontend_developer",
           "seniority": [
             "junior",
             "middle"
@@ -753,255 +861,19 @@
             "technical_core",
             "mixed"
           ],
-          "score": 0.45850038528442383,
-          "retrieval_backend": "chroma_openai",
-          "text": "Краткий справочник\n\n- Class: реализация и состояние\n- Interface: контракт\n- Record: компактная immutable-модель\n- Generic: type-safe абстракция\n- Exception: сигнал ошибочного сценария\n- Collections: `List`, `Set`, `Map`\n- Stream: декларативная обработка данных"
-        }
-      ]
-    },
-    {
-      "case_id": "java_spring_transactions",
-      "query": "spring transactions и границы транзакций",
-      "notes": "Spring transaction semantics retrieval.",
-      "filters": {
-        "role": "java_backend_developer",
-        "seniority": "middle",
-        "interview_type": "technical_core",
-        "layer": "processed"
-      },
-      "expected_backend": "chroma_openai",
-      "expected_topics": [
-        "spring_basics",
-        "spring_followups",
-        "spring_questions"
-      ],
-      "expected_document_types": [
-        "followup_bank",
-        "question_bank",
-        "theory_note"
-      ],
-      "observed_backend": "chroma_openai",
-      "observed_topics": [
-        "spring_followups",
-        "spring_basics",
-        "spring_questions",
-        "spring_cheatsheet",
-        "transactions_answer_outlines"
-      ],
-      "observed_document_types": [
-        "followup_bank",
-        "theory_note",
-        "question_bank",
-        "cheatsheet",
-        "answer_outline"
-      ],
-      "result_count": 5,
-      "topic_hit": true,
-      "document_type_hit": true,
-      "backend_ok": true,
-      "filters_ok": true,
-      "passed": true,
-      "results": [
-        {
-          "chunk_id": "96002b7fcfae6023:1",
-          "document_id": "96002b7fcfae6023",
-          "path": "data/processed/java_backend/followups/spring_followups.md",
-          "title": "Spring follow-ups",
-          "section": "Retrieval tags",
-          "topic": "spring_followups",
-          "document_type": "followup_bank",
-          "role": "java_backend_developer",
-          "seniority": [
-            "junior",
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.5483070015907288,
-          "retrieval_backend": "chroma_openai",
-          "text": "Retrieval tags\n\n`spring followups`, `transaction boundaries`, `testing`, `controller service repository`, `framework behavior`"
+          "score": 7.25,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Retrieval tags\n\n`typescript`, `union`, `interface`, `type alias`, `narrowing`, `inference`"
         },
         {
-          "chunk_id": "55c03f2fbff84f67:3",
-          "document_id": "55c03f2fbff84f67",
-          "path": "data/processed/java_backend/theory_notes/spring_basics.md",
-          "title": "Spring basics",
-          "section": "Сигналы сильного ответа",
-          "topic": "spring_basics",
-          "document_type": "theory_note",
-          "role": "java_backend_developer",
-          "seniority": [
-            "junior",
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.5433659553527832,
-          "retrieval_backend": "chroma_openai",
-          "text": "Сигналы сильного ответа\n\n- Кандидат говорит про модульность и testability.\n- Связывает `@Transactional` с бизнес-операцией, а не с \"обязательной аннотацией\".\n- Понимает цену скрытой framework-магии."
-        },
-        {
-          "chunk_id": "d4b7c2ad144bd91a:1",
-          "document_id": "d4b7c2ad144bd91a",
-          "path": "data/processed/java_backend/questions/spring_questions.md",
-          "title": "Spring questions",
-          "section": "Follow-up идеи",
-          "topic": "spring_questions",
-          "document_type": "question_bank",
-          "role": "java_backend_developer",
-          "seniority": [
-            "junior",
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.5341593623161316,
-          "retrieval_backend": "chroma_openai",
-          "text": "Follow-up идеи\n\n- Приведи пример endpoint-а.\n- Какую скрытую сложность Spring берёт на себя?\n- Какие баги возникают при нарушении layer boundaries?"
-        },
-        {
-          "chunk_id": "1c1292278c7ae8ba:0",
-          "document_id": "1c1292278c7ae8ba",
-          "path": "data/processed/java_backend/cheatsheets/spring_cheatsheet.md",
-          "title": "Spring cheatsheet",
-          "section": "Краткий справочник",
-          "topic": "spring_cheatsheet",
-          "document_type": "cheatsheet",
-          "role": "java_backend_developer",
-          "seniority": [
-            "junior",
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.533388078212738,
-          "retrieval_backend": "chroma_openai",
-          "text": "Краткий справочник\n\n- IoC container: создаёт и связывает beans\n- DI: внедряет зависимости\n- Bean: Spring-managed компонент\n- Controller: HTTP-граница\n- Service: бизнес-логика\n- Repository: слой доступа к данным\n- `@Transactional`: граница транзакции"
-        },
-        {
-          "chunk_id": "821719cdf74bf602:0",
-          "document_id": "821719cdf74bf602",
-          "path": "data/processed/java_backend/answer_outlines/transactions_answer_outlines.md",
-          "title": "Transactions answer outlines",
-          "section": "Сильные паттерны ответа",
-          "topic": "transactions_answer_outlines",
-          "document_type": "answer_outline",
-          "role": "java_backend_developer",
-          "seniority": [
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.5263730883598328,
-          "retrieval_backend": "chroma_openai",
-          "text": "Сильные паттерны ответа\n\n1. Multi-step operation\n2. Consistency risk\n3. Transaction boundary\n4. Failure/rollback implication\n5. Why boundary fits the business rule"
-        }
-      ]
-    },
-    {
-      "case_id": "java_sql_indexing",
-      "query": "sql indexing для write-heavy таблицы",
-      "notes": "SQL indexing and write trade-off retrieval.",
-      "filters": {
-        "role": "java_backend_developer",
-        "seniority": "middle",
-        "interview_type": "technical_core",
-        "layer": "processed"
-      },
-      "expected_backend": "chroma_openai",
-      "expected_topics": [
-        "sql_answer_outlines",
-        "sql_indexing",
-        "sql_questions"
-      ],
-      "expected_document_types": [
-        "answer_outline",
-        "question_bank",
-        "theory_note"
-      ],
-      "observed_backend": "chroma_openai",
-      "observed_topics": [
-        "sql_indexing",
-        "sql_indexing",
-        "sql_indexing",
-        "sql_questions",
-        "sql_indexing"
-      ],
-      "observed_document_types": [
-        "theory_note",
-        "theory_note",
-        "theory_note",
-        "question_bank",
-        "theory_note"
-      ],
-      "result_count": 5,
-      "topic_hit": true,
-      "document_type_hit": true,
-      "backend_ok": true,
-      "filters_ok": true,
-      "passed": true,
-      "results": [
-        {
-          "chunk_id": "1d4702492b541926:2",
-          "document_id": "1d4702492b541926",
-          "path": "data/processed/java_backend/theory_notes/sql_indexing.md",
-          "title": "SQL indexing",
-          "section": "Что важно для интервью",
-          "topic": "sql_indexing",
-          "document_type": "theory_note",
-          "role": "java_backend_developer",
-          "seniority": [
-            "junior",
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.5926030278205872,
-          "retrieval_backend": "chroma_openai",
-          "text": "Что важно для интервью\n\n- Объяснить, почему \"добавим индекс\" не универсальное решение.\n- Понимать связь индексов с `WHERE`, `JOIN`, `ORDER BY`.\n- Уметь говорить о read-heavy и write-heavy сценариях."
-        },
-        {
-          "chunk_id": "1d4702492b541926:3",
-          "document_id": "1d4702492b541926",
-          "path": "data/processed/java_backend/theory_notes/sql_indexing.md",
-          "title": "SQL indexing",
-          "section": "Сигналы сильного ответа",
-          "topic": "sql_indexing",
-          "document_type": "theory_note",
-          "role": "java_backend_developer",
-          "seniority": [
-            "junior",
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.5775336027145386,
-          "retrieval_backend": "chroma_openai",
-          "text": "Сигналы сильного ответа\n\n- Кандидат обсуждает query pattern.\n- Учитывает стоимость записи.\n- Связывает индексирование с продуктовой latency и нагрузкой."
-        },
-        {
-          "chunk_id": "1d4702492b541926:1",
-          "document_id": "1d4702492b541926",
-          "path": "data/processed/java_backend/theory_notes/sql_indexing.md",
-          "title": "SQL indexing",
+          "chunk_id": "5db54396a80fc991:1",
+          "document_id": "5db54396a80fc991",
+          "path": "data/processed/frontend/theory_notes/typescript_basics.md",
+          "title": "TypeScript basics",
           "section": "Ключевые идеи",
-          "topic": "sql_indexing",
+          "topic": "typescript_basics",
           "document_type": "theory_note",
-          "role": "java_backend_developer",
+          "role": "frontend_developer",
           "seniority": [
             "junior",
             "middle"
@@ -1010,40 +882,19 @@
             "technical_core",
             "mixed"
           ],
-          "score": 0.5721750855445862,
-          "retrieval_backend": "chroma_openai",
-          "text": "Ключевые идеи\n\n1. Индекс ускоряет чтение:\n   особенно для частых фильтров и типовых query paths.\n2. Индекс не бесплатен:\n   увеличивает overhead на `INSERT`, `UPDATE`, `DELETE`.\n3. Индексация должна идти от реальных запросов:\n   сначала смотрим workload, потом выбираем стратегию.\n4. Слишком много индексов:\n   могут ухудшить общую производительность системы."
+          "score": 6.25,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Ключевые идеи\n\n1. Базовые типы:\n   `string`, `number`, `boolean`, массивы, объекты.\n2. Type inference:\n   TypeScript часто сам выводит тип, поэтому не нужно размечать всё вручную.\n3. Функции:\n   Типизируются параметры и возвращаемое значение.\n4. Object types:\n   Описывают форму данных, включая optional-поля.\n5. Union types:\n   Позволяют выразить несколько допустимых вариантов значения.\n6. Type aliases и interfaces:\n   Нужны для переиспользуемых контрактов.\n7. Literal types:\n   Полезны для режимов, вариантов и безопасных API."
         },
         {
-          "chunk_id": "a898d2b5b1fc99ac:1",
-          "document_id": "a898d2b5b1fc99ac",
-          "path": "data/processed/java_backend/questions/sql_questions.md",
-          "title": "SQL questions",
-          "section": "Follow-up идеи",
-          "topic": "sql_questions",
-          "document_type": "question_bank",
-          "role": "java_backend_developer",
-          "seniority": [
-            "junior",
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.5614575743675232,
-          "retrieval_backend": "chroma_openai",
-          "text": "Follow-up идеи\n\n- Что здесь важнее: чтение или запись?\n- Какой query pattern ты оптимизируешь?\n- Какой overhead готов принять?"
-        },
-        {
-          "chunk_id": "1d4702492b541926:4",
-          "document_id": "1d4702492b541926",
-          "path": "data/processed/java_backend/theory_notes/sql_indexing.md",
-          "title": "SQL indexing",
+          "chunk_id": "5db54396a80fc991:4",
+          "document_id": "5db54396a80fc991",
+          "path": "data/processed/frontend/theory_notes/typescript_basics.md",
+          "title": "TypeScript basics",
           "section": "Retrieval tags",
-          "topic": "sql_indexing",
+          "topic": "typescript_basics",
           "document_type": "theory_note",
-          "role": "java_backend_developer",
+          "role": "frontend_developer",
           "seniority": [
             "junior",
             "middle"
@@ -1052,161 +903,18 @@
             "technical_core",
             "mixed"
           ],
-          "score": 0.5547489523887634,
-          "retrieval_backend": "chroma_openai",
-          "text": "Retrieval tags\n\n`indexes`, `sql performance`, `postgresql`, `where`, `join`, `reads vs writes`, `latency`"
+          "score": 6.25,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Retrieval tags\n\n`typescript`, `type inference`, `union`, `interface`, `type alias`, `object types`, `props typing`, `api contracts`"
         }
       ]
     },
     {
-      "case_id": "java_concurrency",
-      "query": "concurrency и race conditions в backend",
-      "notes": "Concurrency coverage for backend middle.",
+      "case_id": "frontend_followup_filter",
+      "query": "follow-up вопросы по nuxt загрузке данных",
+      "notes": "Explicit document_type filter for frontend follow-up banks.",
       "filters": {
-        "role": "java_backend_developer",
-        "seniority": "middle",
-        "interview_type": "technical_core",
-        "layer": "processed"
-      },
-      "expected_backend": "chroma_openai",
-      "expected_topics": [
-        "concurrency_answer_outlines",
-        "transactions_concurrency_questions"
-      ],
-      "expected_document_types": [
-        "answer_outline",
-        "question_bank"
-      ],
-      "observed_backend": "chroma_openai",
-      "observed_topics": [
-        "concurrency_followups",
-        "concurrency_followups",
-        "concurrency_answer_outlines",
-        "transactions_concurrency_questions",
-        "transactions_concurrency_questions"
-      ],
-      "observed_document_types": [
-        "followup_bank",
-        "followup_bank",
-        "answer_outline",
-        "question_bank",
-        "question_bank"
-      ],
-      "result_count": 5,
-      "topic_hit": true,
-      "document_type_hit": true,
-      "backend_ok": true,
-      "filters_ok": true,
-      "passed": true,
-      "results": [
-        {
-          "chunk_id": "53bf4db8990ed56d:0",
-          "document_id": "53bf4db8990ed56d",
-          "path": "data/processed/java_backend/followups/concurrency_followups.md",
-          "title": "Concurrency follow-ups",
-          "section": "Follow-up prompts",
-          "topic": "concurrency_followups",
-          "document_type": "followup_bank",
-          "role": "java_backend_developer",
-          "seniority": [
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.6417559385299683,
-          "retrieval_backend": "chroma_openai",
-          "text": "Follow-up prompts\n\n1. Какой ресурс здесь общий?\n2. Какое interleaving операций создаёт баг?\n3. Риск в памяти приложения, в базе или во внешней системе?\n4. Какую гарантию ты на самом деле защищаешь?\n5. Как retries меняют failure mode?\n6. Что бы ты протестировал для воспроизведения race condition?\n7. Какую observability добавил бы для такой проблемы?"
-        },
-        {
-          "chunk_id": "53bf4db8990ed56d:1",
-          "document_id": "53bf4db8990ed56d",
-          "path": "data/processed/java_backend/followups/concurrency_followups.md",
-          "title": "Concurrency follow-ups",
-          "section": "Retrieval tags",
-          "topic": "concurrency_followups",
-          "document_type": "followup_bank",
-          "role": "java_backend_developer",
-          "seniority": [
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.6370319724082947,
-          "retrieval_backend": "chroma_openai",
-          "text": "Retrieval tags\n\n`concurrency followups`, `race condition`, `shared resource`, `retries`, `consistency`, `observability`"
-        },
-        {
-          "chunk_id": "a4227efdd20cab58:0",
-          "document_id": "a4227efdd20cab58",
-          "path": "data/processed/java_backend/answer_outlines/concurrency_answer_outlines.md",
-          "title": "Concurrency answer outlines",
-          "section": "Сильные паттерны ответа",
-          "topic": "concurrency_answer_outlines",
-          "document_type": "answer_outline",
-          "role": "java_backend_developer",
-          "seniority": [
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.6131790280342102,
-          "retrieval_backend": "chroma_openai",
-          "text": "Сильные паттерны ответа\n\n1. Shared resource\n2. Race/interleaving risk\n3. Memory vs database consistency\n4. Control mechanism\n5. Test/observability note"
-        },
-        {
-          "chunk_id": "c234f809a7f00fce:2",
-          "document_id": "c234f809a7f00fce",
-          "path": "data/processed/java_backend/questions/transactions_concurrency_questions.md",
-          "title": "Transactions and concurrency questions",
-          "section": "Retrieval tags",
-          "topic": "transactions_concurrency_questions",
-          "document_type": "question_bank",
-          "role": "java_backend_developer",
-          "seniority": [
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.6098162531852722,
-          "retrieval_backend": "chroma_openai",
-          "text": "Retrieval tags\n\n`transactions`, `concurrency`, `consistency`, `thread safety`, `duplicate requests`, `backend correctness`"
-        },
-        {
-          "chunk_id": "c234f809a7f00fce:1",
-          "document_id": "c234f809a7f00fce",
-          "path": "data/processed/java_backend/questions/transactions_concurrency_questions.md",
-          "title": "Transactions and concurrency questions",
-          "section": "Follow-up идеи",
-          "topic": "transactions_concurrency_questions",
-          "document_type": "question_bank",
-          "role": "java_backend_developer",
-          "seniority": [
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.6011131405830383,
-          "retrieval_backend": "chroma_openai",
-          "text": "Follow-up идеи\n\n- Какой ресурс тут общий?\n- Какая гарантия консистентности нужна?\n- Решение должно жить в коде, в БД или в обоих слоях?"
-        }
-      ]
-    },
-    {
-      "case_id": "java_followup_filter",
-      "query": "follow-up вопросы про spring transaction boundaries",
-      "notes": "Explicit document_type filter for follow-up banks.",
-      "filters": {
-        "role": "java_backend_developer",
+        "role": "frontend_developer",
         "seniority": "middle",
         "interview_type": "technical_core",
         "document_types": [
@@ -1214,20 +922,20 @@
         ],
         "layer": "processed"
       },
-      "expected_backend": "chroma_openai",
+      "expected_backend": null,
       "expected_topics": [
-        "spring_followups"
+        "nuxt_followups"
       ],
       "expected_document_types": [
         "followup_bank"
       ],
-      "observed_backend": "chroma_openai",
+      "observed_backend": "jsonl_lexical",
       "observed_topics": [
-        "spring_followups",
-        "spring_followups",
-        "concurrency_followups",
-        "concurrency_followups",
-        "sql_followups"
+        "nuxt_followups",
+        "performance_followups",
+        "typescript_followups",
+        "api_integration_followups",
+        "vue_followups"
       ],
       "observed_document_types": [
         "followup_bank",
@@ -1244,35 +952,14 @@
       "passed": true,
       "results": [
         {
-          "chunk_id": "96002b7fcfae6023:1",
-          "document_id": "96002b7fcfae6023",
-          "path": "data/processed/java_backend/followups/spring_followups.md",
-          "title": "Spring follow-ups",
-          "section": "Retrieval tags",
-          "topic": "spring_followups",
-          "document_type": "followup_bank",
-          "role": "java_backend_developer",
-          "seniority": [
-            "junior",
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.731979489326477,
-          "retrieval_backend": "chroma_openai",
-          "text": "Retrieval tags\n\n`spring followups`, `transaction boundaries`, `testing`, `controller service repository`, `framework behavior`"
-        },
-        {
-          "chunk_id": "96002b7fcfae6023:0",
-          "document_id": "96002b7fcfae6023",
-          "path": "data/processed/java_backend/followups/spring_followups.md",
-          "title": "Spring follow-ups",
+          "chunk_id": "92c6ff8557189296:0",
+          "document_id": "92c6ff8557189296",
+          "path": "data/processed/frontend/followups/nuxt_followups.md",
+          "title": "Nuxt follow-ups",
           "section": "Follow-up prompts",
-          "topic": "spring_followups",
+          "topic": "nuxt_followups",
           "document_type": "followup_bank",
-          "role": "java_backend_developer",
+          "role": "frontend_developer",
           "seniority": [
             "junior",
             "middle"
@@ -1281,19 +968,19 @@
             "technical_core",
             "mixed"
           ],
-          "score": 0.6762164831161499,
-          "retrieval_backend": "chroma_openai",
-          "text": "Follow-up prompts\n\n1. Какая зависимость здесь скрыта и стоит ли сделать её явной?\n2. Что станет проще тестировать после рефактора?\n3. Где в твоём примере начинается и заканчивается транзакция?\n4. Какой баг появится, если эта логика останется в controller?\n5. Что изменится, если операция затрагивает две внешние системы?\n6. Какое скрытое framework-behavior важно здесь понимать?\n7. Что бы ты мокал, а что оставил реальным в тестах?"
+          "score": 7.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Follow-up prompts\n\n1. Что изменится, если эту страницу должен индексировать поиск?\n2. Как бы ты решала, нужен ли здесь серверный запрос или клиентский?\n3. Что произойдёт при повторной навигации на эту страницу?\n4. Как бы ты избегала двойной загрузки данных во время hydration?\n5. Что бы ты делала, если часть логики зависит от `window` или `localStorage`?\n6. Какой здесь компромисс между скоростью первой загрузки и простотой реализации?\n7. Где middleware реально помогает, а где только добавляет сложность?"
         },
         {
-          "chunk_id": "53bf4db8990ed56d:0",
-          "document_id": "53bf4db8990ed56d",
-          "path": "data/processed/java_backend/followups/concurrency_followups.md",
-          "title": "Concurrency follow-ups",
+          "chunk_id": "548f1aaf10b039d5:0",
+          "document_id": "548f1aaf10b039d5",
+          "path": "data/processed/frontend/followups/performance_followups.md",
+          "title": "Performance follow-ups",
           "section": "Follow-up prompts",
-          "topic": "concurrency_followups",
+          "topic": "performance_followups",
           "document_type": "followup_bank",
-          "role": "java_backend_developer",
+          "role": "frontend_developer",
           "seniority": [
             "middle"
           ],
@@ -1301,39 +988,19 @@
             "technical_core",
             "mixed"
           ],
-          "score": 0.5546136498451233,
-          "retrieval_backend": "chroma_openai",
-          "text": "Follow-up prompts\n\n1. Какой ресурс здесь общий?\n2. Какое interleaving операций создаёт баг?\n3. Риск в памяти приложения, в базе или во внешней системе?\n4. Какую гарантию ты на самом деле защищаешь?\n5. Как retries меняют failure mode?\n6. Что бы ты протестировал для воспроизведения race condition?\n7. Какую observability добавил бы для такой проблемы?"
+          "score": 5.25,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Follow-up prompts\n\n1. Где здесь узкое место: JavaScript, layout, paint, hydration или сеть?\n2. Что бы ты померила первым, прежде чем что-то менять?\n3. Почему пользователь вообще замечает этот jank?\n4. Какое изменение дало бы самый большой эффект первым?\n5. Как не уйти здесь в premature optimization?\n6. Какая операция, скорее всего, стоит дороже всего?\n7. Чем бы ты подтвердила улучшение после фикса?"
         },
         {
-          "chunk_id": "53bf4db8990ed56d:1",
-          "document_id": "53bf4db8990ed56d",
-          "path": "data/processed/java_backend/followups/concurrency_followups.md",
-          "title": "Concurrency follow-ups",
-          "section": "Retrieval tags",
-          "topic": "concurrency_followups",
+          "chunk_id": "5930fbe9f4a920ac:0",
+          "document_id": "5930fbe9f4a920ac",
+          "path": "data/processed/frontend/followups/typescript_followups.md",
+          "title": "TypeScript follow-ups",
+          "section": "Follow-up prompts",
+          "topic": "typescript_followups",
           "document_type": "followup_bank",
-          "role": "java_backend_developer",
-          "seniority": [
-            "middle"
-          ],
-          "interview_type": [
-            "technical_core",
-            "mixed"
-          ],
-          "score": 0.524049699306488,
-          "retrieval_backend": "chroma_openai",
-          "text": "Retrieval tags\n\n`concurrency followups`, `race condition`, `shared resource`, `retries`, `consistency`, `observability`"
-        },
-        {
-          "chunk_id": "73212afc057eb6fe:1",
-          "document_id": "73212afc057eb6fe",
-          "path": "data/processed/java_backend/followups/sql_followups.md",
-          "title": "SQL follow-ups",
-          "section": "Retrieval tags",
-          "topic": "sql_followups",
-          "document_type": "followup_bank",
-          "role": "java_backend_developer",
+          "role": "frontend_developer",
           "seniority": [
             "junior",
             "middle"
@@ -1342,9 +1009,51 @@
             "technical_core",
             "mixed"
           ],
-          "score": 0.4785979390144348,
-          "retrieval_backend": "chroma_openai",
-          "text": "Retrieval tags\n\n`sql followups`, `indexing`, `query pattern`, `reads writes`, `data growth`, `validation`"
+          "score": 5.25,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Follow-up prompts\n\n1. Почему это безопаснее, чем `any`?\n2. Какой баг поймала бы типизация?\n3. Почему union здесь лучше, чем набор разрозненных optional-полей?\n4. Что сломается без generic constraint?\n5. Где inference достаточно, а где нужна явная аннотация?\n6. Как этот тип переживёт рост API или компонента?\n7. Где здесь работает narrowing?"
+        },
+        {
+          "chunk_id": "ac75b9b2391f4175:0",
+          "document_id": "ac75b9b2391f4175",
+          "path": "data/processed/frontend/followups/api_integration_followups.md",
+          "title": "API integration follow-ups",
+          "section": "Follow-up prompts",
+          "topic": "api_integration_followups",
+          "document_type": "followup_bank",
+          "role": "frontend_developer",
+          "seniority": [
+            "junior",
+            "middle"
+          ],
+          "interview_type": [
+            "technical_core",
+            "mixed"
+          ],
+          "score": 5.25,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Follow-up prompts\n\n1. Как бы ты разделила обработку `401`, `403`, `404` и `500` в интерфейсе?\n2. Что здесь можно ретраить автоматически, а что лучше не ретраить?\n3. Как бы ты показала loading, empty, success и error состояния на реальном экране?\n4. Какой риск появляется, если сделать optimistic UI в этом сценарии?\n5. Что изменится, если запрос может завершиться позже, чем пользователь ожидает?\n6. Какие headers, status codes или CORS-ограничения здесь важно учитывать?\n7. Как бы ты отлаживала этот сценарий, если проблема проявляется только у части пользователей?"
+        },
+        {
+          "chunk_id": "e1f051410efd6ca3:0",
+          "document_id": "e1f051410efd6ca3",
+          "path": "data/processed/frontend/followups/vue_followups.md",
+          "title": "Vue follow-ups",
+          "section": "Follow-up prompts",
+          "topic": "vue_followups",
+          "document_type": "followup_bank",
+          "role": "frontend_developer",
+          "seniority": [
+            "junior",
+            "middle"
+          ],
+          "interview_type": [
+            "technical_core",
+            "mixed"
+          ],
+          "score": 5.25,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Follow-up prompts\n\n1. Можешь показать это на конкретном компоненте из проекта?\n2. Почему эти данные не стоит мутировать напрямую именно здесь?\n3. Где бы ты выбрала `computed`, а где `watch`?\n4. Что начнёт ломаться, если этот компонент будет продолжать расти?\n5. Как бы ты вынесла общую логику в composable и где бы остановилась?\n6. Что изменится, если тот же state понадобится соседним компонентам?\n7. Какой компромисс ты принимаешь, чтобы API компонента оставался простым?"
         }
       ]
     },
@@ -1358,7 +1067,7 @@
         "interview_type": "behavioural",
         "layer": "processed"
       },
-      "expected_backend": "chroma_openai",
+      "expected_backend": null,
       "expected_topics": [
         "ownership_answer_outlines",
         "ownership_questions"
@@ -1367,20 +1076,20 @@
         "answer_outline",
         "question_bank"
       ],
-      "observed_backend": "chroma_openai",
+      "observed_backend": "jsonl_lexical",
       "observed_topics": [
+        "ownership_questions",
         "ownership_answer_outlines",
-        "ownership_questions",
-        "ownership_questions",
-        "ownership_questions",
-        "ownership_followups"
+        "incident_debugging_questions",
+        "conflict_questions",
+        "ownership_questions"
       ],
       "observed_document_types": [
+        "question_bank",
         "answer_outline",
         "question_bank",
         "question_bank",
-        "question_bank",
-        "followup_bank"
+        "question_bank"
       ],
       "result_count": 5,
       "topic_hit": true,
@@ -1389,6 +1098,27 @@
       "filters_ok": true,
       "passed": true,
       "results": [
+        {
+          "chunk_id": "27cd4e237c3036ed:1",
+          "document_id": "27cd4e237c3036ed",
+          "path": "data/processed/behavioural/questions/ownership_questions.md",
+          "title": "Ownership questions",
+          "section": "Что искать в ответе",
+          "topic": "ownership_questions",
+          "document_type": "question_bank",
+          "role": "cross_role",
+          "seniority": [
+            "junior",
+            "middle"
+          ],
+          "interview_type": [
+            "behavioural",
+            "mixed"
+          ],
+          "score": 5.25,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Что искать в ответе\n\n- Видна личная инициатива.\n- Понятна конкретная зона ответственности кандидата.\n- Есть действие, а не только описание проблемы.\n- Есть итог и осмысленная рефлексия."
+        },
         {
           "chunk_id": "5341a25cf280b8ea:0",
           "document_id": "5341a25cf280b8ea",
@@ -1406,17 +1136,17 @@
             "behavioural",
             "mixed"
           ],
-          "score": 0.5512328743934631,
-          "retrieval_backend": "chroma_openai",
+          "score": 3.75,
+          "retrieval_backend": "jsonl_lexical",
           "text": "Сильные паттерны ответа\n\n1. Ситуация с риском\n2. Личная ответственность\n3. Конкретные действия\n4. Итог\n5. Рефлексия"
         },
         {
-          "chunk_id": "27cd4e237c3036ed:0",
-          "document_id": "27cd4e237c3036ed",
-          "path": "data/processed/behavioural/questions/ownership_questions.md",
-          "title": "Ownership questions",
-          "section": "Основные вопросы",
-          "topic": "ownership_questions",
+          "chunk_id": "032e9df4d68fef3a:1",
+          "document_id": "032e9df4d68fef3a",
+          "path": "data/processed/behavioural/questions/incident_debugging_questions.md",
+          "title": "Incident and debugging questions",
+          "section": "Что искать в ответе",
+          "topic": "incident_debugging_questions",
           "document_type": "question_bank",
           "role": "cross_role",
           "seniority": [
@@ -1427,9 +1157,30 @@
             "behavioural",
             "mixed"
           ],
-          "score": 0.5111647248268127,
-          "retrieval_backend": "chroma_openai",
-          "text": "Основные вопросы\n\n1. Расскажи о случае, когда ты взял на себя проблему, которая формально не была твоей зоной ответственности.\n2. Опиши ситуацию, когда задача была под риском, и ты помог довести её до результата.\n3. Расскажи, как ты заранее заметил риск или проблему с качеством и что сделал дальше.\n4. Опиши пример, где нужно было координировать других людей ради важного результата.\n5. Расскажи об ошибке в работе и о том, как ты разрулил последствия.\n6. Опиши решение, которое ты вёл end-to-end. Какие trade-offs ты принял?"
+          "score": 2.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Что искать в ответе\n\n- Понятен баланс между mitigation и root-cause work.\n- Видна дисциплина коммуникации.\n- Есть post-incident learning и изменение процесса."
+        },
+        {
+          "chunk_id": "1f29504a0ceaa64b:1",
+          "document_id": "1f29504a0ceaa64b",
+          "path": "data/processed/behavioural/questions/conflict_questions.md",
+          "title": "Conflict questions",
+          "section": "Что искать в ответе",
+          "topic": "conflict_questions",
+          "document_type": "question_bank",
+          "role": "cross_role",
+          "seniority": [
+            "junior",
+            "middle"
+          ],
+          "interview_type": [
+            "behavioural",
+            "mixed"
+          ],
+          "score": 2.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Что искать в ответе\n\n- Понимание причины конфликта, а не только его симптомов.\n- Сохранение рабочей коммуникации.\n- Конкретные действия вместо \"мы потом договорились\".\n- Рефлексия о своём стиле общения."
         },
         {
           "chunk_id": "27cd4e237c3036ed:3",
@@ -1448,51 +1199,9 @@
             "behavioural",
             "mixed"
           ],
-          "score": 0.49341511726379395,
-          "retrieval_backend": "chroma_openai",
-          "text": "Retrieval tags\n\n`ownership`, `initiative`, `accountability`, `behavioral questions`, `reflection`, `trade-offs`"
-        },
-        {
-          "chunk_id": "27cd4e237c3036ed:1",
-          "document_id": "27cd4e237c3036ed",
-          "path": "data/processed/behavioural/questions/ownership_questions.md",
-          "title": "Ownership questions",
-          "section": "Что искать в ответе",
-          "topic": "ownership_questions",
-          "document_type": "question_bank",
-          "role": "cross_role",
-          "seniority": [
-            "junior",
-            "middle"
-          ],
-          "interview_type": [
-            "behavioural",
-            "mixed"
-          ],
-          "score": 0.4765651226043701,
-          "retrieval_backend": "chroma_openai",
-          "text": "Что искать в ответе\n\n- Видна личная инициатива.\n- Понятна конкретная зона ответственности кандидата.\n- Есть действие, а не только описание проблемы.\n- Есть итог и осмысленная рефлексия."
-        },
-        {
-          "chunk_id": "1e689903585d6fad:0",
-          "document_id": "1e689903585d6fad",
-          "path": "data/processed/behavioural/followups/ownership_followups.md",
-          "title": "Ownership follow-ups",
-          "section": "Follow-up prompts",
-          "topic": "ownership_followups",
-          "document_type": "followup_bank",
-          "role": "cross_role",
-          "seniority": [
-            "junior",
-            "middle"
-          ],
-          "interview_type": [
-            "behavioural",
-            "mixed"
-          ],
-          "score": 0.44960880279541016,
-          "retrieval_backend": "chroma_openai",
-          "text": "Follow-up prompts\n\n1. Почему ты решил вмешаться?\n2. Что именно было твоей ответственностью?\n3. Какой trade-off ты принял?\n4. Как коммуницировал риск?\n5. Что было бы, если бы ты ничего не сделал?\n6. Чему эта ситуация тебя научила?\n7. Что бы ты изменил сейчас?"
+          "score": 2.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Retrieval tags\n\n`ownership`, `initiative`, `accountability`, `behavioral questions`, `reflection`, `компромиссы`"
         }
       ]
     },
@@ -1506,7 +1215,7 @@
         "interview_type": "behavioural",
         "layer": "processed"
       },
-      "expected_backend": "chroma_openai",
+      "expected_backend": null,
       "expected_topics": [
         "conflict_questions",
         "conflict_resolution_answer_outlines"
@@ -1515,17 +1224,17 @@
         "answer_outline",
         "question_bank"
       ],
-      "observed_backend": "chroma_openai",
+      "observed_backend": "jsonl_lexical",
       "observed_topics": [
-        "conflict_resolution_answer_outlines",
         "conflict_questions",
+        "conflict_resolution_answer_outlines",
         "conflict_questions",
         "conflict_questions",
         "conflict_followups"
       ],
       "observed_document_types": [
-        "answer_outline",
         "question_bank",
+        "answer_outline",
         "question_bank",
         "question_bank",
         "followup_bank"
@@ -1537,6 +1246,27 @@
       "filters_ok": true,
       "passed": true,
       "results": [
+        {
+          "chunk_id": "1f29504a0ceaa64b:2",
+          "document_id": "1f29504a0ceaa64b",
+          "path": "data/processed/behavioural/questions/conflict_questions.md",
+          "title": "Conflict questions",
+          "section": "Retrieval tags",
+          "topic": "conflict_questions",
+          "document_type": "question_bank",
+          "role": "cross_role",
+          "seniority": [
+            "junior",
+            "middle"
+          ],
+          "interview_type": [
+            "behavioural",
+            "mixed"
+          ],
+          "score": 3.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Retrieval tags\n\n`conflict`, `communication`, `feedback`, `stakeholders`, `resolution`, `behavioral`"
+        },
         {
           "chunk_id": "da1c880cea195db3:0",
           "document_id": "da1c880cea195db3",
@@ -1554,8 +1284,8 @@
             "behavioural",
             "mixed"
           ],
-          "score": 0.6434040069580078,
-          "retrieval_backend": "chroma_openai",
+          "score": 3.25,
+          "retrieval_backend": "jsonl_lexical",
           "text": "Сильные паттерны ответа\n\n1. Ставки и конфликт\n2. Понимание двух сторон\n3. Продуктивная коммуникация\n4. Разрешение или компромисс\n5. Урок"
         },
         {
@@ -1575,8 +1305,8 @@
             "behavioural",
             "mixed"
           ],
-          "score": 0.6083083152770996,
-          "retrieval_backend": "chroma_openai",
+          "score": 2.75,
+          "retrieval_backend": "jsonl_lexical",
           "text": "Основные вопросы\n\n1. Расскажи о конфликте с коллегой и о том, как ты его разрешил.\n2. Опиши случай, когда у вас были разные технические мнения.\n3. Расскажи о конфликте со стейкхолдером, менеджером или клиентом.\n4. Опиши ситуацию, где коммуникация в проекте сломалась и её пришлось восстанавливать.\n5. Расскажи, как ты давал сложную обратную связь."
         },
         {
@@ -1596,30 +1326,9 @@
             "behavioural",
             "mixed"
           ],
-          "score": 0.6035239100456238,
-          "retrieval_backend": "chroma_openai",
+          "score": 1.75,
+          "retrieval_backend": "jsonl_lexical",
           "text": "Что искать в ответе\n\n- Понимание причины конфликта, а не только его симптомов.\n- Сохранение рабочей коммуникации.\n- Конкретные действия вместо \"мы потом договорились\".\n- Рефлексия о своём стиле общения."
-        },
-        {
-          "chunk_id": "1f29504a0ceaa64b:2",
-          "document_id": "1f29504a0ceaa64b",
-          "path": "data/processed/behavioural/questions/conflict_questions.md",
-          "title": "Conflict questions",
-          "section": "Retrieval tags",
-          "topic": "conflict_questions",
-          "document_type": "question_bank",
-          "role": "cross_role",
-          "seniority": [
-            "junior",
-            "middle"
-          ],
-          "interview_type": [
-            "behavioural",
-            "mixed"
-          ],
-          "score": 0.596257746219635,
-          "retrieval_backend": "chroma_openai",
-          "text": "Retrieval tags\n\n`conflict`, `communication`, `feedback`, `stakeholders`, `resolution`, `behavioral`"
         },
         {
           "chunk_id": "5c3059c10ece8b03:0",
@@ -1638,15 +1347,15 @@
             "behavioural",
             "mixed"
           ],
-          "score": 0.5434665083885193,
-          "retrieval_backend": "chroma_openai",
+          "score": 1.75,
+          "retrieval_backend": "jsonl_lexical",
           "text": "Follow-up prompts\n\n1. В чём была корневая причина конфликта?\n2. Как ты удержал разговор продуктивным?\n3. Где ты пошёл на компромисс, а где нет?\n4. Как другая сторона видела эту ситуацию?\n5. Что для тебя было главным: скорость, качество, отношения или ясность?\n6. Что ты потом изменил в своём стиле коммуникации?\n7. Что бы точно ухудшило конфликт?"
         }
       ]
     },
     {
       "case_id": "behavioural_prioritization",
-      "query": "prioritization и trade-offs в ответе на интервью",
+      "query": "приоритизация и компромиссы в ответе на интервью",
       "notes": "Prioritization and trade-off behavioural retrieval.",
       "filters": {
         "role": "cross_role",
@@ -1654,7 +1363,7 @@
         "interview_type": "behavioural",
         "layer": "processed"
       },
-      "expected_backend": "chroma_openai",
+      "expected_backend": null,
       "expected_topics": [
         "prioritization_answer_outlines",
         "prioritization_questions",
@@ -1664,20 +1373,20 @@
         "answer_outline",
         "question_bank"
       ],
-      "observed_backend": "chroma_openai",
+      "observed_backend": "jsonl_lexical",
       "observed_topics": [
-        "prioritization_answer_outlines",
         "prioritization_questions",
-        "prioritization_questions",
-        "prioritization_questions",
-        "tradeoff_communication_answer_outlines"
+        "incident_debugging_questions",
+        "conflict_questions",
+        "ownership_questions",
+        "behavioral_interview_basics"
       ],
       "observed_document_types": [
-        "answer_outline",
         "question_bank",
         "question_bank",
         "question_bank",
-        "answer_outline"
+        "question_bank",
+        "theory_note"
       ],
       "result_count": 5,
       "topic_hit": true,
@@ -1686,27 +1395,6 @@
       "filters_ok": true,
       "passed": true,
       "results": [
-        {
-          "chunk_id": "6428249416c456ef:0",
-          "document_id": "6428249416c456ef",
-          "path": "data/processed/behavioural/answer_outlines/prioritization_answer_outlines.md",
-          "title": "Prioritization answer outlines",
-          "section": "Сильные паттерны ответа",
-          "topic": "prioritization_answer_outlines",
-          "document_type": "answer_outline",
-          "role": "cross_role",
-          "seniority": [
-            "junior",
-            "middle"
-          ],
-          "interview_type": [
-            "behavioural",
-            "mixed"
-          ],
-          "score": 0.7260642647743225,
-          "retrieval_backend": "chroma_openai",
-          "text": "Сильные паттерны ответа\n\n1. Конкурирующие задачи\n2. Критерии выбора\n3. Коммуникация и alignment\n4. Принятый trade-off\n5. Ретроспектива"
-        },
         {
           "chunk_id": "eb8d01debe8404c6:1",
           "document_id": "eb8d01debe8404c6",
@@ -1724,17 +1412,17 @@
             "behavioural",
             "mixed"
           ],
-          "score": 0.7055802345275879,
-          "retrieval_backend": "chroma_openai",
-          "text": "Что искать в ответе\n\n- Есть явные критерии приоритизации.\n- Кандидат умеет проговаривать trade-offs.\n- Видно, как он коммуницирует ограничения.\n- Есть вывод о качестве решения."
+          "score": 3.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Что искать в ответе\n\n- Есть явные критерии приоритизации.\n- Кандидат умеет проговаривать компромиссы.\n- Видно, как он коммуницирует ограничения.\n- Есть вывод о качестве решения."
         },
         {
-          "chunk_id": "eb8d01debe8404c6:0",
-          "document_id": "eb8d01debe8404c6",
-          "path": "data/processed/behavioural/questions/prioritization_questions.md",
-          "title": "Prioritization questions",
-          "section": "Основные вопросы",
-          "topic": "prioritization_questions",
+          "chunk_id": "032e9df4d68fef3a:1",
+          "document_id": "032e9df4d68fef3a",
+          "path": "data/processed/behavioural/questions/incident_debugging_questions.md",
+          "title": "Incident and debugging questions",
+          "section": "Что искать в ответе",
+          "topic": "incident_debugging_questions",
           "document_type": "question_bank",
           "role": "cross_role",
           "seniority": [
@@ -1745,17 +1433,17 @@
             "behavioural",
             "mixed"
           ],
-          "score": 0.6658075451850891,
-          "retrieval_backend": "chroma_openai",
-          "text": "Основные вопросы\n\n1. Расскажи о времени, когда у тебя было слишком много срочных задач одновременно.\n2. Опиши ситуацию, где нужно было выбирать между скоростью и качеством.\n3. Расскажи, как ты реагировал на резкую смену приоритетов.\n4. Опиши случай, когда пришлось спорить со scope или сроками.\n5. Расскажи о решении по приоритизации, с которым другие не были согласны."
+          "score": 2.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Что искать в ответе\n\n- Понятен баланс между mitigation и root-cause work.\n- Видна дисциплина коммуникации.\n- Есть post-incident learning и изменение процесса."
         },
         {
-          "chunk_id": "eb8d01debe8404c6:2",
-          "document_id": "eb8d01debe8404c6",
-          "path": "data/processed/behavioural/questions/prioritization_questions.md",
-          "title": "Prioritization questions",
-          "section": "Retrieval tags",
-          "topic": "prioritization_questions",
+          "chunk_id": "1f29504a0ceaa64b:1",
+          "document_id": "1f29504a0ceaa64b",
+          "path": "data/processed/behavioural/questions/conflict_questions.md",
+          "title": "Conflict questions",
+          "section": "Что искать в ответе",
+          "topic": "conflict_questions",
           "document_type": "question_bank",
           "role": "cross_role",
           "seniority": [
@@ -1766,18 +1454,18 @@
             "behavioural",
             "mixed"
           ],
-          "score": 0.6585106253623962,
-          "retrieval_backend": "chroma_openai",
-          "text": "Retrieval tags\n\n`prioritization`, `trade-offs`, `scope`, `timeline`, `urgency`, `decision making`"
+          "score": 2.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Что искать в ответе\n\n- Понимание причины конфликта, а не только его симптомов.\n- Сохранение рабочей коммуникации.\n- Конкретные действия вместо \"мы потом договорились\".\n- Рефлексия о своём стиле общения."
         },
         {
-          "chunk_id": "e90ae16169d84e0e:0",
-          "document_id": "e90ae16169d84e0e",
-          "path": "data/processed/behavioural/answer_outlines/tradeoff_communication_answer_outlines.md",
-          "title": "Trade-off communication answer outlines",
-          "section": "Сильные паттерны ответа",
-          "topic": "tradeoff_communication_answer_outlines",
-          "document_type": "answer_outline",
+          "chunk_id": "27cd4e237c3036ed:1",
+          "document_id": "27cd4e237c3036ed",
+          "path": "data/processed/behavioural/questions/ownership_questions.md",
+          "title": "Ownership questions",
+          "section": "Что искать в ответе",
+          "topic": "ownership_questions",
+          "document_type": "question_bank",
           "role": "cross_role",
           "seniority": [
             "junior",
@@ -1787,9 +1475,30 @@
             "behavioural",
             "mixed"
           ],
-          "score": 0.638185977935791,
-          "retrieval_backend": "chroma_openai",
-          "text": "Сильные паттерны ответа\n\n1. Решение и варианты\n2. Ограничения и риски\n3. Как кандидат объяснил trade-offs\n4. Как получил alignment\n5. Чем всё закончилось"
+          "score": 2.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Что искать в ответе\n\n- Видна личная инициатива.\n- Понятна конкретная зона ответственности кандидата.\n- Есть действие, а не только описание проблемы.\n- Есть итог и осмысленная рефлексия."
+        },
+        {
+          "chunk_id": "46902a35ce6a378c:2",
+          "document_id": "46902a35ce6a378c",
+          "path": "data/processed/behavioural/theory_notes/behavioral_interview_basics.md",
+          "title": "Behavioral interview basics",
+          "section": "Что важно для интервью",
+          "topic": "behavioral_interview_basics",
+          "document_type": "theory_note",
+          "role": "cross_role",
+          "seniority": [
+            "junior",
+            "middle"
+          ],
+          "interview_type": [
+            "behavioural",
+            "mixed"
+          ],
+          "score": 2.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Что важно для интервью\n\n- Один сильный пример лучше трёх расплывчатых.\n- История должна быть правдоподобной и достаточно детальной для follow-up вопросов.\n- Ответ должен показывать не только \"что произошло\", но и \"почему я выбрал такой путь\"."
         }
       ]
     },
@@ -1803,7 +1512,7 @@
         "interview_type": "behavioural",
         "layer": "processed"
       },
-      "expected_backend": "chroma_openai",
+      "expected_backend": null,
       "expected_topics": [
         "incident_debugging_answer_outlines",
         "incident_debugging_questions"
@@ -1812,7 +1521,7 @@
         "answer_outline",
         "question_bank"
       ],
-      "observed_backend": "chroma_openai",
+      "observed_backend": "jsonl_lexical",
       "observed_topics": [
         "incident_debugging_questions",
         "incident_debugging_questions",
@@ -1851,30 +1560,9 @@
             "behavioural",
             "mixed"
           ],
-          "score": 0.5991248488426208,
-          "retrieval_backend": "chroma_openai",
+          "score": 6.25,
+          "retrieval_backend": "jsonl_lexical",
           "text": "Retrieval tags\n\n`incident`, `debugging`, `root cause`, `mitigation`, `postmortem`, `production issue`"
-        },
-        {
-          "chunk_id": "032e9df4d68fef3a:0",
-          "document_id": "032e9df4d68fef3a",
-          "path": "data/processed/behavioural/questions/incident_debugging_questions.md",
-          "title": "Incident and debugging questions",
-          "section": "Основные вопросы",
-          "topic": "incident_debugging_questions",
-          "document_type": "question_bank",
-          "role": "cross_role",
-          "seniority": [
-            "junior",
-            "middle"
-          ],
-          "interview_type": [
-            "behavioural",
-            "mixed"
-          ],
-          "score": 0.5955739617347717,
-          "retrieval_backend": "chroma_openai",
-          "text": "Основные вопросы\n\n1. Расскажи о production-инциденте или критическом баге, который тебе пришлось разруливать.\n2. Опиши случай, когда дебаг занял больше времени, чем ожидалось. Как ты сохранил эффективность?\n3. Расскажи, как ты коммуницировал во время инцидента.\n4. Опиши ситуацию, где ты нашёл root cause сложной проблемы.\n5. Расскажи, как ты улучшил процесс после инцидента или серьёзного бага."
         },
         {
           "chunk_id": "032e9df4d68fef3a:1",
@@ -1893,9 +1581,30 @@
             "behavioural",
             "mixed"
           ],
-          "score": 0.5879536867141724,
-          "retrieval_backend": "chroma_openai",
+          "score": 4.25,
+          "retrieval_backend": "jsonl_lexical",
           "text": "Что искать в ответе\n\n- Понятен баланс между mitigation и root-cause work.\n- Видна дисциплина коммуникации.\n- Есть post-incident learning и изменение процесса."
+        },
+        {
+          "chunk_id": "032e9df4d68fef3a:0",
+          "document_id": "032e9df4d68fef3a",
+          "path": "data/processed/behavioural/questions/incident_debugging_questions.md",
+          "title": "Incident and debugging questions",
+          "section": "Основные вопросы",
+          "topic": "incident_debugging_questions",
+          "document_type": "question_bank",
+          "role": "cross_role",
+          "seniority": [
+            "junior",
+            "middle"
+          ],
+          "interview_type": [
+            "behavioural",
+            "mixed"
+          ],
+          "score": 3.25,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Основные вопросы\n\n1. Расскажи о production-инциденте или критическом баге, который тебе пришлось разруливать.\n2. Опиши случай, когда дебаг занял больше времени, чем ожидалось. Как ты сохранил эффективность?\n3. Расскажи, как ты коммуницировал во время инцидента.\n4. Опиши ситуацию, где ты нашёл root cause сложной проблемы.\n5. Расскажи, как ты улучшил процесс после инцидента или серьёзного бага."
         },
         {
           "chunk_id": "cf81a31ee68d6eb8:0",
@@ -1914,8 +1623,8 @@
             "behavioural",
             "mixed"
           ],
-          "score": 0.5835464000701904,
-          "retrieval_backend": "chroma_openai",
+          "score": 3.25,
+          "retrieval_backend": "jsonl_lexical",
           "text": "Сильные паттерны ответа\n\n1. Инцидент и impact\n2. Mitigation vs root-cause analysis\n3. Коммуникация и решения\n4. Resolution and follow-up\n5. Улучшение процесса"
         },
         {
@@ -1935,8 +1644,8 @@
             "behavioural",
             "mixed"
           ],
-          "score": 0.5113311409950256,
-          "retrieval_backend": "chroma_openai",
+          "score": 1.75,
+          "retrieval_backend": "jsonl_lexical",
           "text": "Сильные паттерны ответа\n\n1. Честно назвать ошибку\n2. Показать impact и ответственность\n3. Описать corrective action\n4. Поменять процесс или поведение\n5. Дать зрелую рефлексию"
         }
       ]
@@ -1954,14 +1663,14 @@
         ],
         "layer": "processed"
       },
-      "expected_backend": "chroma_openai",
+      "expected_backend": null,
       "expected_topics": [
         "behavioural_middle_rubric"
       ],
       "expected_document_types": [
         "rubric"
       ],
-      "observed_backend": "chroma_openai",
+      "observed_backend": "jsonl_lexical",
       "observed_topics": [
         "behavioural_middle_rubric",
         "behavioural_middle_rubric"
@@ -1992,9 +1701,9 @@
           "interview_type": [
             "behavioural"
           ],
-          "score": 0.636966347694397,
-          "retrieval_backend": "chroma_openai",
-          "text": "Критерии оценки\n\n1. Specificity:\n   есть ли реальная история.\n2. Ownership:\n   понятен ли личный вклад.\n3. Decision quality:\n   видны ли reasoning и trade-offs.\n4. Result and reflection:\n   есть ли outcome и выводы.\n5. Communication:\n   структурирован ли ответ."
+          "score": 4.75,
+          "retrieval_backend": "jsonl_lexical",
+          "text": "Критерии оценки\n\n1. Specificity:\n   есть ли реальная история.\n2. Ownership:\n   понятен ли личный вклад.\n3. Decision quality:\n   видны ли reasoning и компромиссы.\n4. Result and reflection:\n   есть ли outcome и выводы.\n5. Communication:\n   структурирован ли ответ."
         },
         {
           "chunk_id": "4c754ea126b1de6b:1",
@@ -2011,8 +1720,8 @@
           "interview_type": [
             "behavioural"
           ],
-          "score": 0.5777094960212708,
-          "retrieval_backend": "chroma_openai",
+          "score": 4.75,
+          "retrieval_backend": "jsonl_lexical",
           "text": "Быстрые сигналы\n\n- Сильный ответ:\n  конкретный, зрелый, с явным действием и выводами.\n- Средний ответ:\n  история есть, но не хватает глубины.\n- Слабый ответ:\n  абстрактно, без ответственности и рефлексии."
         }
       ]

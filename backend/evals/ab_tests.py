@@ -39,7 +39,7 @@ def evaluate_variant(dataset: List[Dict[str, Any]], follow_up_threshold: int) ->
             case["candidate_answer"],
             current_question=case["question"],
             current_topic=case["topic"],
-            follow_up_suggestion=f'Можешь раскрыть тему "{case["topic"]}" глубже и добавить пример, trade-offs, риски и итог?',
+            follow_up_suggestion=f'Можешь раскрыть тему "{case["topic"]}" глубже и добавить пример, компромиссы, риски и итог?',
             follow_up_threshold=follow_up_threshold,
         )
         predicted_score = int(evaluation["score_0_10"])

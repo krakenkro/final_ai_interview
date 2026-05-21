@@ -12,7 +12,7 @@
 
 ## Основные вопросы
 
-1. Расскажи о случае, когда пришлось объяснять сложный trade-off стейкхолдеру.
+1. Расскажи о случае, когда пришлось объяснять сложный компромисс стейкхолдеру.
 2. Опиши ситуацию, где лучший технический вариант не был самым быстрым.
 3. Расскажи, как ты пушбэчил рискованный запрос.
 4. Опиши решение, где пришлось балансировать качество, скорость и scope.
@@ -26,4 +26,4 @@
 
 ## Retrieval tags
 
-`trade-offs`, `stakeholders`, `push back`, `alignment`, `decision communication`, `quality speed scope`
+`компромиссы`, `stakeholders`, `push back`, `alignment`, `decision communication`, `quality speed scope`

@@ -8,7 +8,7 @@
 - source_url: internal curated rubric
 - source_language: ru
 - normalized_language: ru
-- normalized_on: 2026-05-10
+- normalized_on: 2026-05-21
 
 ## Критерии оценки
 
@@ -19,7 +19,7 @@
 3. Communication:
    насколько ответ собран и понятен.
 4. Growth signal:
-   есть ли рефлексия и готовность учиться.
+   есть ли рефлексия, обучаемость и здравое направление рассуждений.
 
 ## Быстрые сигналы
 

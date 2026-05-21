@@ -17,24 +17,24 @@ WEAKNESS_LABELS = {
     "missing_example": "Не хватило конкретного примера из проекта или реального кейса.",
     "missing_tradeoff": "Не были явно названы компромиссы, риски или причины выбора решения.",
     "missing_result": "Не прозвучал итог: что получилось, как это повлияло на продукт или команду.",
-    "weak_structure": "Ответу не хватило структуры: контекст, решение, trade-off, результат.",
+    "weak_structure": "Ответу не хватило структуры: контекст, решение, компромисс, результат.",
 }
 
 TOPIC_LABELS = {
     "API integration and async flows": "интеграция с API и асинхронные сценарии",
     "Browser rendering and event loop": "рендеринг браузера и event loop",
-    "JavaScript fundamentals": "JavaScript fundamentals",
-    "TypeScript typing and narrowing": "TypeScript, типизация и narrowing",
-    "React component model": "модель React-компонентов",
-    "State management and data flow": "state management и data flow",
+    "Vue 3 component model": "компонентная модель Vue 3",
+    "Vue reactivity and refs": "реактивность Vue: ref, reactive, computed и watch",
+    "Nuxt 3 fundamentals": "основы Nuxt 3",
+    "Nuxt routing and data fetching": "маршрутизация и загрузка данных в Nuxt",
+    "TypeScript in frontend apps": "TypeScript во фронтенд-приложениях",
     "Performance and optimization basics": "performance и оптимизация",
-    "Testing fundamentals": "тестирование frontend-приложений",
     "Resume-based project deep dive": "разбор проекта из резюме",
     "ownership": "ownership и личная ответственность",
     "conflict resolution": "разрешение конфликтов",
-    "prioritization": "приоритизация и trade-offs",
+    "prioritization": "приоритизация и компромиссы",
     "failure / lessons learned": "ошибки и извлечённые уроки",
-    "communication of trade-offs": "объяснение trade-offs",
+    "communication of trade-offs": "объяснение компромиссов",
     "incident handling / debugging stories": "разбор инцидентов и debugging stories",
 }
 
@@ -59,11 +59,7 @@ def _normalize_drill(value: str) -> str:
         prompt, question = drill.split("Свяжи это с вопросом:", 1)
         prompt = prompt.strip()
         question = question.strip().rstrip("?")
-        if prompt.lower() == "request-response flow":
-            if question.lower().startswith("как "):
-                question = question[4:].strip()
-            return f"Как request-response flow связан с тем, как {question} под капотом?"
-        return f'Раскрой аспект "{prompt}" и свяжи его с вопросом: "{question}?"'
+        return f'Раскрой аспект "{prompt}" на примере вопроса: "{question}?"'
     return drill
 
 
@@ -78,7 +74,7 @@ def _build_improvements(weaknesses: List[str], improvements: List[str]) -> List[
     if "missing_result" in weakness_set:
         actions.append("Заканчивай ответ итогом: что получилось, какой был эффект и как это измерялось.")
     if "weak_structure" in weakness_set or "answer_too_short" in weakness_set:
-        actions.append("Строй ответ по схеме: контекст, решение, trade-off, результат.")
+        actions.append("Строй ответ по схеме: контекст, решение, компромисс, результат.")
 
     for topic in improvements:
         label = _humanize_topic(topic)
@@ -93,7 +89,7 @@ def _build_drills(drills: List[str]) -> List[str]:
     normalized = [_normalize_drill(item) for item in drills]
     normalized = [item for item in normalized if item]
     if not normalized:
-        return ["Прогони вслух 2-3 ответа по схеме: контекст, решение, trade-off, результат."]
+        return ["Прогони вслух 2-3 ответа по схеме: контекст, решение, компромисс, результат."]
 
     payload: List[str] = []
     for item in normalized[:4]:

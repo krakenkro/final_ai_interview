@@ -13,7 +13,7 @@
 
 ### 1. Technical depth
 
-- `strong`: technically correct and explains trade-offs in frontend decisions.
+- `strong`: technically correct and explains compromises in frontend decisions.
 - `medium`: mostly correct but surface-level.
 - `weak`: shallow or partially incorrect.
 

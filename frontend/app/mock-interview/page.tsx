@@ -1,23 +1,23 @@
 import { Suspense } from "react";
 
-import { InterviewSessionView } from "@/components/interview-session-view";
+import { InterviewWorkspace } from "@/components/interview-workspace";
 import { EmptyState } from "@/components/ui/primitives";
 
 export default function MockInterviewPage() {
   return (
-    <main className="shell shellNarrow">
-      <Suspense
-        fallback={
-          <section className="surfacePanel fadeUp">
+    <Suspense
+      fallback={
+        <main className="workspaceShell">
+          <section className="workspaceCard workspaceCardLarge fadeUp">
             <EmptyState
-              title="Загружаю workspace интервью"
-              description="Подтягиваю состояние сессии, историю ответов, voice mode и workflow trace."
+              title="Открываю interview workspace"
+              description="Compatibility route использует тот же shell, что и главная страница."
             />
           </section>
-        }
-      >
-        <InterviewSessionView />
-      </Suspense>
-    </main>
+        </main>
+      }
+    >
+      <InterviewWorkspace />
+    </Suspense>
   );
 }

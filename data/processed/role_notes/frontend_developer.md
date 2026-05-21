@@ -16,4 +16,4 @@
 - browser/runtime thinking
 - API integration
 - performance and testing awareness
-- product-facing trade-offs
+- продуктовые компромиссы

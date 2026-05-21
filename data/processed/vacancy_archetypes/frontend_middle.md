@@ -8,11 +8,11 @@
 - source_url: internal curated archetype
 - source_language: ru
 - normalized_language: ru
-- normalized_on: 2026-05-10
+- normalized_on: 2026-05-21
 
 ## Типовые требования
 
-- React + TypeScript
-- shared state and API integration
-- performance and testing awareness
-- product collaboration
+- Vue 3 и TypeScript в продакшене
+- Nuxt 3 или понимание SSR-сценариев
+- API integration, routing и загрузка данных
+- performance awareness и продуктовая коммуникация

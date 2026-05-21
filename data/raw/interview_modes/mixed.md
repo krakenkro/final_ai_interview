@@ -19,4 +19,4 @@
 
 - solid technical base
 - real project stories
-- clear trade-offs and reflection
+- ясные компромиссы и рефлексия

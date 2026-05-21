@@ -16,7 +16,7 @@
 3. Tell me about a time you noticed a quality issue or hidden risk before others did. What did you do?
 4. Describe a case where you had to coordinate with other people to finish something important.
 5. Tell me about a time you made a mistake in your work. How did you handle the consequences?
-6. Describe a decision you owned end-to-end. What trade-offs did you make?
+6. Опиши решение, которое ты вел end-to-end. Какие компромиссы тебе пришлось принять?
 
 ## Follow-up Prompts
 
@@ -33,4 +33,4 @@
 
 ## Retrieval Keywords
 
-`ownership questions`, `initiative`, `accountability`, `delivery risk`, `mistake handling`, `trade-offs`
+`ownership questions`, `initiative`, `accountability`, `delivery risk`, `mistake handling`, `компромиссы`

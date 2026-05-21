@@ -8,14 +8,14 @@
 - source_url: https://www.typescriptlang.org/docs/
 - source_language: en
 - normalized_language: ru
-- normalized_on: 2026-05-10
+- normalized_on: 2026-05-21
 
 ## Follow-up prompts
 
 1. Почему это безопаснее, чем `any`?
 2. Какой баг поймала бы типизация?
-3. Почему union лучше набора loose optional fields?
+3. Почему union здесь лучше, чем набор разрозненных optional-полей?
 4. Что сломается без generic constraint?
 5. Где inference достаточно, а где нужна явная аннотация?
-6. Как этот тип переживёт рост API?
+6. Как этот тип переживёт рост API или компонента?
 7. Где здесь работает narrowing?

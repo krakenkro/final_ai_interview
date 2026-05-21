@@ -5,30 +5,22 @@
 - seniority: middle
 - interview_type: technical_core, mixed
 - document_type: question_bank
-- source_url: https://react.dev/learn/render-and-commit
+- source_url: https://vuejs.org/guide/best-practices/performance.html
 - source_language: en
 - normalized_language: ru
-- normalized_on: 2026-05-10
+- normalized_on: 2026-05-21
 
 ## Основные вопросы
 
-1. Что происходит между React state update и появлением нового UI на экране?
-2. Чем React render отличается от DOM commit?
-3. Почему re-render не всегда означает реальное обновление DOM?
-4. Как бы ты диагностировал страницу, которая лагает при взаимодействиях?
-5. Почему блокировка main thread ломает UX даже при "правильной" логике?
-6. Что такое critical rendering path и почему он важен?
-7. Почему одни CSS-свойства анимировать дороже, чем другие?
-8. Почему `transform` и `opacity` обычно предпочтительнее layout-affecting свойств?
-9. Когда `requestAnimationFrame()` лучше, чем `setInterval()`?
-10. Как связаны responsiveness, frame rate и perceived performance?
-
-## Follow-up идеи
-
-- На какой слой ты бы смотрел первым: JavaScript, layout, paint или network?
-- Что бы ты изменил первым без premature optimization?
-- Как отличить React bottleneck от browser rendering bottleneck?
+1. Что вы проверяете в первую очередь, если после релиза страница стала заметно медленнее?
+2. Почему блокировка main thread сразу бьёт по perceived performance?
+3. Почему `transform` и `opacity` обычно дешевле для анимаций, чем свойства, влияющие на layout?
+4. Когда `requestAnimationFrame()` уместнее, чем `setInterval()`?
+5. Как вы определяете, где узкое место: JavaScript, layout, paint или сеть?
+6. Какое улучшение вы бы попробовали первым, не уходя в premature optimization?
+7. Как SSR, hydration или тяжёлая клиентская логика могут ухудшить производительность Nuxt-страницы?
+8. Чем вы подтверждаете, что оптимизация реально помогла пользователям?
 
 ## Retrieval tags
 
-`frontend performance`, `render commit`, `critical rendering path`, `layout`, `paint`, `jank`, `requestAnimationFrame`, `main thread`
+`frontend performance`, `layout`, `paint`, `jank`, `requestAnimationFrame`, `main thread`, `hydration`, `nuxt performance`

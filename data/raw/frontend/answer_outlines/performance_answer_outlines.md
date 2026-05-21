@@ -7,19 +7,19 @@
 - Document Type: answer_outline
 - Source URL: internal curated outline
 - Language: Russian
-- Collected On: 2026-05-10
+- Collected On: 2026-05-21
 
 ## Strong Answer Patterns
 
-1. Name the performance symptom.
-2. Separate measurement from assumptions.
-3. Identify likely bottleneck class.
-4. Suggest the cheapest meaningful improvement.
-5. Explain how to verify the result.
+1. What symptom does the user see first?
+2. What would you measure before making assumptions?
+3. Which bottleneck class seems most likely?
+4. What is the cheapest meaningful improvement?
+5. How would you verify the result?
 
 ## Good Topics For This Outline
 
-- rerenders
 - layout thrashing
 - expensive animation properties
 - main-thread blocking
+- hydration cost

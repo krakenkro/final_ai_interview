@@ -1,0 +1,65 @@
+{
+  "generated_at": "2026-05-21T14:26:56.843696+00:00",
+  "dataset_path": "backend/evals/question_quality_golden_dataset.jsonl",
+  "summary": {
+    "total_cases": 26,
+    "schema_valid_rate": 100.0,
+    "within_target_size": true,
+    "topic_coverage_complete": true,
+    "negative_pattern_coverage_complete": true,
+    "main_question_cases": 13,
+    "follow_up_cases": 13
+  },
+  "counts": {
+    "by_case_type": {
+      "main_question": 13,
+      "follow_up": 13
+    },
+    "by_expected_action": {
+      "accept": 19,
+      "rewrite": 5,
+      "reject": 2
+    },
+    "by_interview_type": {
+      "Technical Core": 20,
+      "Mixed": 2,
+      "Behavioural": 4
+    },
+    "by_topic": {
+      "API integration and async flows": 4,
+      "Nuxt 3 fundamentals": 2,
+      "Nuxt routing and data fetching": 2,
+      "TypeScript in frontend apps": 4,
+      "Vue 3 component model": 2,
+      "Vue reactivity and refs": 2,
+      "browser rendering and event loop": 2,
+      "conflict resolution": 1,
+      "failure / lessons learned": 1,
+      "ownership": 1,
+      "performance and optimization basics": 2,
+      "prioritization": 1,
+      "resume-based project deep dive": 2
+    },
+    "by_negative_pattern_tag": {
+      "abstract_label": 3,
+      "mixed_ru_en": 3,
+      "no_new_axis": 2,
+      "phrase_loop": 1,
+      "string_mashup": 2,
+      "too_long": 1
+    },
+    "by_followup_intent": {
+      "ask_debugging": 2,
+      "ask_edge_case": 1,
+      "ask_example": 3,
+      "ask_tradeoff": 2,
+      "deepen_mechanism": 3,
+      "probe_reflection": 1,
+      "probe_specificity": 1
+    }
+  },
+  "missing_topics": [],
+  "missing_negative_pattern_tags": [],
+  "schema_failures": [],
+  "ready_for_data_rewrite": true
+}

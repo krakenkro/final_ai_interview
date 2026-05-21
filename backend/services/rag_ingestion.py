@@ -2,6 +2,7 @@ import hashlib
 import json
 import os
 import re
+import shutil
 from collections import Counter, defaultdict
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
@@ -116,6 +117,13 @@ STOPWORDS = {
     "за",
 }
 
+ACTIVE_KB_ROOTS = {
+    "frontend",
+    "behavioural",
+    "interview_modes",
+    "level_notes",
+}
+
 
 @dataclass
 class KnowledgeDocument:
@@ -179,7 +187,27 @@ def iter_markdown_files(root: Path) -> Iterable[Path]:
             continue
         if path.name == "METADATA_SCHEMA.md":
             continue
+        if not is_active_ingestion_path(root, path):
+            continue
         yield path
+
+
+def is_active_ingestion_path(root: Path, path: Path) -> bool:
+    relative = path.relative_to(root)
+    if not relative.parts:
+        return False
+
+    top_level = relative.parts[0]
+    if top_level in ACTIVE_KB_ROOTS:
+        return True
+
+    if top_level == "role_notes":
+        return path.stem == "frontend_developer"
+
+    if top_level == "vacancy_archetypes":
+        return path.stem.startswith("frontend_")
+
+    return False
 
 
 def canonicalize_list(value: str) -> List[str]:
@@ -498,6 +526,11 @@ def get_chroma_collection():
     return client, collection
 
 
+def clear_chroma_store() -> None:
+    if CHROMA_DIR.exists():
+        shutil.rmtree(CHROMA_DIR, ignore_errors=True)
+
+
 def build_vector_store(chunks: Sequence[KnowledgeChunk]) -> EmbeddingBuildResult:
     client = get_openai_client()
     chroma_client, _ = get_chroma_collection()
@@ -546,6 +579,7 @@ def build_vector_store(chunks: Sequence[KnowledgeChunk]) -> EmbeddingBuildResult
 
 def resolve_embedding_status(chunks: Sequence[KnowledgeChunk], *, build_embeddings: bool) -> EmbeddingBuildResult:
     if not build_embeddings:
+        clear_chroma_store()
         return EmbeddingBuildResult(
             enabled=False,
             backend="jsonl_artifacts",
@@ -558,6 +592,7 @@ def resolve_embedding_status(chunks: Sequence[KnowledgeChunk], *, build_embeddin
     try:
         return build_vector_store(chunks)
     except Exception as exc:
+        clear_chroma_store()
         result = EmbeddingBuildResult(
             enabled=False,
             backend="jsonl_artifacts",
@@ -603,6 +638,12 @@ def build_knowledge_base(*, build_embeddings: bool = True) -> Dict[str, object]:
         "chroma_path": str(CHROMA_DIR.relative_to(BASE_DIR)),
         "notes": embedding_status.notes,
         "error": embedding_status.error,
+    }
+    manifest["active_scope"] = {
+        "roles": ["frontend_developer", "cross_role"],
+        "roots": sorted(ACTIVE_KB_ROOTS),
+        "role_notes": ["frontend_developer"],
+        "vacancy_archetypes": ["frontend_*"],
     }
     write_json(MANIFEST_PATH, manifest)
     return manifest

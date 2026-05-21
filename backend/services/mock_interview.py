@@ -1,49 +1,49 @@
+import json
+import os
 import re
-from typing import Dict, List, Optional, Sequence
+from difflib import SequenceMatcher
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Sequence
 
+from dotenv import load_dotenv
+
+try:
+    from openai import OpenAI
+except Exception:  # pragma: no cover - optional dependency
+    OpenAI = None  # type: ignore[assignment]
+
+from backend.observability.langsmith import traceable, wrap_openai_client
 from backend.services.rag import retrieve_context
+
+
+BASE_DIR = Path(__file__).resolve().parents[2]
+QUESTION_PHRASING_PROMPT_PATH = BASE_DIR / "backend" / "prompts" / "question_final_phrasing.md"
+
+load_dotenv(BASE_DIR / ".env")
 
 
 FALLBACK_QUESTION_BANK: Dict[str, Dict[str, List[str]]] = {
     "Frontend Developer": {
         "Technical Core": [
-            "Explain the difference between state and props in React and give an example from a recent project.",
-            "How would you diagnose a slow React page with too many rerenders?",
-            "What trade-offs do you consider when choosing between client-side and server-side rendering?",
+            "Как вы обычно решаете, что во Vue-приложении должно стать отдельным компонентом?",
+            "В каком случае вы бы выбрали Nuxt 3, а в каком хватило бы обычного SPA на Vue?",
+            "Как вы обычно разделяете ошибки сети, ошибки доступа и ошибки бизнес-логики в интерфейсе?",
         ],
         "Behavioural": [
-            "Tell me about a time you had to debug a production issue under pressure.",
-            "Describe a disagreement with a designer or backend engineer and how you resolved it.",
-            "What is one frontend decision you owned end-to-end and what did you learn from it?",
+            "Расскажи про ситуацию, когда тебе пришлось разбирать продовый баг под давлением времени.",
+            "Опиши разногласие с дизайнером или backend-разработчиком и как ты его разрешила.",
+            "Какое фронтенд-решение ты довела до конца сама и чему тебя это научило?",
         ],
         "Mixed": [
-            "Walk me through a frontend project from your resume and the hardest technical decision in it.",
-            "How do JavaScript event loop knowledge and React rendering behavior affect UI performance?",
-            "Tell me about a bug you shipped and how you handled the recovery.",
-        ],
-    },
-    "Java Backend Developer": {
-        "Technical Core": [
-            "How do you explain transactions and isolation levels to a teammate using a real API example?",
-            "What are the differences between HashMap and ConcurrentHashMap, and when would you choose each?",
-            "How would you design a resilient REST endpoint that depends on a slow downstream service?",
-        ],
-        "Behavioural": [
-            "Tell me about a backend incident you handled or a situation where you prevented one.",
-            "Describe a case where you had to push back on a risky implementation decision.",
-            "What is one delivery you are proud of and how did you communicate trade-offs?",
-        ],
-        "Mixed": [
-            "Walk me through a backend project from your resume and the most important technical trade-off you made.",
-            "How do Spring Boot, SQL design, and caching decisions work together in a typical service?",
-            "Tell me about a time you improved reliability or performance in a backend system.",
+            "Расскажи про фронтенд-проект из резюме и самое сложное техническое решение в нём.",
+            "Как обновление состояния во Vue или Nuxt в итоге превращается в работу браузера?",
+            "Расскажи про баг, который ты довела до продакшена, и как ты потом восстанавливала ситуацию.",
         ],
     },
 }
 
 ROLE_TO_SLUG = {
     "Frontend Developer": "frontend_developer",
-    "Java Backend Developer": "java_backend_developer",
 }
 
 INTERVIEW_TYPE_TO_SLUG = {
@@ -53,24 +53,15 @@ INTERVIEW_TYPE_TO_SLUG = {
 }
 
 TOPIC_QUERY_HINTS = {
-    "JavaScript fundamentals": "javascript fundamentals",
-    "TypeScript typing and narrowing": "typescript narrowing и typing",
+    "Vue 3 component model": "vue props emits slots components",
+    "Vue reactivity and refs": "vue computed watch ref reactive",
+    "Nuxt 3 fundamentals": "nuxt ssr csr ssg hydration middleware",
+    "Nuxt routing and data fetching": "nuxt routing usefetch useasyncdata data fetching",
+    "TypeScript in frontend apps": "typescript frontend unions narrowing generics",
     "Browser rendering and event loop": "browser rendering event loop",
-    "Browser rendering and layout fundamentals": "browser rendering layout",
-    "React component model": "react components state props",
-    "State management and data flow": "state management data flow",
     "API integration and async flows": "api integration async flows",
     "Performance and optimization basics": "frontend performance optimization",
-    "Testing fundamentals": "frontend testing fundamentals",
     "Resume-based project deep dive": "resume project deep dive",
-    "Core Java and collections": "core java collections",
-    "Spring Boot basics": "spring boot basics",
-    "REST API design": "rest api design",
-    "SQL and indexing basics": "sql indexing",
-    "Transactions and data consistency": "transactions data consistency",
-    "Concurrency and multithreading basics": "concurrency multithreading backend",
-    "Caching basics": "backend caching",
-    "Messaging and async communication basics": "messaging async communication backend",
     "ownership": "ownership и личная ответственность",
     "conflict resolution": "conflict resolution с коллегой",
     "failure / lessons learned": "failure lessons learned",
@@ -80,18 +71,31 @@ TOPIC_QUERY_HINTS = {
     "incident handling / debugging stories": "incident debugging story",
 }
 
+TOPIC_MATCH_HINTS = {
+    "Vue 3 component model": {"vue", "component", "props", "emits", "slots"},
+    "Vue reactivity and refs": {"vue", "computed", "watch", "ref", "reactive", "composable"},
+    "Nuxt 3 fundamentals": {"nuxt", "ssr", "csr", "ssg", "hydration", "middleware"},
+    "Nuxt routing and data fetching": {"nuxt", "routing", "fetch", "usefetch", "useasyncdata", "hydration"},
+    "TypeScript in frontend apps": {"typescript", "type", "union", "narrowing", "generic", "constraint"},
+    "API integration and async flows": {"api", "fetch", "http", "request", "response", "cors", "retry"},
+    "Browser rendering and event loop": {"browser", "rendering", "layout", "paint", "reflow", "event", "loop", "jank"},
+    "Performance and optimization basics": {"performance", "optimization", "layout", "paint", "jank", "hydration"},
+    "Resume-based project deep dive": {"resume", "project", "ownership", "debugging"},
+    "ownership": {"ownership"},
+    "conflict resolution": {"conflict"},
+    "prioritization": {"prioritization", "priority"},
+    "failure / lessons learned": {"failure", "lesson"},
+    "communication of trade-offs": {"trade", "компром"},
+    "incident handling / debugging stories": {"incident", "debugging", "debug"},
+}
+
 DEFAULT_TOPIC_FALLBACKS = {
     "Frontend Developer": [
-        "React component model",
-        "TypeScript typing and narrowing",
+        "Vue 3 component model",
+        "Nuxt 3 fundamentals",
+        "TypeScript in frontend apps",
         "API integration and async flows",
         "Performance and optimization basics",
-    ],
-    "Java Backend Developer": [
-        "Spring Boot basics",
-        "SQL and indexing basics",
-        "Transactions and data consistency",
-        "Concurrency and multithreading basics",
     ],
 }
 
@@ -103,6 +107,96 @@ BEHAVIOURAL_TOPICS = [
     "communication of trade-offs",
     "incident handling / debugging stories",
 ]
+
+QUESTION_MAX_CHARS = 220
+QUESTION_PHRASING_RECENT_LIMIT = 4
+QUESTION_BANNED_FRAGMENTS = (
+    "strong answer patterns",
+    "good topics for this outline",
+    "retrieval tags",
+    "follow-up ideas",
+    "follow-up prompts",
+    "request-response flow",
+    "loading/success/error",
+    "headers/status/cors",
+)
+QUESTION_SIMILARITY_STOPWORDS = {
+    "как",
+    "что",
+    "какой",
+    "какая",
+    "какие",
+    "какое",
+    "какую",
+    "когда",
+    "почему",
+    "зачем",
+    "ты",
+    "тебе",
+    "твой",
+    "твоему",
+    "мнению",
+    "этот",
+    "эта",
+    "это",
+    "эту",
+    "вообще",
+    "обычно",
+    "можешь",
+    "могла",
+    "бы",
+    "ли",
+    "считаешь",
+    "является",
+    "самым",
+    "самой",
+}
+
+
+def _load_question_phrasing_prompt() -> str:
+    return QUESTION_PHRASING_PROMPT_PATH.read_text(encoding="utf-8")
+
+
+def _question_phrasing_enabled() -> bool:
+    value = str(os.getenv("QUESTION_PHRASING_ENABLED", "true")).strip().lower()
+    return value in {"1", "true", "yes", "on"}
+
+
+def _question_phrasing_provider() -> str:
+    return (os.getenv("QUESTION_PHRASING_PROVIDER") or "openai").strip().lower()
+
+
+def _question_phrasing_model() -> str:
+    return (
+        os.getenv("QUESTION_PHRASING_MODEL")
+        or os.getenv("OPENAI_MODEL")
+        or "gpt-4o-mini"
+    ).strip()
+
+
+def _question_phrasing_temperature() -> float:
+    raw = (os.getenv("QUESTION_PHRASING_TEMPERATURE") or "0.15").strip()
+    try:
+        value = float(raw)
+    except ValueError:
+        return 0.15
+    return max(0.0, min(value, 1.0))
+
+
+def _question_phrasing_max_tokens() -> int:
+    raw = (os.getenv("QUESTION_PHRASING_MAX_TOKENS") or "120").strip()
+    try:
+        value = int(raw)
+    except ValueError:
+        return 120
+    return max(40, min(value, 300))
+
+
+def _truncate_text(value: str, limit: int) -> str:
+    text = (value or "").strip()
+    if len(text) <= limit:
+        return text
+    return f"{text[:limit].rstrip()}..."
 
 
 def _session_filters(session_data: Dict[str, object], *, force_cross_role: bool = False) -> Dict[str, str]:
@@ -163,6 +257,38 @@ def _topic_for_cursor(session_data: Dict[str, object], cursor: int) -> str:
     return topics[-1]
 
 
+def _looks_like_question(candidate: str) -> bool:
+    value = candidate.strip()
+    lowered = value.lower()
+    if value.endswith("?"):
+        return True
+    return lowered.startswith(
+        (
+            "tell me",
+            "walk me",
+            "describe",
+            "explain",
+            "how ",
+            "what ",
+            "why ",
+            "when ",
+            "which ",
+            "расскажи",
+            "опиши",
+            "объясни",
+            "приведи",
+            "как ",
+            "что ",
+            "почему ",
+            "когда ",
+            "зачем ",
+            "какую ",
+            "какие ",
+            "какой ",
+        )
+    )
+
+
 def _extract_questions(text: str) -> List[str]:
     questions: List[str] = []
     for raw_line in text.splitlines():
@@ -174,25 +300,7 @@ def _extract_questions(text: str) -> List[str]:
         candidate = numbered_match.group(1).strip() if numbered_match else bullet_match.group(1).strip() if bullet_match else ""
         if not candidate:
             continue
-        if candidate.endswith("?") or candidate.lower().startswith(
-            (
-                "tell me",
-                "walk me",
-                "describe",
-                "how ",
-                "what ",
-                "why ",
-                "when ",
-                "расскажи",
-                "опиши",
-                "объясни",
-                "приведи",
-                "как ",
-                "что ",
-                "почему ",
-                "когда ",
-            )
-        ):
+        if _looks_like_question(candidate):
             questions.append(candidate)
     return questions
 
@@ -206,38 +314,300 @@ def _extract_followups(text: str) -> List[str]:
         numbered_match = re.match(r"^\d+\.\s+(.*)$", line)
         bullet_match = re.match(r"^[-*]\s+(.*)$", line)
         candidate = numbered_match.group(1).strip() if numbered_match else bullet_match.group(1).strip() if bullet_match else ""
-        if candidate:
+        if candidate and _looks_like_question(candidate):
             prompts.append(candidate)
     return prompts
 
 
+def _question_key(value: str) -> str:
+    normalized = value.strip().lower()
+    normalized = normalized.replace("follow-up:", "").strip()
+    normalized = normalized.rstrip("?")
+    normalized = re.sub(r"\s+", " ", normalized)
+    normalized = re.sub(r"[\"“”«»]", "", normalized)
+    return normalized
+
+
 def _used_questions(session_data: Dict[str, object]) -> set[str]:
-    used = {str(turn.get("question", "")).strip() for turn in session_data.get("turns", [])}
+    used = {_question_key(str(turn.get("question", ""))) for turn in session_data.get("turns", []) if turn.get("question")}
     current_question = str(session_data["session"].get("current_question") or "").strip()
     if current_question:
-        used.add(current_question)
+        used.add(_question_key(current_question))
     return used
+
+
+def _recent_questions(session_data: Dict[str, object], *, limit: int = QUESTION_PHRASING_RECENT_LIMIT) -> List[str]:
+    recent: List[str] = []
+    for turn in session_data.get("turns", []):
+        question = str(turn.get("question", "")).strip()
+        if question:
+            recent.append(question)
+    current_question = str(session_data["session"].get("current_question") or "").strip()
+    if current_question:
+        recent.append(current_question)
+    if len(recent) <= limit:
+        return recent
+    return recent[-limit:]
+
+
+def _question_similarity_key(value: str) -> str:
+    normalized = re.sub(r"[^a-zа-я0-9\s_-]+", " ", value.lower())
+    tokens = [
+        token
+        for token in normalized.split()
+        if len(token) > 2 and token not in QUESTION_SIMILARITY_STOPWORDS
+    ]
+    return " ".join(tokens)
+
+
+def _is_too_similar_to_recent(candidate: str, recent_questions: Sequence[str]) -> bool:
+    candidate_key = _question_similarity_key(candidate)
+    if not candidate_key:
+        return False
+
+    for question in recent_questions:
+        other_key = _question_similarity_key(question)
+        if not other_key:
+            continue
+        similarity = SequenceMatcher(None, candidate_key, other_key).ratio()
+        if similarity >= 0.74:
+            return True
+    return False
+
+
+def _has_repeated_phrase_loop(value: str) -> bool:
+    normalized = re.sub(r"[^a-zа-я0-9\s/_-]+", " ", value.lower())
+    tokens = [token for token in normalized.split() if len(token) > 2]
+    if len(tokens) < 4:
+        return False
+
+    for size in (4, 3, 2):
+        counts: Dict[str, int] = {}
+        for index in range(len(tokens) - size + 1):
+            phrase = " ".join(tokens[index:index + size])
+            if len(phrase) < 12:
+                continue
+            counts[phrase] = counts.get(phrase, 0) + 1
+            if counts[phrase] >= 2:
+                return True
+    return False
+
+
+def _sanitize_question(candidate: str) -> Optional[str]:
+    cleaned = re.sub(r"\s+", " ", candidate.strip().strip("`")).strip()
+    if not cleaned:
+        return None
+
+    lowered = cleaned.lower()
+    if any(fragment in lowered for fragment in QUESTION_BANNED_FRAGMENTS):
+        return None
+    if _has_repeated_phrase_loop(cleaned):
+        return None
+    if len(cleaned) > QUESTION_MAX_CHARS:
+        return None
+    if not _looks_like_question(cleaned):
+        return None
+    return cleaned if cleaned.endswith("?") else f"{cleaned}?"
+
+
+def _result_matches_topic(result: Dict[str, object], topic: str) -> bool:
+    tokens = TOPIC_MATCH_HINTS.get(topic, set())
+    if not tokens:
+        return True
+
+    haystack = " ".join(
+        [
+            str(result.get("topic", "")),
+            str(result.get("title", "")),
+            str(result.get("path", "")),
+        ]
+    ).lower()
+    return any(token in haystack for token in tokens)
 
 
 def _pick_first_unused(candidates: Sequence[str], used_questions: set[str]) -> Optional[str]:
     for candidate in candidates:
-        normalized = candidate.strip()
-        if normalized and normalized not in used_questions:
-            return normalized
-    return candidates[0].strip() if candidates else None
+        sanitized = _sanitize_question(candidate)
+        if not sanitized:
+            continue
+        if _question_key(sanitized) not in used_questions:
+            return sanitized
+    for candidate in candidates:
+        sanitized = _sanitize_question(candidate)
+        if sanitized:
+            return sanitized
+    return None
+
+
+def _normalize_candidate_question(candidate: str) -> str:
+    return re.sub(r"\s+", " ", candidate.strip().strip("`")).strip()
+
+
+def _extract_question_from_response(content: str) -> Optional[str]:
+    text = content.strip()
+    if not text:
+        return None
+
+    try:
+        payload = json.loads(text)
+    except json.JSONDecodeError:
+        payload = None
+
+    if isinstance(payload, dict):
+        question = str(payload.get("question", "")).strip()
+        if question:
+            return question
+
+    fenced_match = re.search(r"\{.*\}", text, flags=re.DOTALL)
+    if fenced_match:
+        try:
+            payload = json.loads(fenced_match.group(0))
+        except json.JSONDecodeError:
+            payload = None
+        if isinstance(payload, dict):
+            question = str(payload.get("question", "")).strip()
+            if question:
+                return question
+
+    return text.strip("` \n")
+
+
+def _question_phrasing_input(
+    *,
+    session_data: Dict[str, object],
+    topic: str,
+    question_kind: str,
+    candidate_question: str,
+    current_question: str = "",
+    answer_text: str = "",
+    gap_intent: str = "",
+) -> str:
+    session = session_data["session"]
+    payload: Dict[str, Any] = {
+        "role": session.get("role"),
+        "seniority": session.get("seniority"),
+        "interview_type": session.get("interview_type"),
+        "topic": topic,
+        "question_kind": question_kind,
+        "candidate_question": candidate_question,
+        "already_asked_questions": _recent_questions(session_data),
+        "max_length_chars": QUESTION_MAX_CHARS,
+    }
+    if current_question:
+        payload["current_question"] = current_question
+    if answer_text:
+        payload["previous_answer_summary"] = _truncate_text(answer_text, 320)
+    if gap_intent:
+        payload["gap_intent"] = gap_intent
+    return json.dumps(payload, ensure_ascii=False, indent=2)
+
+
+@traceable(run_type="chain", name="phrase_interview_question")
+def _phrase_question_with_llm(
+    *,
+    session_data: Dict[str, object],
+    topic: str,
+    question_kind: str,
+    candidate_question: str,
+    current_question: str = "",
+    answer_text: str = "",
+    gap_intent: str = "",
+) -> Optional[str]:
+    if not _question_phrasing_enabled():
+        return None
+
+    provider = _question_phrasing_provider()
+    if provider != "openai" or OpenAI is None:
+        return None
+
+    api_key = str(os.getenv("OPENAI_API_KEY") or "").strip()
+    if not api_key:
+        return None
+
+    try:
+        client = OpenAI(api_key=api_key)
+        client = wrap_openai_client(client)
+        response = client.chat.completions.create(
+            model=_question_phrasing_model(),
+            temperature=_question_phrasing_temperature(),
+            max_tokens=_question_phrasing_max_tokens(),
+            response_format={"type": "json_object"},
+            messages=[
+                {"role": "system", "content": _load_question_phrasing_prompt()},
+                {
+                    "role": "user",
+                    "content": _question_phrasing_input(
+                        session_data=session_data,
+                        topic=topic,
+                        question_kind=question_kind,
+                        candidate_question=candidate_question,
+                        current_question=current_question,
+                        answer_text=answer_text,
+                        gap_intent=gap_intent,
+                    ),
+                },
+            ],
+        )
+    except Exception:
+        return None
+
+    message = response.choices[0].message.content if response.choices else ""
+    if not message:
+        return None
+    return _extract_question_from_response(message)
+
+
+def _finalize_question(
+    *,
+    session_data: Dict[str, object],
+    topic: str,
+    question_kind: str,
+    candidate_question: str,
+    used_questions: set[str],
+    current_question: str = "",
+    answer_text: str = "",
+    gap_intent: str = "",
+) -> Optional[str]:
+    normalized_candidate = _normalize_candidate_question(candidate_question)
+    if not normalized_candidate:
+        return None
+
+    candidate_sanitized = _sanitize_question(normalized_candidate)
+    recent_questions = _recent_questions(session_data)
+    phrased = _phrase_question_with_llm(
+        session_data=session_data,
+        topic=topic,
+        question_kind=question_kind,
+        candidate_question=normalized_candidate,
+        current_question=current_question,
+        answer_text=answer_text,
+        gap_intent=gap_intent,
+    )
+    if phrased:
+        sanitized_phrased = _sanitize_question(phrased)
+        if (
+            sanitized_phrased
+            and _question_key(sanitized_phrased) not in used_questions
+            and not _is_too_similar_to_recent(sanitized_phrased, recent_questions)
+        ):
+            return sanitized_phrased
+
+    if candidate_sanitized and not _is_too_similar_to_recent(candidate_sanitized, recent_questions):
+        return candidate_sanitized
+    return None
 
 
 def _retrieve_question_candidates(session_data: Dict[str, object], topic: str) -> List[Dict[str, object]]:
     filters = _session_filters(session_data)
     results = retrieve_context(
-        _normalize_topic_name(topic),
-        top_k=6,
-        role=filters["role"],
-        seniority=filters["seniority"],
-        interview_type=filters["interview_type"],
-        document_types=["question_bank", "answer_outline", "theory_note", "cheatsheet"],
-        layer=filters["layer"],
-    )
+            _normalize_topic_name(topic),
+            top_k=6,
+            role=filters["role"],
+            seniority=filters["seniority"],
+            interview_type=filters["interview_type"],
+            document_types=["question_bank"],
+            layer=filters["layer"],
+        )
     if results and results[0].get("status") not in {"no_match", "index_missing"}:
         return results
 
@@ -249,7 +619,7 @@ def _retrieve_question_candidates(session_data: Dict[str, object], topic: str) -
             role=cross_role_filters["role"],
             seniority=cross_role_filters["seniority"],
             interview_type=cross_role_filters["interview_type"],
-            document_types=["question_bank", "answer_outline", "theory_note", "cheatsheet"],
+            document_types=["question_bank"],
             layer=cross_role_filters["layer"],
         )
 
@@ -259,14 +629,14 @@ def _retrieve_question_candidates(session_data: Dict[str, object], topic: str) -
 def _retrieve_followup_candidates(session_data: Dict[str, object], topic: str) -> List[Dict[str, object]]:
     filters = _session_filters(session_data)
     results = retrieve_context(
-        _normalize_topic_name(topic),
-        top_k=6,
-        role=filters["role"],
-        seniority=filters["seniority"],
-        interview_type=filters["interview_type"],
-        document_types=["followup_bank", "answer_outline", "rubric"],
-        layer=filters["layer"],
-    )
+            _normalize_topic_name(topic),
+            top_k=6,
+            role=filters["role"],
+            seniority=filters["seniority"],
+            interview_type=filters["interview_type"],
+            document_types=["followup_bank"],
+            layer=filters["layer"],
+        )
     if results and results[0].get("status") not in {"no_match", "index_missing"}:
         return results
 
@@ -278,7 +648,7 @@ def _retrieve_followup_candidates(session_data: Dict[str, object], topic: str) -
             role=cross_role_filters["role"],
             seniority=cross_role_filters["seniority"],
             interview_type=cross_role_filters["interview_type"],
-            document_types=["followup_bank", "answer_outline", "rubric"],
+            document_types=["followup_bank"],
             layer=cross_role_filters["layer"],
         )
 
@@ -294,7 +664,8 @@ def _fallback_question(session_data: Dict[str, object], cursor: int) -> str:
         FALLBACK_QUESTION_BANK["Frontend Developer"]["Mixed"],
     )
     index = min(cursor, len(questions) - 1)
-    return questions[index]
+    normalized = _normalize_candidate_question(questions[index])
+    return _sanitize_question(normalized) or normalized
 
 
 def _build_question_from_context(session_data: Dict[str, object], topic: str, cursor: int) -> str:
@@ -302,93 +673,171 @@ def _build_question_from_context(session_data: Dict[str, object], topic: str, cu
     results = _retrieve_question_candidates(session_data, topic)
     extracted_questions: List[str] = []
     for result in results:
+        if not _result_matches_topic(result, topic):
+            continue
         extracted_questions.extend(_extract_questions(str(result.get("text", ""))))
 
-    selected = _pick_first_unused(extracted_questions, used_questions)
-    if selected:
-        return selected
+    for candidate in extracted_questions:
+        sanitized = _sanitize_question(candidate)
+        if not sanitized:
+            continue
+        if _question_key(sanitized) in used_questions:
+            continue
+        finalized = _finalize_question(
+            session_data=session_data,
+            topic=topic,
+            question_kind="main",
+            candidate_question=sanitized,
+            used_questions=used_questions,
+        )
+        if finalized:
+            return finalized
 
-    return _fallback_question(session_data, cursor)
-
-
-def _compose_followup_question(current_question: str, prompt: str, topic: str = "") -> str:
-    cleaned_prompt = prompt.strip().strip("`")
-    lowered = cleaned_prompt.lower()
-    cleaned_question = current_question.strip().rstrip("?")
-
-    if cleaned_prompt.endswith("?"):
-        return cleaned_prompt
-
-    if "request-response flow" in lowered:
-        if cleaned_question.lower().startswith("как "):
-            cleaned_question = cleaned_question[4:].strip()
-        return f"Как request-response flow связан с тем, как {cleaned_question} под капотом?"
-    if "loading/success/error" in lowered:
-        return "Как бы ты организовал loading, success и error состояния вокруг этого сценария?"
-    if "headers/status/cors" in lowered:
-        return "Какие headers, status codes или CORS-ограничения здесь важно учитывать?"
-    if "ux or correctness trade-off" in lowered:
-        return "Какой здесь есть компромисс между UX и корректностью?"
-    if "поведение клиента при ошибке" in lowered:
-        return "Как должен вести себя клиент, если запрос завершился ошибкой?"
-
-    if lowered.startswith(("объясни", "опиши", "расскажи", "как ", "что ", "почему ", "зачем ", "какие ", "какой ")):
-        return cleaned_prompt if cleaned_prompt.endswith("?") else f"{cleaned_prompt}?"
-
-    if topic:
-        return f'Можешь раскрыть аспект "{cleaned_prompt}" и связать его с темой "{topic}"?'
-    return f'Можешь раскрыть аспект "{cleaned_prompt}" и связать его с предыдущим вопросом?'
+    fallback = _fallback_question(session_data, cursor)
+    return (
+        _finalize_question(
+            session_data=session_data,
+            topic=topic,
+            question_kind="main",
+            candidate_question=fallback,
+            used_questions=used_questions,
+        )
+        or fallback
+    )
 
 
-def _build_followup_question(session_data: Dict[str, object], topic: str, current_question: str) -> str:
+def _infer_followup_intent(answer_text: str) -> str:
+    lowered = answer_text.lower()
+    word_count = len(answer_text.strip().split())
+    if word_count < 20:
+        return "mechanism"
+    if not any(marker in lowered for marker in ("например", "example", "for example", "проект", "кейc", "кейс")):
+        return "example"
+    if not any(marker in lowered for marker in ("компром", "trade-off", "tradeoff", "риск", "выбор")):
+        return "tradeoff"
+    return "deepen"
+
+
+def _fallback_followup_question(answer_text: str, topic: str) -> str:
+    intent = _infer_followup_intent(answer_text)
+    fallbacks = {
+        "mechanism": "Можешь разобрать это пошагово и связать с реальным сценарием?",
+        "example": "Можешь показать это на конкретном примере из проекта?",
+        "tradeoff": "Какой компромисс ты здесь учитывала и от чего отказалась?",
+        "deepen": f"Можешь раскрыть тему «{topic}» чуть глубже на практическом примере?",
+    }
+    return fallbacks[intent]
+
+
+def _build_followup_question(session_data: Dict[str, object], topic: str, current_question: str, answer_text: str) -> str:
+    used_questions = _used_questions(session_data)
+    used_questions.add(_question_key(current_question))
+    gap_intent = _infer_followup_intent(answer_text)
     results = _retrieve_followup_candidates(session_data, topic)
     prompts: List[str] = []
     for result in results:
+        if not _result_matches_topic(result, topic):
+            continue
         prompts.extend(_extract_followups(str(result.get("text", ""))))
 
-    prompt = prompts[0] if prompts else "Раскрой ответ глубже: добавь конкретный пример, trade-offs, риски и итог."
-    return _compose_followup_question(current_question, prompt, topic)
+    for candidate in prompts:
+        sanitized = _sanitize_question(candidate)
+        if not sanitized:
+            continue
+        if _question_key(sanitized) in used_questions:
+            continue
+        finalized = _finalize_question(
+            session_data=session_data,
+            topic=topic,
+            question_kind="followup",
+            candidate_question=sanitized,
+            used_questions=used_questions,
+            current_question=current_question,
+            answer_text=answer_text,
+            gap_intent=gap_intent,
+        )
+        if finalized:
+            return finalized
+
+    fallback = _fallback_followup_question(answer_text, topic)
+    return (
+        _finalize_question(
+            session_data=session_data,
+            topic=topic,
+            question_kind="followup",
+            candidate_question=fallback,
+            used_questions=used_questions,
+            current_question=current_question,
+            answer_text=answer_text,
+            gap_intent=gap_intent,
+        )
+        or fallback
+    )
 
 
-def _build_feedback(answer_text: str, *, used_followup: bool) -> str:
-    word_count = len(answer_text.strip().split())
-    lowered = answer_text.lower()
+def _humanize_feedback_gap(value: str) -> str:
+    labels = {
+        "answer_too_short": "добавить глубину и чуть подробнее раскрыть ход мысли",
+        "missing_example": "привести пример из проекта или из реальной задачи",
+        "missing_tradeoff": "явно назвать компромиссы, риски или ограничения",
+        "missing_result": "закончить ответ итогом и эффектом решения",
+        "weak_structure": "сделать ответ более пошаговым и структурным",
+    }
+    normalized = value.strip()
+    return labels.get(normalized, normalized.replace("_", " "))
 
-    has_example = any(marker in lowered for marker in ("example", "например", "например,", "for example", "случа", "project", "проек"))
-    has_tradeoff = any(marker in lowered for marker in ("trade-off", "tradeoff", "компром", "выбор", "risk", "риск"))
-    has_result = any(marker in lowered for marker in ("result", "итог", "в итоге", "impact", "результ"))
+
+def _build_feedback(
+    answer_text: str,
+    *,
+    used_followup: bool,
+    evaluation: Optional[Dict[str, object]] = None,
+) -> str:
+    from backend.services.evaluator import answer_quality
+
+    quality = answer_quality(answer_text)
+    score = int(evaluation.get("score_0_10", 0)) if evaluation else 0
+    detected_gaps = [str(item) for item in evaluation.get("detected_gaps", [])] if evaluation else []
 
     strengths: List[str] = []
-    gaps: List[str] = []
+    if quality["has_structure"]:
+        strengths.append("есть причинно-следственная логика")
+    if quality["has_terminology"]:
+        strengths.append("прозвучали корректные технические термины")
+    if quality["has_example"]:
+        strengths.append("есть пример или проектный контекст")
+    if quality["has_tradeoff"]:
+        strengths.append("ты обозначила компромиссы и ограничения")
+    if quality["has_result"]:
+        strengths.append("понятен итог решения и его эффект")
+    if not strengths:
+        strengths.append("ответ остаётся в контуре темы и не уходит в сторону")
 
-    if word_count >= 40:
-        strengths.append("ответ уже достаточно развёрнут")
+    improvements = [_humanize_feedback_gap(item) for item in detected_gaps[:2]]
+    if not improvements:
+        if score >= 8:
+            improvements.append("критичных пробелов в ответе не видно")
+        elif quality["word_count"] < 30:
+            improvements.append("добавить чуть больше деталей")
+        else:
+            improvements.append("можно усилить ответ конкретным примером")
+
+    if used_followup and score >= 7:
+        prefix = "После уточнения ответ стал заметно сильнее."
+    elif used_followup and score >= 5:
+        prefix = "После уточнения база по теме стала яснее."
+    elif used_followup:
+        prefix = "Даже после уточнения ответ пока остаётся поверхностным."
+    elif score >= 8:
+        prefix = "Можно уверенно идти дальше."
+    elif score >= 5:
+        prefix = "Базовое понимание видно, идём дальше."
     else:
-        gaps.append("не хватает глубины")
+        prefix = "Ответ частично релевантен, но неровный."
 
-    if has_example:
-        strengths.append("есть конкретика или проектный контекст")
-    else:
-        gaps.append("нужен пример из опыта")
-
-    if has_tradeoff:
-        strengths.append("видно понимание компромиссов и ограничений")
-    else:
-        gaps.append("стоит явнее назвать компромиссы или риски")
-
-    if has_result:
-        strengths.append("прозвучал результат и эффект решения")
-    else:
-        gaps.append("не хватает итогов и влияния решения")
-
-    if used_followup:
-        prefix = "Follow-up принят."
-    else:
-        prefix = "Ответ сохранён."
-
-    strengths_text = "; ".join(strengths[:2]) if strengths else "есть базовый сигнал по теме"
-    gaps_text = "; ".join(gaps[:2]) if gaps else "критичных пробелов в формате ответа не видно"
-    return f"{prefix} Сильные стороны: {strengths_text}. Что улучшить: {gaps_text}."
+    strengths_text = "; ".join(strengths[:2])
+    improvements_text = "; ".join(improvements[:2])
+    return f"{prefix} Сильные стороны: {strengths_text}. Что улучшить: {improvements_text}."
 
 
 def build_first_question(session_data: Dict[str, object]) -> str:
@@ -406,7 +855,7 @@ def evaluate_answer(session_data: Dict[str, object], answer_text: str) -> Dict[s
     if answer_word_count < 20:
         return {
             "feedback": _build_feedback(answer_text, used_followup=True),
-            "next_question": _build_followup_question(session_data, current_topic, current_question),
+            "next_question": _build_followup_question(session_data, current_topic, current_question, answer_text),
             "next_cursor": cursor,
             "status": "in_progress",
         }

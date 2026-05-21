@@ -21,9 +21,9 @@
 
 - What criteria did you use?
 - Who did you communicate with and how?
-- What trade-off did you make explicit?
+- Какой компромисс ты проговорил явно?
 - Would you prioritize differently now?
 
 ## Retrieval Keywords
 
-`prioritization questions`, `urgency`, `trade-offs`, `scope`, `timeline`, `push back`, `decision making`
+`prioritization questions`, `urgency`, `компромиссы`, `scope`, `timeline`, `push back`, `decision making`

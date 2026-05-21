@@ -8,12 +8,12 @@
 - source_url: internal curated outline
 - source_language: ru
 - normalized_language: ru
-- normalized_on: 2026-05-10
+- normalized_on: 2026-05-21
 
 ## Сильные паттерны ответа
 
-1. Назвать стадию pipeline
-2. Объяснить путь до пикселей
-3. Указать вероятный bottleneck
-4. Предложить measurement и fix
-5. Связать с perceived performance
+1. Какой этап rendering pipeline ты сейчас объясняешь?
+2. Как в этом сценарии код доходит до layout или paint?
+3. Где здесь, скорее всего, дорогая работа?
+4. Что бы ты померила первым?
+5. Как это ощущает пользователь?

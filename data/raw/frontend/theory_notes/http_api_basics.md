@@ -11,7 +11,7 @@
 
 ## Source Summary
 
-MDN's HTTP overview presents HTTP as the application-layer protocol used for communication between clients and servers on the web. It points to the core concepts needed by frontend engineers: request-response flow, message structure, methods, status codes, content types, caching, cookies, authentication, and CORS-related topics.
+MDN's HTTP overview presents HTTP as the application-layer protocol used for communication between clients and servers on the web. It points to the core concepts needed by frontend engineers: the request/response model, message structure, methods, status codes, content types, caching, cookies, authentication, and CORS-related topics.
 
 ## Key Notes
 

@@ -7,25 +7,19 @@
 - Document Type: question_bank
 - Source URL: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
 - Language: English
-- Collected On: 2026-05-10
+- Collected On: 2026-05-21
 
 ## Curated Question Set
 
-1. How does `fetch()` work at a high level?
-2. Why does `fetch()` resolve on HTTP error statuses instead of only on success?
-3. How would you structure API error handling in a frontend app?
-4. What is the role of `Request` and `Response` objects?
-5. How do CORS and origin rules affect frontend API work?
-6. How would you prevent UI inconsistency while waiting for a network response?
-7. What trade-offs exist between optimistic UI and waiting for server confirmation?
-8. How do headers and content types affect client-server integration?
-
-## Follow-up Prompts
-
-- What would happen on `401`, `403`, `404`, or `500`?
-- What would you retry automatically and what would you not retry?
-- How would you represent loading, success, and error states in the UI?
+1. How would you explain what happens after a component calls `fetch()`?
+2. Why does `fetch()` resolve on `404` or `500` instead of throwing immediately?
+3. How do you separate transport errors, permission errors, and domain errors in the UI?
+4. When would you retry a request automatically, and when would you avoid retrying?
+5. What do `Request`, `Response`, headers, and `Content-Type` change in frontend integration?
+6. How would you model loading, empty, success, and error states in the interface?
+7. When is optimistic UI worth it, and what risks does it create?
+8. How do CORS and authentication details change frontend debugging?
 
 ## Retrieval Keywords
 
-`api integration questions`, `fetch`, `request`, `response`, `cors`, `headers`, `content-type`, `error handling`
+`api integration questions`, `fetch`, `request`, `response`, `cors`, `headers`, `content-type`, `error handling`, `optimistic ui`

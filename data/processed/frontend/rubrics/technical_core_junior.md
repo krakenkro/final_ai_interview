@@ -8,16 +8,16 @@
 - source_url: internal curated rubric
 - source_language: ru
 - normalized_language: ru
-- normalized_on: 2026-05-10
+- normalized_on: 2026-05-21
 
 ## Критерии оценки
 
 1. Fundamentals correctness:
-   базовая корректность props, state, rendering, HTTP и TypeScript.
+   базовая корректность `props`, `emits`, реактивности, HTTP и TypeScript.
 2. Concept clarity:
    ясность и простота объяснения.
 3. Example quality:
-   наличие маленького, но релевантного примера.
+   наличие небольшого, но релевантного примера.
 4. Learning readiness:
    обучаемость и здоровое направление рассуждений.
 

@@ -8,12 +8,12 @@
 - source_url: internal curated outline
 - source_language: ru
 - normalized_language: ru
-- normalized_on: 2026-05-10
+- normalized_on: 2026-05-21
 
 ## Сильные паттерны ответа
 
-1. Request-response flow
-2. Loading/success/error states
-3. Headers/status/CORS when relevant
-4. UX or correctness trade-off
-5. Поведение клиента при ошибке
+1. С чего начинается запрос и где пользователь видит результат?
+2. Как ты разделяешь ошибки сети, статусов и бизнес-логики?
+3. Какие состояния интерфейса ты показываешь: loading, empty, success и error?
+4. Какой здесь есть компромисс: optimistic UI, retry, stale data или лишние запросы?
+5. На каком реальном экране это проще всего объяснить?

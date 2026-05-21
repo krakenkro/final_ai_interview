@@ -7,18 +7,18 @@
 - Document Type: answer_outline
 - Source URL: internal curated outline
 - Language: Russian
-- Collected On: 2026-05-10
+- Collected On: 2026-05-21
 
 ## Strong Answer Patterns
 
-1. Describe product context and users.
-2. Explain exact ownership.
-3. Name a hard frontend decision.
-4. Discuss trade-offs and constraints.
-5. Show outcome and reflection.
+1. What was the product context and who were the users?
+2. What exactly did you own?
+3. Where was the hardest technical tension?
+4. Какой компромисс тебе пришлось принять?
+5. How did it end, and what would you change now?
 
 ## Common Weaknesses
 
 - stack listing without story
 - no ownership
-- no technical tension or trade-off
+- нет технического напряжения или явного компромисса

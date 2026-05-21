@@ -53,7 +53,6 @@
 Для первой версии фиксируем ограниченный scope:
 
 - `Frontend Developer`
-- `Java Backend Developer`
 
 ### Seniority MVP
 
@@ -83,29 +82,16 @@
 
 ### Frontend Developer
 
-- JavaScript fundamentals
-- TypeScript typing and narrowing
+- Vue 3 component model
+- Vue reactivity and refs
+- Nuxt 3 fundamentals
+- Nuxt routing and data fetching
+- TypeScript in frontend apps
 - Browser rendering and event loop
-- React component model
-- State management and data flow
 - API integration and async flows
 - Performance and optimization basics
-- Testing fundamentals
 - Resume-based project deep dive
-- Behavioural examples: ownership, debugging, teamwork
-
-### Java Backend Developer
-
-- Core Java and collections
-- OOP and SOLID in backend code
-- Spring Boot basics
-- REST API design
-- SQL and indexing basics
-- Transactions and data consistency
-- Concurrency and multithreading basics
-- Caching and messaging basics
-- Resume-based project deep dive
-- Behavioural examples: delivery, incident handling, trade-offs
+- Behavioural examples: ownership, incident handling, prioritization
 
 ### Cross-role behavioural themes
 
@@ -153,11 +139,13 @@
 - `LangGraph`
 - RAG + heuristic evaluator as current interview runtime baseline
 - `OpenAI gpt-4o-mini` as current LLM-backed analysis model
+- optional LLM final phrasing layer for selected interview questions
 
 Текущий status по LLM:
 
 - основной interview loop сейчас работает через `LangGraph` + `RAG` + `MCP` + heuristic scoring
 - прямой LLM-вызов в текущем коде используется в первую очередь для `HR-style resume/vacancy analysis`
+- для interviewer layer дополнительно включён optional final phrasing step: он полирует уже выбранный curated question candidate, но не заменяет source selection
 - это важно явно проговаривать на защите, чтобы документация совпадала с реальной реализацией
 
 ### Documents
@@ -190,6 +178,7 @@
 - основной LLM-вызов в текущей реализации: `OpenAI gpt-4o-mini`
 - текущий сценарий использования:
   - `HR-style resume / vacancy analysis`
+  - optional final phrasing для `main question` и `follow-up`
   - structured JSON output для match analysis
   - enrichment поверх deterministic intake pipeline
 
@@ -211,10 +200,17 @@
 - `max_tokens=2200`
 - `top_p` не переопределяется, используется provider default
 
+Для `question final phrasing` сейчас используются:
+
+- `temperature=0.15`
+- `max_tokens=120`
+- `top_p` не переопределяется, используется provider default
+
 #### Почему выбраны именно такие параметры
 
 - низкая `temperature` уменьшает variance и помогает получать более стабильный structured JSON
 - `max_tokens=2200` достаточно для подробного match analysis без чрезмерного раздувания latency и стоимости
+- ещё более низкая `temperature` и короткий `max_tokens` в phrasing-слое помогают не переизобретать вопрос, а только аккуратно полировать уже выбранный candidate
 - `top_p` оставлен по умолчанию, потому что в этом сценарии основная управляемость уже достигается через низкую `temperature`
 
 #### Trade-off: cost / latency / quality
@@ -289,7 +285,7 @@ flowchart TD
 1. `planner`
    Собирает или восстанавливает `interview_plan`, определяет текущую тему и подтягивает кандидаты вопросов через `search_interview_questions`.
 2. `interviewer`
-   Формирует следующий вопрос: либо обычный вопрос по теме, либо follow-up на основе предыдущей оценки.
+   Формирует следующий вопрос: либо обычный вопрос по теме, либо follow-up на основе предыдущей оценки. Источник кандидатов остаётся детерминированным (`question_bank` / `followup_bank`), после чего optional LLM final phrasing делает формулировку более естественной и затем повторно прогоняется через sanitizer.
 3. `evaluator`
    Прогоняет heuristic evaluation и обогащает его через `get_evaluation_rubric` и `get_topic_cheatsheet`.
 4. `feedback`
@@ -342,7 +338,7 @@ flowchart TD
 
 ### Evals data
 
-- `backend/evals/golden_dataset.jsonl`
+- `backend/evals/answer_evaluation_golden_dataset.jsonl`
 - `backend/evals/run_golden_eval.py`
 - `backend/evals/ab_tests.py`
 
@@ -355,7 +351,7 @@ flowchart TD
 ### Основные источники
 
 1. Собственные markdown-конспекты по темам интервью
-2. Curated question banks по `Frontend` и `Java Backend`
+2. Curated question banks по `Frontend`
 3. Rubrics оценки ответов по типам вопросов
 4. Cheatsheets по ключевым темам
 5. Role-specific interview notes по `Junior` и `Middle`
@@ -363,8 +359,8 @@ flowchart TD
 
 ### Предпочтительные первоисточники для подготовки материалов
 
-- официальная документация `React`, `TypeScript`, `Java`, `Spring`
-- собственные summary-заметки по SQL, HTTP, concurrency, testing
+- официальная документация `Vue`, `Nuxt`, `TypeScript`, `MDN`
+- собственные summary-заметки по HTTP, rendering, performance и behavioural patterns
 - вручную отобранные interview prep guides
 - заранее подготовленные vacancy archetypes
 
@@ -372,8 +368,6 @@ flowchart TD
 
 - `frontend/questions/*.md`
 - `frontend/cheatsheets/*.md`
-- `java_backend/questions/*.md`
-- `java_backend/cheatsheets/*.md`
 - `behavioural/*.md`
 - `rubrics/*.md`
 - `vacancy_archetypes/*.md`

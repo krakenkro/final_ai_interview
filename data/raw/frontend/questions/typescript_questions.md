@@ -7,7 +7,7 @@
 - Document Type: question_bank
 - Source URL: https://www.typescriptlang.org/docs/
 - Language: English
-- Collected On: 2026-05-10
+- Collected On: 2026-05-21
 
 ## Curated Question Set
 
@@ -30,13 +30,7 @@
 9. What problem do generics solve?
 10. Why is a generic helper safer than using `any`?
 11. What is a generic constraint and when is it useful?
-12. Give an example of a generic component or utility in frontend work.
-
-## Follow-up Prompts
-
-- Show an example from a real React or API flow.
-- What bug would happen if the type was too loose here?
-- What trade-off does this typing choice create?
+12. Give an example of a generic component, composable helper, or utility in frontend work.
 
 ## Retrieval Keywords
 

@@ -12,8 +12,8 @@ from backend.services.mock_interview import (
     _build_feedback,
     _build_followup_question,
     _build_question_from_context,
-    _compose_followup_question,
     _max_questions,
+    _question_key,
 )
 from backend.services.interview_coach import build_coaching_report
 from backend.services.interview_mcp_client import (
@@ -93,7 +93,6 @@ def _session_tool_args(session_data: Dict[str, Any]) -> Dict[str, str]:
     role = str(session.get("role", "Frontend Developer"))
     role_map = {
         "Frontend Developer": "frontend_developer",
-        "Java Backend Developer": "java_backend_developer",
     }
     interview_type_map = {
         "Technical Core": "technical_core",
@@ -198,7 +197,7 @@ def _humanize_gap(value: str) -> str:
     labels = {
         "answer_too_short": "ответ слишком короткий",
         "missing_example": "не хватает примера из опыта",
-        "missing_tradeoff": "не озвучены trade-offs",
+        "missing_tradeoff": "не озвучены компромиссы",
         "missing_result": "не сформулирован итог",
         "weak_structure": "ответу не хватает структуры",
     }
@@ -210,7 +209,7 @@ def _build_evaluation(state: InterviewGraphState) -> Dict[str, Any]:
     answer_text = state.get("answer_text", "")
     current_question = state.get("current_question", "")
     current_topic = state.get("current_topic", "")
-    suggested_follow_up = _build_followup_question(state["session_data"], current_topic, current_question)
+    suggested_follow_up = _build_followup_question(state["session_data"], current_topic, current_question, answer_text)
     return build_heuristic_evaluation(
         answer_text,
         current_question=current_question,
@@ -235,7 +234,7 @@ def _build_final_report(session_data: Dict[str, Any], latest_evaluation: Dict[st
     gaps: List[str] = list(latest_evaluation.get("detected_gaps", []))
 
     if "trade" in all_answers.lower() or "компром" in all_answers.lower():
-        strong_points.append("Кандидат проговаривает trade-offs и ограничения.")
+        strong_points.append("Кандидат проговаривает компромиссы и ограничения.")
     if "в итоге" in all_answers.lower() or "result" in all_answers.lower():
         strong_points.append("В ответах виден outcome и эффект решений.")
     if not strong_points:
@@ -291,19 +290,7 @@ def interviewer_node(state: InterviewGraphState) -> InterviewGraphState:
     if event == "answer" and state.get("routing_decision") == "followup":
         next_question = str(state["evaluation"]["suggested_follow_up"])
     else:
-        mcp_candidates = list(state.get("tool_context", {}).get("planner_question_candidates", []))
-        candidate_questions: List[str] = []
-        for item in mcp_candidates:
-            candidate_questions.extend(
-                question
-                for question in item.get("questions", [])
-                if isinstance(question, str) and _looks_like_question(question)
-            )
-        next_question = (
-            candidate_questions[0]
-            if candidate_questions
-            else _build_question_from_context(session_data, current_topic, cursor)
-        )
+        next_question = _build_question_from_context(session_data, current_topic, cursor)
 
     state["next_question"] = next_question
     state["next_cursor"] = cursor
@@ -341,8 +328,18 @@ def evaluator_node(state: InterviewGraphState) -> InterviewGraphState:
 
 def feedback_node(state: InterviewGraphState) -> InterviewGraphState:
     answer_text = state.get("answer_text", "")
-    used_followup = bool(state.get("evaluation", {}).get("follow_up_needed"))
-    feedback = _build_feedback(answer_text, used_followup=used_followup)
+    current_question = str(state.get("current_question") or state["session_data"]["session"].get("current_question") or "")
+    previous_evaluation = state["session_data"].get("workflow", {}).get("last_evaluation", {})
+    previous_suggested_followup = str(previous_evaluation.get("suggested_follow_up") or "").strip()
+    used_followup = bool(
+        previous_suggested_followup
+        and _question_key(current_question) == _question_key(previous_suggested_followup)
+    )
+    feedback = _build_feedback(
+        answer_text,
+        used_followup=used_followup,
+        evaluation=state.get("evaluation", {}),
+    )
     state["feedback"] = feedback
     _append_trace(state, "feedback", "Feedback text prepared.")
     return state
@@ -355,19 +352,14 @@ def decision_node(state: InterviewGraphState) -> InterviewGraphState:
     cursor = int(session.get("question_cursor") or 0)
     current_question = str(session.get("current_question") or "")
     turns = session_data.get("turns", [])
-
-    current_followup_count = 1 if current_question.startswith("Follow-up:") else 0
+    previous_evaluation = session_data.get("workflow", {}).get("last_evaluation", {})
+    previous_suggested_followup = str(previous_evaluation.get("suggested_follow_up") or "").strip()
+    current_followup_count = 1 if previous_suggested_followup and _question_key(current_question) == _question_key(previous_suggested_followup) else 0
     max_questions = _max_questions(session_data)
     next_topic_index = cursor + 1
 
     if evaluation["follow_up_needed"] and current_followup_count < 1:
         followup_candidates = _safe_get_followups(state["session_data"], state.get("current_topic", ""), state.get("answer_text", ""))
-        if followup_candidates:
-            evaluation["suggested_follow_up"] = _compose_followup_question(
-                current_question,
-                followup_candidates[0],
-                state.get("current_topic", ""),
-            )
         state["routing_decision"] = "followup"
         state["next_cursor"] = cursor
         state["status"] = "in_progress"
@@ -377,6 +369,7 @@ def decision_node(state: InterviewGraphState) -> InterviewGraphState:
             "Routing to follow-up loop.",
             followup_count=current_followup_count + 1,
             tool_call="get_followup_questions",
+            tool_results_count=len(followup_candidates),
         )
         return state
 

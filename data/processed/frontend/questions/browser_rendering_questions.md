@@ -8,24 +8,18 @@
 - source_url: https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/Critical_rendering_path
 - source_language: en
 - normalized_language: ru
-- normalized_on: 2026-05-10
+- normalized_on: 2026-05-21
 
 ## Основные вопросы
 
-1. Что такое critical rendering path браузера?
-2. Как HTML, CSS и JavaScript превращаются в пиксели на экране?
+1. Как HTML, CSS и JavaScript в итоге превращаются в пиксели на экране?
+2. Что такое critical rendering path и почему он важен?
 3. Чем отличаются DOM, CSSOM, render tree, layout и paint?
-4. Почему одни изменения UI вызывают layout и paint, а другие дешевле?
-5. Что такое reflow и почему частые reflow вредят производительности?
-6. Как объяснить jank не-фронтенд коллеге?
-7. Как React rendering связан с browser rendering?
-8. Почему понимание rendering pipeline помогает дебажить slow UI?
-
-## Follow-up идеи
-
-- Какой шаг пайплайна здесь, вероятно, дорогой?
-- Бутылочное горлышко в JavaScript, layout, paint или DOM-size?
-- Что бы ты померил первым?
+4. Почему одни обновления UI обходятся дёшево, а другие оказываются дорогими?
+5. Что такое reflow и когда он превращается в реальную продуктовую проблему?
+6. Как бы вы объяснили jank человеку не из фронтенда?
+7. Как обновление состояния во Vue или Nuxt в итоге превращается в работу браузера?
+8. Что бы вы проверили первым, если страница начинает тормозить во время скролла или ввода?
 
 ## Retrieval tags
 

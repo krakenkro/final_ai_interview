@@ -1,137 +1,126 @@
 {
-  "generated_at": "2026-05-20T12:59:25.898722+00:00",
-  "dataset_path": "backend/evals/golden_dataset.jsonl",
-  "total_cases": 36,
+  "generated_at": "2026-05-21T15:30:54.206529+00:00",
+  "dataset_path": "backend/evals/answer_evaluation_golden_dataset.jsonl",
+  "total_cases": 18,
   "summary": {
-    "score_range_accuracy": 91.67,
-    "follow_up_accuracy": 100.0,
-    "primary_pass_rate": 91.67,
-    "gap_exact_match_rate": 91.67,
-    "avg_gap_recall": 0.9583,
-    "avg_gap_precision": 1.0,
-    "avg_score_distance": 0.0833,
-    "avg_predicted_score": 6.39
+    "score_range_accuracy": 88.89,
+    "follow_up_accuracy": 94.44,
+    "primary_pass_rate": 88.89,
+    "gap_exact_match_rate": 88.89,
+    "avg_gap_recall": 0.9333,
+    "avg_gap_precision": 0.9444,
+    "avg_score_distance": 0.1111,
+    "avg_predicted_score": 6.78
   },
   "follow_up_confusion": {
-    "true_positive": 20,
-    "true_negative": 16,
+    "true_positive": 7,
+    "true_negative": 10,
     "false_positive": 0,
-    "false_negative": 0
+    "false_negative": 1
   },
   "breakdowns": {
     "by_role": {
       "Frontend Developer": {
         "total_cases": 18,
-        "score_range_accuracy": 94.44,
-        "follow_up_accuracy": 100.0,
-        "primary_pass_rate": 94.44,
-        "gap_exact_match_rate": 88.89,
-        "avg_gap_recall": 0.9444,
-        "avg_gap_precision": 1.0,
-        "avg_predicted_score": 6.22
-      },
-      "Java Backend Developer": {
-        "total_cases": 18,
         "score_range_accuracy": 88.89,
-        "follow_up_accuracy": 100.0,
+        "follow_up_accuracy": 94.44,
         "primary_pass_rate": 88.89,
-        "gap_exact_match_rate": 94.44,
-        "avg_gap_recall": 0.9722,
-        "avg_gap_precision": 1.0,
-        "avg_predicted_score": 6.56
+        "gap_exact_match_rate": 88.89,
+        "avg_gap_recall": 0.9333,
+        "avg_gap_precision": 0.9444,
+        "avg_predicted_score": 6.78
       }
     },
     "by_interview_type": {
       "Behavioural": {
-        "total_cases": 9,
-        "score_range_accuracy": 88.89,
-        "follow_up_accuracy": 100.0,
-        "primary_pass_rate": 88.89,
-        "gap_exact_match_rate": 88.89,
-        "avg_gap_recall": 0.9444,
-        "avg_gap_precision": 1.0,
-        "avg_predicted_score": 6.0
-      },
-      "Mixed": {
         "total_cases": 6,
         "score_range_accuracy": 100.0,
         "follow_up_accuracy": 100.0,
         "primary_pass_rate": 100.0,
-        "gap_exact_match_rate": 83.33,
-        "avg_gap_recall": 0.9167,
+        "gap_exact_match_rate": 100.0,
+        "avg_gap_recall": 1.0,
         "avg_gap_precision": 1.0,
         "avg_predicted_score": 7.0
       },
+      "Mixed": {
+        "total_cases": 3,
+        "score_range_accuracy": 66.67,
+        "follow_up_accuracy": 66.67,
+        "primary_pass_rate": 66.67,
+        "gap_exact_match_rate": 33.33,
+        "avg_gap_recall": 0.6,
+        "avg_gap_precision": 0.6667,
+        "avg_predicted_score": 6.67
+      },
       "Technical Core": {
-        "total_cases": 21,
-        "score_range_accuracy": 90.48,
+        "total_cases": 9,
+        "score_range_accuracy": 88.89,
         "follow_up_accuracy": 100.0,
-        "primary_pass_rate": 90.48,
-        "gap_exact_match_rate": 95.24,
-        "avg_gap_recall": 0.9762,
+        "primary_pass_rate": 88.89,
+        "gap_exact_match_rate": 100.0,
+        "avg_gap_recall": 1.0,
         "avg_gap_precision": 1.0,
-        "avg_predicted_score": 6.38
+        "avg_predicted_score": 6.67
       }
     },
     "by_seniority": {
       "Junior": {
-        "total_cases": 11,
-        "score_range_accuracy": 90.91,
+        "total_cases": 5,
+        "score_range_accuracy": 80.0,
         "follow_up_accuracy": 100.0,
-        "primary_pass_rate": 90.91,
-        "gap_exact_match_rate": 90.91,
-        "avg_gap_recall": 0.9545,
-        "avg_gap_precision": 1.0,
-        "avg_predicted_score": 1.91
-      },
-      "Middle": {
-        "total_cases": 25,
-        "score_range_accuracy": 92.0,
-        "follow_up_accuracy": 100.0,
-        "primary_pass_rate": 92.0,
-        "gap_exact_match_rate": 92.0,
+        "primary_pass_rate": 80.0,
+        "gap_exact_match_rate": 80.0,
         "avg_gap_recall": 0.96,
         "avg_gap_precision": 1.0,
-        "avg_predicted_score": 8.36
+        "avg_predicted_score": 2.0
+      },
+      "Middle": {
+        "total_cases": 13,
+        "score_range_accuracy": 92.31,
+        "follow_up_accuracy": 92.31,
+        "primary_pass_rate": 92.31,
+        "gap_exact_match_rate": 92.31,
+        "avg_gap_recall": 0.9231,
+        "avg_gap_precision": 0.9231,
+        "avg_predicted_score": 8.62
       }
     },
     "by_answer_quality_label": {
       "medium": {
-        "total_cases": 12,
+        "total_cases": 4,
+        "score_range_accuracy": 75.0,
+        "follow_up_accuracy": 75.0,
+        "primary_pass_rate": 75.0,
+        "gap_exact_match_rate": 75.0,
+        "avg_gap_recall": 0.75,
+        "avg_gap_precision": 0.75,
+        "avg_predicted_score": 6.5
+      },
+      "strong": {
+        "total_cases": 10,
+        "score_range_accuracy": 100.0,
+        "follow_up_accuracy": 100.0,
+        "primary_pass_rate": 100.0,
+        "gap_exact_match_rate": 100.0,
+        "avg_gap_recall": 1.0,
+        "avg_gap_precision": 1.0,
+        "avg_predicted_score": 9.5
+      },
+      "weak": {
+        "total_cases": 4,
         "score_range_accuracy": 75.0,
         "follow_up_accuracy": 100.0,
         "primary_pass_rate": 75.0,
         "gap_exact_match_rate": 75.0,
-        "avg_gap_recall": 0.875,
+        "avg_gap_recall": 0.95,
         "avg_gap_precision": 1.0,
-        "avg_predicted_score": 5.67
-      },
-      "strong": {
-        "total_cases": 16,
-        "score_range_accuracy": 100.0,
-        "follow_up_accuracy": 100.0,
-        "primary_pass_rate": 100.0,
-        "gap_exact_match_rate": 100.0,
-        "avg_gap_recall": 1.0,
-        "avg_gap_precision": 1.0,
-        "avg_predicted_score": 9.88
-      },
-      "weak": {
-        "total_cases": 8,
-        "score_range_accuracy": 100.0,
-        "follow_up_accuracy": 100.0,
-        "primary_pass_rate": 100.0,
-        "gap_exact_match_rate": 100.0,
-        "avg_gap_recall": 1.0,
-        "avg_gap_precision": 1.0,
-        "avg_predicted_score": 0.5
+        "avg_predicted_score": 0.25
       }
     }
   },
   "failing_case_ids": [
-    "frontend_016",
-    "java_002",
-    "java_005"
+    "frontend_003",
+    "frontend_011"
   ],
   "cases": [
     {
@@ -139,8 +128,8 @@
       "role": "Frontend Developer",
       "seniority": "Middle",
       "interview_type": "Technical Core",
-      "topic": "React component model",
-      "question": "В чем разница между props и state в React? Приведите пример из реального проекта.",
+      "topic": "Vue 3 component model",
+      "question": "Как вы обычно решаете, что во Vue-приложении должно стать отдельным компонентом?",
       "answer_quality_label": "strong",
       "expected_score_range": [
         9,
@@ -160,8 +149,8 @@
       "gap_precision": 1.0,
       "primary_pass": true,
       "evaluation": {
-        "question": "В чем разница между props и state в React? Приведите пример из реального проекта.",
-        "topic": "React component model",
+        "question": "Как вы обычно решаете, что во Vue-приложении должно стать отдельным компонентом?",
+        "topic": "Vue 3 component model",
         "score_0_10": 10,
         "relevance": "high",
         "correctness": "heuristic",
@@ -172,7 +161,7 @@
         "justification": "Ответ покрывает тему достаточно глубоко, с конкретикой и признаками инженерного мышления.",
         "detected_gaps": [],
         "follow_up_needed": false,
-        "suggested_follow_up": "Можешь раскрыть тему \"React component model\" глубже и добавить пример, trade-offs, риски и итог?"
+        "suggested_follow_up": "Можешь раскрыть тему \"Vue 3 component model\" глубже и добавить пример, компромиссы, риски и итог?"
       }
     },
     {
@@ -180,52 +169,40 @@
       "role": "Frontend Developer",
       "seniority": "Middle",
       "interview_type": "Technical Core",
-      "topic": "React component model",
-      "question": "Как бы вы диагностировали медленную страницу React с большим количеством лишних перерисовок?",
-      "answer_quality_label": "medium",
+      "topic": "Vue reactivity and refs",
+      "question": "Чем ref, reactive, computed и watch отличаются в повседневной работе?",
+      "answer_quality_label": "strong",
       "expected_score_range": [
-        5,
-        6
+        9,
+        10
       ],
-      "predicted_score_0_10": 6,
+      "predicted_score_0_10": 9,
       "score_in_range": true,
       "score_distance": 0,
-      "expected_followup_needed": true,
-      "predicted_followup_needed": true,
+      "expected_followup_needed": false,
+      "predicted_followup_needed": false,
       "follow_up_match": true,
-      "expected_gaps": [
-        "missing_tradeoff",
-        "missing_result"
-      ],
-      "predicted_gaps": [
-        "missing_tradeoff",
-        "missing_result"
-      ],
-      "gap_overlap": [
-        "missing_result",
-        "missing_tradeoff"
-      ],
+      "expected_gaps": [],
+      "predicted_gaps": [],
+      "gap_overlap": [],
       "gap_exact_match": true,
       "gap_recall": 1.0,
       "gap_precision": 1.0,
       "primary_pass": true,
       "evaluation": {
-        "question": "Как бы вы диагностировали медленную страницу React с большим количеством лишних перерисовок?",
-        "topic": "React component model",
-        "score_0_10": 6,
-        "relevance": "medium",
+        "question": "Чем ref, reactive, computed и watch отличаются в повседневной работе?",
+        "topic": "Vue reactivity and refs",
+        "score_0_10": 9,
+        "relevance": "high",
         "correctness": "heuristic",
-        "completeness": "medium",
+        "completeness": "high",
         "clarity": "high",
-        "terminology_precision": "high",
+        "terminology_precision": "medium",
         "confidence_markers": "text_only_stage",
-        "justification": "Ответ базово релевантен, но в нём не хватает части глубины, структуры или project-level контекста.",
-        "detected_gaps": [
-          "missing_tradeoff",
-          "missing_result"
-        ],
-        "follow_up_needed": true,
-        "suggested_follow_up": "Можешь раскрыть тему \"React component model\" глубже и добавить пример, trade-offs, риски и итог?"
+        "justification": "Ответ покрывает тему достаточно глубоко, с конкретикой и признаками инженерного мышления.",
+        "detected_gaps": [],
+        "follow_up_needed": false,
+        "suggested_follow_up": "Можешь раскрыть тему \"Vue reactivity and refs\" глубже и добавить пример, компромиссы, риски и итог?"
       }
     },
     {
@@ -233,16 +210,16 @@
       "role": "Frontend Developer",
       "seniority": "Junior",
       "interview_type": "Technical Core",
-      "topic": "TypeScript typing and narrowing",
-      "question": "Что такое type narrowing в TypeScript и зачем он нужен?",
+      "topic": "TypeScript in frontend apps",
+      "question": "Что такое narrowing в TypeScript и зачем он нужен во фронтенде?",
       "answer_quality_label": "weak",
       "expected_score_range": [
         1,
         2
       ],
-      "predicted_score_0_10": 1,
-      "score_in_range": true,
-      "score_distance": 0,
+      "predicted_score_0_10": 0,
+      "score_in_range": false,
+      "score_distance": 1,
       "expected_followup_needed": true,
       "predicted_followup_needed": true,
       "follow_up_match": true,
@@ -270,16 +247,16 @@
       "gap_exact_match": true,
       "gap_recall": 1.0,
       "gap_precision": 1.0,
-      "primary_pass": true,
+      "primary_pass": false,
       "evaluation": {
-        "question": "Что такое type narrowing в TypeScript и зачем он нужен?",
-        "topic": "TypeScript typing and narrowing",
-        "score_0_10": 1,
+        "question": "Что такое narrowing в TypeScript и зачем он нужен во фронтенде?",
+        "topic": "TypeScript in frontend apps",
+        "score_0_10": 0,
         "relevance": "low",
         "correctness": "heuristic",
         "completeness": "low",
         "clarity": "low",
-        "terminology_precision": "high",
+        "terminology_precision": "medium",
         "confidence_markers": "text_only_stage",
         "justification": "Ответ пока слишком поверхностный для уверенного перехода к следующей теме.",
         "detected_gaps": [
@@ -290,7 +267,7 @@
           "weak_structure"
         ],
         "follow_up_needed": true,
-        "suggested_follow_up": "Можешь раскрыть тему \"TypeScript typing and narrowing\" глубже и добавить пример, trade-offs, риски и итог?"
+        "suggested_follow_up": "Можешь раскрыть тему \"TypeScript in frontend apps\" глубже и добавить пример, компромиссы, риски и итог?"
       }
     },
     {
@@ -298,8 +275,8 @@
       "role": "Frontend Developer",
       "seniority": "Middle",
       "interview_type": "Technical Core",
-      "topic": "TypeScript typing and narrowing",
-      "question": "Когда вы используете generics в TypeScript и какие ошибки помогают избежать generic-типизации?",
+      "topic": "TypeScript in frontend apps",
+      "question": "Когда generics в TypeScript действительно помогают, а когда только усложняют код?",
       "answer_quality_label": "strong",
       "expected_score_range": [
         9,
@@ -319,8 +296,8 @@
       "gap_precision": 1.0,
       "primary_pass": true,
       "evaluation": {
-        "question": "Когда вы используете generics в TypeScript и какие ошибки помогают избежать generic-типизации?",
-        "topic": "TypeScript typing and narrowing",
+        "question": "Когда generics в TypeScript действительно помогают, а когда только усложняют код?",
+        "topic": "TypeScript in frontend apps",
         "score_0_10": 10,
         "relevance": "high",
         "correctness": "heuristic",
@@ -331,7 +308,7 @@
         "justification": "Ответ покрывает тему достаточно глубоко, с конкретикой и признаками инженерного мышления.",
         "detected_gaps": [],
         "follow_up_needed": false,
-        "suggested_follow_up": "Можешь раскрыть тему \"TypeScript typing and narrowing\" глубже и добавить пример, trade-offs, риски и итог?"
+        "suggested_follow_up": "Можешь раскрыть тему \"TypeScript in frontend apps\" глубже и добавить пример, компромиссы, риски и итог?"
       }
     },
     {
@@ -339,8 +316,90 @@
       "role": "Frontend Developer",
       "seniority": "Middle",
       "interview_type": "Technical Core",
+      "topic": "Nuxt 3 fundamentals",
+      "question": "В каком случае вы бы выбрали Nuxt 3, а в каком хватило бы обычного SPA на Vue?",
+      "answer_quality_label": "strong",
+      "expected_score_range": [
+        9,
+        10
+      ],
+      "predicted_score_0_10": 10,
+      "score_in_range": true,
+      "score_distance": 0,
+      "expected_followup_needed": false,
+      "predicted_followup_needed": false,
+      "follow_up_match": true,
+      "expected_gaps": [],
+      "predicted_gaps": [],
+      "gap_overlap": [],
+      "gap_exact_match": true,
+      "gap_recall": 1.0,
+      "gap_precision": 1.0,
+      "primary_pass": true,
+      "evaluation": {
+        "question": "В каком случае вы бы выбрали Nuxt 3, а в каком хватило бы обычного SPA на Vue?",
+        "topic": "Nuxt 3 fundamentals",
+        "score_0_10": 10,
+        "relevance": "high",
+        "correctness": "heuristic",
+        "completeness": "high",
+        "clarity": "high",
+        "terminology_precision": "high",
+        "confidence_markers": "text_only_stage",
+        "justification": "Ответ покрывает тему достаточно глубоко, с конкретикой и признаками инженерного мышления.",
+        "detected_gaps": [],
+        "follow_up_needed": false,
+        "suggested_follow_up": "Можешь раскрыть тему \"Nuxt 3 fundamentals\" глубже и добавить пример, компромиссы, риски и итог?"
+      }
+    },
+    {
+      "id": "frontend_006",
+      "role": "Frontend Developer",
+      "seniority": "Middle",
+      "interview_type": "Technical Core",
+      "topic": "Nuxt routing and data fetching",
+      "question": "Как бы вы решали, где использовать useFetch, useAsyncData и клиентский запрос после mount?",
+      "answer_quality_label": "strong",
+      "expected_score_range": [
+        9,
+        10
+      ],
+      "predicted_score_0_10": 10,
+      "score_in_range": true,
+      "score_distance": 0,
+      "expected_followup_needed": false,
+      "predicted_followup_needed": false,
+      "follow_up_match": true,
+      "expected_gaps": [],
+      "predicted_gaps": [],
+      "gap_overlap": [],
+      "gap_exact_match": true,
+      "gap_recall": 1.0,
+      "gap_precision": 1.0,
+      "primary_pass": true,
+      "evaluation": {
+        "question": "Как бы вы решали, где использовать useFetch, useAsyncData и клиентский запрос после mount?",
+        "topic": "Nuxt routing and data fetching",
+        "score_0_10": 10,
+        "relevance": "high",
+        "correctness": "heuristic",
+        "completeness": "high",
+        "clarity": "high",
+        "terminology_precision": "high",
+        "confidence_markers": "text_only_stage",
+        "justification": "Ответ покрывает тему достаточно глубоко, с конкретикой и признаками инженерного мышления.",
+        "detected_gaps": [],
+        "follow_up_needed": false,
+        "suggested_follow_up": "Можешь раскрыть тему \"Nuxt routing and data fetching\" глубже и добавить пример, компромиссы, риски и итог?"
+      }
+    },
+    {
+      "id": "frontend_007",
+      "role": "Frontend Developer",
+      "seniority": "Middle",
+      "interview_type": "Technical Core",
       "topic": "Browser rendering and event loop",
-      "question": "Как знания о browser rendering и event loop помогают вам улучшать производительность интерфейса?",
+      "question": "Как знания о rendering pipeline и event loop помогают вам разбирать медленный интерфейс?",
       "answer_quality_label": "medium",
       "expected_score_range": [
         5,
@@ -369,7 +428,7 @@
       "gap_precision": 1.0,
       "primary_pass": true,
       "evaluation": {
-        "question": "Как знания о browser rendering и event loop помогают вам улучшать производительность интерфейса?",
+        "question": "Как знания о rendering pipeline и event loop помогают вам разбирать медленный интерфейс?",
         "topic": "Browser rendering and event loop",
         "score_0_10": 5,
         "relevance": "medium",
@@ -384,16 +443,69 @@
           "missing_result"
         ],
         "follow_up_needed": true,
-        "suggested_follow_up": "Можешь раскрыть тему \"Browser rendering and event loop\" глубже и добавить пример, trade-offs, риски и итог?"
+        "suggested_follow_up": "Можешь раскрыть тему \"Browser rendering and event loop\" глубже и добавить пример, компромиссы, риски и итог?"
       }
     },
     {
-      "id": "frontend_006",
+      "id": "frontend_008",
+      "role": "Frontend Developer",
+      "seniority": "Middle",
+      "interview_type": "Technical Core",
+      "topic": "API integration and async flows",
+      "question": "Как вы организуете обработку ошибок и загрузки данных при интеграции с API?",
+      "answer_quality_label": "medium",
+      "expected_score_range": [
+        5,
+        6
+      ],
+      "predicted_score_0_10": 6,
+      "score_in_range": true,
+      "score_distance": 0,
+      "expected_followup_needed": true,
+      "predicted_followup_needed": true,
+      "follow_up_match": true,
+      "expected_gaps": [
+        "missing_tradeoff",
+        "missing_result"
+      ],
+      "predicted_gaps": [
+        "missing_tradeoff",
+        "missing_result"
+      ],
+      "gap_overlap": [
+        "missing_result",
+        "missing_tradeoff"
+      ],
+      "gap_exact_match": true,
+      "gap_recall": 1.0,
+      "gap_precision": 1.0,
+      "primary_pass": true,
+      "evaluation": {
+        "question": "Как вы организуете обработку ошибок и загрузки данных при интеграции с API?",
+        "topic": "API integration and async flows",
+        "score_0_10": 6,
+        "relevance": "medium",
+        "correctness": "heuristic",
+        "completeness": "medium",
+        "clarity": "high",
+        "terminology_precision": "high",
+        "confidence_markers": "text_only_stage",
+        "justification": "Ответ базово релевантен, но в нём не хватает части глубины, структуры или project-level контекста.",
+        "detected_gaps": [
+          "missing_tradeoff",
+          "missing_result"
+        ],
+        "follow_up_needed": true,
+        "suggested_follow_up": "Можешь раскрыть тему \"API integration and async flows\" глубже и добавить пример, компромиссы, риски и итог?"
+      }
+    },
+    {
+      "id": "frontend_009",
       "role": "Frontend Developer",
       "seniority": "Junior",
       "interview_type": "Technical Core",
       "topic": "Performance and optimization basics",
-      "question": "Какие базовые подходы к оптимизации производительности фронтенда вы знаете?",
+      "question": "Что вы проверяете в первую очередь, если после релиза фронтенд стал заметно медленнее?",
       "answer_quality_label": "weak",
       "expected_score_range": [
         0,
@@ -431,7 +543,7 @@
       "gap_precision": 1.0,
       "primary_pass": true,
       "evaluation": {
-        "question": "Какие базовые подходы к оптимизации производительности фронтенда вы знаете?",
+        "question": "Что вы проверяете в первую очередь, если после релиза фронтенд стал заметно медленнее?",
         "topic": "Performance and optimization basics",
         "score_0_10": 0,
         "relevance": "low",
@@ -449,237 +561,80 @@
           "weak_structure"
         ],
         "follow_up_needed": true,
-        "suggested_follow_up": "Можешь раскрыть тему \"Performance and optimization basics\" глубже и добавить пример, trade-offs, риски и итог?"
-      }
-    },
-    {
-      "id": "frontend_007",
-      "role": "Frontend Developer",
-      "seniority": "Middle",
-      "interview_type": "Technical Core",
-      "topic": "State management and data flow",
-      "question": "Как вы выбираете между local state, Context и внешним state manager?",
-      "answer_quality_label": "strong",
-      "expected_score_range": [
-        9,
-        10
-      ],
-      "predicted_score_0_10": 10,
-      "score_in_range": true,
-      "score_distance": 0,
-      "expected_followup_needed": false,
-      "predicted_followup_needed": false,
-      "follow_up_match": true,
-      "expected_gaps": [],
-      "predicted_gaps": [],
-      "gap_overlap": [],
-      "gap_exact_match": true,
-      "gap_recall": 1.0,
-      "gap_precision": 1.0,
-      "primary_pass": true,
-      "evaluation": {
-        "question": "Как вы выбираете между local state, Context и внешним state manager?",
-        "topic": "State management and data flow",
-        "score_0_10": 10,
-        "relevance": "high",
-        "correctness": "heuristic",
-        "completeness": "high",
-        "clarity": "high",
-        "terminology_precision": "high",
-        "confidence_markers": "text_only_stage",
-        "justification": "Ответ покрывает тему достаточно глубоко, с конкретикой и признаками инженерного мышления.",
-        "detected_gaps": [],
-        "follow_up_needed": false,
-        "suggested_follow_up": "Можешь раскрыть тему \"State management and data flow\" глубже и добавить пример, trade-offs, риски и итог?"
-      }
-    },
-    {
-      "id": "frontend_008",
-      "role": "Frontend Developer",
-      "seniority": "Middle",
-      "interview_type": "Technical Core",
-      "topic": "API integration and async flows",
-      "question": "Как вы организуете обработку ошибок и loading state при интеграции с API?",
-      "answer_quality_label": "medium",
-      "expected_score_range": [
-        5,
-        6
-      ],
-      "predicted_score_0_10": 6,
-      "score_in_range": true,
-      "score_distance": 0,
-      "expected_followup_needed": true,
-      "predicted_followup_needed": true,
-      "follow_up_match": true,
-      "expected_gaps": [
-        "missing_tradeoff",
-        "missing_result"
-      ],
-      "predicted_gaps": [
-        "missing_tradeoff",
-        "missing_result"
-      ],
-      "gap_overlap": [
-        "missing_result",
-        "missing_tradeoff"
-      ],
-      "gap_exact_match": true,
-      "gap_recall": 1.0,
-      "gap_precision": 1.0,
-      "primary_pass": true,
-      "evaluation": {
-        "question": "Как вы организуете обработку ошибок и loading state при интеграции с API?",
-        "topic": "API integration and async flows",
-        "score_0_10": 6,
-        "relevance": "medium",
-        "correctness": "heuristic",
-        "completeness": "medium",
-        "clarity": "high",
-        "terminology_precision": "high",
-        "confidence_markers": "text_only_stage",
-        "justification": "Ответ базово релевантен, но в нём не хватает части глубины, структуры или project-level контекста.",
-        "detected_gaps": [
-          "missing_tradeoff",
-          "missing_result"
-        ],
-        "follow_up_needed": true,
-        "suggested_follow_up": "Можешь раскрыть тему \"API integration and async flows\" глубже и добавить пример, trade-offs, риски и итог?"
-      }
-    },
-    {
-      "id": "frontend_009",
-      "role": "Frontend Developer",
-      "seniority": "Middle",
-      "interview_type": "Technical Core",
-      "topic": "Testing fundamentals",
-      "question": "Какую стратегию тестирования вы бы использовали для React-приложения среднего размера?",
-      "answer_quality_label": "strong",
-      "expected_score_range": [
-        9,
-        10
-      ],
-      "predicted_score_0_10": 10,
-      "score_in_range": true,
-      "score_distance": 0,
-      "expected_followup_needed": false,
-      "predicted_followup_needed": false,
-      "follow_up_match": true,
-      "expected_gaps": [],
-      "predicted_gaps": [],
-      "gap_overlap": [],
-      "gap_exact_match": true,
-      "gap_recall": 1.0,
-      "gap_precision": 1.0,
-      "primary_pass": true,
-      "evaluation": {
-        "question": "Какую стратегию тестирования вы бы использовали для React-приложения среднего размера?",
-        "topic": "Testing fundamentals",
-        "score_0_10": 10,
-        "relevance": "high",
-        "correctness": "heuristic",
-        "completeness": "high",
-        "clarity": "high",
-        "terminology_precision": "high",
-        "confidence_markers": "text_only_stage",
-        "justification": "Ответ покрывает тему достаточно глубоко, с конкретикой и признаками инженерного мышления.",
-        "detected_gaps": [],
-        "follow_up_needed": false,
-        "suggested_follow_up": "Можешь раскрыть тему \"Testing fundamentals\" глубже и добавить пример, trade-offs, риски и итог?"
+        "suggested_follow_up": "Можешь раскрыть тему \"Performance and optimization basics\" глубже и добавить пример, компромиссы, риски и итог?"
       }
     },
     {
       "id": "frontend_010",
       "role": "Frontend Developer",
-      "seniority": "Junior",
+      "seniority": "Middle",
       "interview_type": "Mixed",
       "topic": "Resume-based project deep dive",
-      "question": "Расскажите о проекте из вашего резюме и о самом сложном техническом решении в нем.",
-      "answer_quality_label": "weak",
+      "question": "Расскажи про фронтенд-проект из резюме и самое сложное техническое решение в нём.",
+      "answer_quality_label": "strong",
       "expected_score_range": [
-        0,
-        2
+        9,
+        10
       ],
-      "predicted_score_0_10": 1,
+      "predicted_score_0_10": 9,
       "score_in_range": true,
       "score_distance": 0,
-      "expected_followup_needed": true,
-      "predicted_followup_needed": true,
+      "expected_followup_needed": false,
+      "predicted_followup_needed": false,
       "follow_up_match": true,
-      "expected_gaps": [
-        "answer_too_short",
-        "missing_example",
-        "missing_tradeoff",
-        "missing_result",
-        "weak_structure"
-      ],
-      "predicted_gaps": [
-        "answer_too_short",
-        "missing_example",
-        "missing_tradeoff",
-        "missing_result",
-        "weak_structure"
-      ],
-      "gap_overlap": [
-        "answer_too_short",
-        "missing_example",
-        "missing_result",
-        "missing_tradeoff",
-        "weak_structure"
-      ],
+      "expected_gaps": [],
+      "predicted_gaps": [],
+      "gap_overlap": [],
       "gap_exact_match": true,
       "gap_recall": 1.0,
       "gap_precision": 1.0,
       "primary_pass": true,
       "evaluation": {
-        "question": "Расскажите о проекте из вашего резюме и о самом сложном техническом решении в нем.",
+        "question": "Расскажи про фронтенд-проект из резюме и самое сложное техническое решение в нём.",
         "topic": "Resume-based project deep dive",
-        "score_0_10": 1,
-        "relevance": "low",
+        "score_0_10": 9,
+        "relevance": "high",
         "correctness": "heuristic",
-        "completeness": "low",
-        "clarity": "low",
-        "terminology_precision": "high",
+        "completeness": "high",
+        "clarity": "high",
+        "terminology_precision": "medium",
         "confidence_markers": "text_only_stage",
-        "justification": "Ответ пока слишком поверхностный для уверенного перехода к следующей теме.",
-        "detected_gaps": [
-          "answer_too_short",
-          "missing_example",
-          "missing_tradeoff",
-          "missing_result",
-          "weak_structure"
-        ],
-        "follow_up_needed": true,
-        "suggested_follow_up": "Можешь раскрыть тему \"Resume-based project deep dive\" глубже и добавить пример, trade-offs, риски и итог?"
+        "justification": "Ответ покрывает тему достаточно глубоко, с конкретикой и признаками инженерного мышления.",
+        "detected_gaps": [],
+        "follow_up_needed": false,
+        "suggested_follow_up": "Можешь раскрыть тему \"Resume-based project deep dive\" глубже и добавить пример, компромиссы, риски и итог?"
       }
     },
     {
       "id": "frontend_011",
       "role": "Frontend Developer",
       "seniority": "Middle",
-      "interview_type": "Behavioural",
-      "topic": "incident handling / debugging stories",
-      "question": "Расскажите про инцидент на проде, который вам пришлось разбирать под давлением времени.",
-      "answer_quality_label": "strong",
+      "interview_type": "Mixed",
+      "topic": "Nuxt 3 fundamentals",
+      "question": "Какие компромиссы вы учитываете при выборе между CSR, SSR и SSG для страницы?",
+      "answer_quality_label": "medium",
       "expected_score_range": [
-        9,
-        10
+        8,
+        9
       ],
       "predicted_score_0_10": 10,
-      "score_in_range": true,
-      "score_distance": 0,
-      "expected_followup_needed": false,
+      "score_in_range": false,
+      "score_distance": 1,
+      "expected_followup_needed": true,
       "predicted_followup_needed": false,
-      "follow_up_match": true,
-      "expected_gaps": [],
+      "follow_up_match": false,
+      "expected_gaps": [
+        "missing_result"
+      ],
       "predicted_gaps": [],
       "gap_overlap": [],
-      "gap_exact_match": true,
-      "gap_recall": 1.0,
-      "gap_precision": 1.0,
-      "primary_pass": true,
+      "gap_exact_match": false,
+      "gap_recall": 0.0,
+      "gap_precision": 0.0,
+      "primary_pass": false,
       "evaluation": {
-        "question": "Расскажите про инцидент на проде, который вам пришлось разбирать под давлением времени.",
-        "topic": "incident handling / debugging stories",
+        "question": "Какие компромиссы вы учитываете при выборе между CSR, SSR и SSG для страницы?",
+        "topic": "Nuxt 3 fundamentals",
         "score_0_10": 10,
         "relevance": "high",
         "correctness": "heuristic",
@@ -690,7 +645,7 @@
         "justification": "Ответ покрывает тему достаточно глубоко, с конкретикой и признаками инженерного мышления.",
         "detected_gaps": [],
         "follow_up_needed": false,
-        "suggested_follow_up": "Можешь раскрыть тему \"incident handling / debugging stories\" глубже и добавить пример, trade-offs, риски и итог?"
+        "suggested_follow_up": "Можешь раскрыть тему \"Nuxt 3 fundamentals\" глубже и добавить пример, компромиссы, риски и итог?"
       }
     },
     {
@@ -698,14 +653,55 @@
       "role": "Frontend Developer",
       "seniority": "Middle",
       "interview_type": "Behavioural",
+      "topic": "incident handling / debugging stories",
+      "question": "Расскажи про продовый инцидент, который тебе пришлось разбирать под давлением времени.",
+      "answer_quality_label": "strong",
+      "expected_score_range": [
+        9,
+        10
+      ],
+      "predicted_score_0_10": 9,
+      "score_in_range": true,
+      "score_distance": 0,
+      "expected_followup_needed": false,
+      "predicted_followup_needed": false,
+      "follow_up_match": true,
+      "expected_gaps": [],
+      "predicted_gaps": [],
+      "gap_overlap": [],
+      "gap_exact_match": true,
+      "gap_recall": 1.0,
+      "gap_precision": 1.0,
+      "primary_pass": true,
+      "evaluation": {
+        "question": "Расскажи про продовый инцидент, который тебе пришлось разбирать под давлением времени.",
+        "topic": "incident handling / debugging stories",
+        "score_0_10": 9,
+        "relevance": "high",
+        "correctness": "heuristic",
+        "completeness": "high",
+        "clarity": "high",
+        "terminology_precision": "medium",
+        "confidence_markers": "text_only_stage",
+        "justification": "Ответ покрывает тему достаточно глубоко, с конкретикой и признаками инженерного мышления.",
+        "detected_gaps": [],
+        "follow_up_needed": false,
+        "suggested_follow_up": "Можешь раскрыть тему \"incident handling / debugging stories\" глубже и добавить пример, компромиссы, риски и итог?"
+      }
+    },
+    {
+      "id": "frontend_013",
+      "role": "Frontend Developer",
+      "seniority": "Middle",
+      "interview_type": "Behavioural",
       "topic": "conflict resolution",
-      "question": "Опишите конфликт с дизайнером или backend-разработчиком и как вы его разрешили.",
+      "question": "Опиши конфликт с дизайнером или backend-разработчиком и как ты его разрешила.",
       "answer_quality_label": "medium",
       "expected_score_range": [
         5,
         6
       ],
-      "predicted_score_0_10": 6,
+      "predicted_score_0_10": 5,
       "score_in_range": true,
       "score_distance": 0,
       "expected_followup_needed": true,
@@ -728,14 +724,14 @@
       "gap_precision": 1.0,
       "primary_pass": true,
       "evaluation": {
-        "question": "Опишите конфликт с дизайнером или backend-разработчиком и как вы его разрешили.",
+        "question": "Опиши конфликт с дизайнером или backend-разработчиком и как ты его разрешила.",
         "topic": "conflict resolution",
-        "score_0_10": 6,
+        "score_0_10": 5,
         "relevance": "medium",
         "correctness": "heuristic",
         "completeness": "medium",
         "clarity": "high",
-        "terminology_precision": "high",
+        "terminology_precision": "medium",
         "confidence_markers": "text_only_stage",
         "justification": "Ответ базово релевантен, но в нём не хватает части глубины, структуры или project-level контекста.",
         "detected_gaps": [
@@ -743,16 +739,16 @@
           "missing_result"
         ],
         "follow_up_needed": true,
-        "suggested_follow_up": "Можешь раскрыть тему \"conflict resolution\" глубже и добавить пример, trade-offs, риски и итог?"
+        "suggested_follow_up": "Можешь раскрыть тему \"conflict resolution\" глубже и добавить пример, компромиссы, риски и итог?"
       }
     },
     {
-      "id": "frontend_013",
+      "id": "frontend_014",
       "role": "Frontend Developer",
       "seniority": "Junior",
       "interview_type": "Behavioural",
       "topic": "ownership",
-      "question": "Какой пример ownership вы можете привести из своей работы?",
+      "question": "Какой пример ownership ты можешь привести из своей работы?",
       "answer_quality_label": "weak",
       "expected_score_range": [
         0,
@@ -790,7 +786,7 @@
       "gap_precision": 1.0,
       "primary_pass": true,
       "evaluation": {
-        "question": "Какой пример ownership вы можете привести из своей работы?",
+        "question": "Какой пример ownership ты можешь привести из своей работы?",
         "topic": "ownership",
         "score_0_10": 0,
         "relevance": "low",
@@ -808,476 +804,20 @@
           "weak_structure"
         ],
         "follow_up_needed": true,
-        "suggested_follow_up": "Можешь раскрыть тему \"ownership\" глубже и добавить пример, trade-offs, риски и итог?"
-      }
-    },
-    {
-      "id": "frontend_014",
-      "role": "Frontend Developer",
-      "seniority": "Middle",
-      "interview_type": "Mixed",
-      "topic": "Resume-based project deep dive",
-      "question": "Опишите проект из резюме, где вам пришлось принять нетривиальное техническое решение на фронтенде.",
-      "answer_quality_label": "strong",
-      "expected_score_range": [
-        9,
-        10
-      ],
-      "predicted_score_0_10": 10,
-      "score_in_range": true,
-      "score_distance": 0,
-      "expected_followup_needed": false,
-      "predicted_followup_needed": false,
-      "follow_up_match": true,
-      "expected_gaps": [],
-      "predicted_gaps": [],
-      "gap_overlap": [],
-      "gap_exact_match": true,
-      "gap_recall": 1.0,
-      "gap_precision": 1.0,
-      "primary_pass": true,
-      "evaluation": {
-        "question": "Опишите проект из резюме, где вам пришлось принять нетривиальное техническое решение на фронтенде.",
-        "topic": "Resume-based project deep dive",
-        "score_0_10": 10,
-        "relevance": "high",
-        "correctness": "heuristic",
-        "completeness": "high",
-        "clarity": "high",
-        "terminology_precision": "high",
-        "confidence_markers": "text_only_stage",
-        "justification": "Ответ покрывает тему достаточно глубоко, с конкретикой и признаками инженерного мышления.",
-        "detected_gaps": [],
-        "follow_up_needed": false,
-        "suggested_follow_up": "Можешь раскрыть тему \"Resume-based project deep dive\" глубже и добавить пример, trade-offs, риски и итог?"
+        "suggested_follow_up": "Можешь раскрыть тему \"ownership\" глубже и добавить пример, компромиссы, риски и итог?"
       }
     },
     {
       "id": "frontend_015",
       "role": "Frontend Developer",
-      "seniority": "Middle",
-      "interview_type": "Mixed",
-      "topic": "API integration and async flows",
-      "question": "Какие trade-off вы учитываете при выборе между CSR, SSR и SSG для клиентского приложения?",
-      "answer_quality_label": "medium",
-      "expected_score_range": [
-        6,
-        7
-      ],
-      "predicted_score_0_10": 6,
-      "score_in_range": true,
-      "score_distance": 0,
-      "expected_followup_needed": true,
-      "predicted_followup_needed": true,
-      "follow_up_match": true,
-      "expected_gaps": [
-        "missing_tradeoff",
-        "missing_result"
-      ],
-      "predicted_gaps": [
-        "missing_result"
-      ],
-      "gap_overlap": [
-        "missing_result"
-      ],
-      "gap_exact_match": false,
-      "gap_recall": 0.5,
-      "gap_precision": 1.0,
-      "primary_pass": true,
-      "evaluation": {
-        "question": "Какие trade-off вы учитываете при выборе между CSR, SSR и SSG для клиентского приложения?",
-        "topic": "API integration and async flows",
-        "score_0_10": 6,
-        "relevance": "medium",
-        "correctness": "heuristic",
-        "completeness": "medium",
-        "clarity": "high",
-        "terminology_precision": "medium",
-        "confidence_markers": "text_only_stage",
-        "justification": "Ответ базово релевантен, но в нём не хватает части глубины, структуры или project-level контекста.",
-        "detected_gaps": [
-          "missing_result"
-        ],
-        "follow_up_needed": true,
-        "suggested_follow_up": "Можешь раскрыть тему \"API integration and async flows\" глубже и добавить пример, trade-offs, риски и итог?"
-      }
-    },
-    {
-      "id": "frontend_016",
-      "role": "Frontend Developer",
       "seniority": "Junior",
       "interview_type": "Behavioural",
       "topic": "prioritization",
-      "question": "Как вы приоритизируете задачи, когда у вас несколько срочных запросов одновременно?",
-      "answer_quality_label": "medium",
-      "expected_score_range": [
-        4,
-        6
-      ],
-      "predicted_score_0_10": 7,
-      "score_in_range": false,
-      "score_distance": 1,
-      "expected_followup_needed": true,
-      "predicted_followup_needed": true,
-      "follow_up_match": true,
-      "expected_gaps": [
-        "missing_tradeoff",
-        "missing_result"
-      ],
-      "predicted_gaps": [
-        "missing_result"
-      ],
-      "gap_overlap": [
-        "missing_result"
-      ],
-      "gap_exact_match": false,
-      "gap_recall": 0.5,
-      "gap_precision": 1.0,
-      "primary_pass": false,
-      "evaluation": {
-        "question": "Как вы приоритизируете задачи, когда у вас несколько срочных запросов одновременно?",
-        "topic": "prioritization",
-        "score_0_10": 7,
-        "relevance": "high",
-        "correctness": "heuristic",
-        "completeness": "high",
-        "clarity": "high",
-        "terminology_precision": "high",
-        "confidence_markers": "text_only_stage",
-        "justification": "Ответ базово релевантен, но в нём не хватает части глубины, структуры или project-level контекста.",
-        "detected_gaps": [
-          "missing_result"
-        ],
-        "follow_up_needed": true,
-        "suggested_follow_up": "Можешь раскрыть тему \"prioritization\" глубже и добавить пример, trade-offs, риски и итог?"
-      }
-    },
-    {
-      "id": "java_001",
-      "role": "Java Backend Developer",
-      "seniority": "Middle",
-      "interview_type": "Technical Core",
-      "topic": "Transactions and data consistency",
-      "question": "Как бы вы объяснили транзакции и уровни изоляции на примере реального API?",
+      "question": "Как ты приоритизируешь задачи, когда несколько срочных запросов приходят одновременно?",
       "answer_quality_label": "strong",
       "expected_score_range": [
-        9,
-        10
-      ],
-      "predicted_score_0_10": 10,
-      "score_in_range": true,
-      "score_distance": 0,
-      "expected_followup_needed": false,
-      "predicted_followup_needed": false,
-      "follow_up_match": true,
-      "expected_gaps": [],
-      "predicted_gaps": [],
-      "gap_overlap": [],
-      "gap_exact_match": true,
-      "gap_recall": 1.0,
-      "gap_precision": 1.0,
-      "primary_pass": true,
-      "evaluation": {
-        "question": "Как бы вы объяснили транзакции и уровни изоляции на примере реального API?",
-        "topic": "Transactions and data consistency",
-        "score_0_10": 10,
-        "relevance": "high",
-        "correctness": "heuristic",
-        "completeness": "high",
-        "clarity": "high",
-        "terminology_precision": "high",
-        "confidence_markers": "text_only_stage",
-        "justification": "Ответ покрывает тему достаточно глубоко, с конкретикой и признаками инженерного мышления.",
-        "detected_gaps": [],
-        "follow_up_needed": false,
-        "suggested_follow_up": "Можешь раскрыть тему \"Transactions and data consistency\" глубже и добавить пример, trade-offs, риски и итог?"
-      }
-    },
-    {
-      "id": "java_002",
-      "role": "Java Backend Developer",
-      "seniority": "Middle",
-      "interview_type": "Technical Core",
-      "topic": "Core Java and collections",
-      "question": "В чем разница между HashMap и ConcurrentHashMap и когда вы выберете каждую структуру?",
-      "answer_quality_label": "medium",
-      "expected_score_range": [
-        5,
-        6
-      ],
-      "predicted_score_0_10": 7,
-      "score_in_range": false,
-      "score_distance": 1,
-      "expected_followup_needed": true,
-      "predicted_followup_needed": true,
-      "follow_up_match": true,
-      "expected_gaps": [
-        "missing_tradeoff",
-        "missing_result"
-      ],
-      "predicted_gaps": [
-        "missing_result"
-      ],
-      "gap_overlap": [
-        "missing_result"
-      ],
-      "gap_exact_match": false,
-      "gap_recall": 0.5,
-      "gap_precision": 1.0,
-      "primary_pass": false,
-      "evaluation": {
-        "question": "В чем разница между HashMap и ConcurrentHashMap и когда вы выберете каждую структуру?",
-        "topic": "Core Java and collections",
-        "score_0_10": 7,
-        "relevance": "high",
-        "correctness": "heuristic",
-        "completeness": "high",
-        "clarity": "high",
-        "terminology_precision": "high",
-        "confidence_markers": "text_only_stage",
-        "justification": "Ответ базово релевантен, но в нём не хватает части глубины, структуры или project-level контекста.",
-        "detected_gaps": [
-          "missing_result"
-        ],
-        "follow_up_needed": true,
-        "suggested_follow_up": "Можешь раскрыть тему \"Core Java and collections\" глубже и добавить пример, trade-offs, риски и итог?"
-      }
-    },
-    {
-      "id": "java_003",
-      "role": "Java Backend Developer",
-      "seniority": "Junior",
-      "interview_type": "Technical Core",
-      "topic": "Spring Boot basics",
-      "question": "Что делает Spring Boot удобным для разработки сервисов?",
-      "answer_quality_label": "weak",
-      "expected_score_range": [
-        0,
-        2
-      ],
-      "predicted_score_0_10": 1,
-      "score_in_range": true,
-      "score_distance": 0,
-      "expected_followup_needed": true,
-      "predicted_followup_needed": true,
-      "follow_up_match": true,
-      "expected_gaps": [
-        "answer_too_short",
-        "missing_example",
-        "missing_tradeoff",
-        "missing_result",
-        "weak_structure"
-      ],
-      "predicted_gaps": [
-        "answer_too_short",
-        "missing_example",
-        "missing_tradeoff",
-        "missing_result",
-        "weak_structure"
-      ],
-      "gap_overlap": [
-        "answer_too_short",
-        "missing_example",
-        "missing_result",
-        "missing_tradeoff",
-        "weak_structure"
-      ],
-      "gap_exact_match": true,
-      "gap_recall": 1.0,
-      "gap_precision": 1.0,
-      "primary_pass": true,
-      "evaluation": {
-        "question": "Что делает Spring Boot удобным для разработки сервисов?",
-        "topic": "Spring Boot basics",
-        "score_0_10": 1,
-        "relevance": "low",
-        "correctness": "heuristic",
-        "completeness": "low",
-        "clarity": "low",
-        "terminology_precision": "high",
-        "confidence_markers": "text_only_stage",
-        "justification": "Ответ пока слишком поверхностный для уверенного перехода к следующей теме.",
-        "detected_gaps": [
-          "answer_too_short",
-          "missing_example",
-          "missing_tradeoff",
-          "missing_result",
-          "weak_structure"
-        ],
-        "follow_up_needed": true,
-        "suggested_follow_up": "Можешь раскрыть тему \"Spring Boot basics\" глубже и добавить пример, trade-offs, риски и итог?"
-      }
-    },
-    {
-      "id": "java_004",
-      "role": "Java Backend Developer",
-      "seniority": "Middle",
-      "interview_type": "Technical Core",
-      "topic": "REST API design",
-      "question": "Как бы вы спроектировали устойчивый REST endpoint, который зависит от медленного downstream-сервиса?",
-      "answer_quality_label": "strong",
-      "expected_score_range": [
-        9,
-        10
-      ],
-      "predicted_score_0_10": 10,
-      "score_in_range": true,
-      "score_distance": 0,
-      "expected_followup_needed": false,
-      "predicted_followup_needed": false,
-      "follow_up_match": true,
-      "expected_gaps": [],
-      "predicted_gaps": [],
-      "gap_overlap": [],
-      "gap_exact_match": true,
-      "gap_recall": 1.0,
-      "gap_precision": 1.0,
-      "primary_pass": true,
-      "evaluation": {
-        "question": "Как бы вы спроектировали устойчивый REST endpoint, который зависит от медленного downstream-сервиса?",
-        "topic": "REST API design",
-        "score_0_10": 10,
-        "relevance": "high",
-        "correctness": "heuristic",
-        "completeness": "high",
-        "clarity": "high",
-        "terminology_precision": "high",
-        "confidence_markers": "text_only_stage",
-        "justification": "Ответ покрывает тему достаточно глубоко, с конкретикой и признаками инженерного мышления.",
-        "detected_gaps": [],
-        "follow_up_needed": false,
-        "suggested_follow_up": "Можешь раскрыть тему \"REST API design\" глубже и добавить пример, trade-offs, риски и итог?"
-      }
-    },
-    {
-      "id": "java_005",
-      "role": "Java Backend Developer",
-      "seniority": "Middle",
-      "interview_type": "Technical Core",
-      "topic": "SQL and indexing basics",
-      "question": "Как вы подходите к оптимизации SQL-запросов и выбору индексов?",
-      "answer_quality_label": "medium",
-      "expected_score_range": [
-        5,
-        6
-      ],
-      "predicted_score_0_10": 4,
-      "score_in_range": false,
-      "score_distance": 1,
-      "expected_followup_needed": true,
-      "predicted_followup_needed": true,
-      "follow_up_match": true,
-      "expected_gaps": [
-        "missing_tradeoff",
-        "missing_result"
-      ],
-      "predicted_gaps": [
-        "missing_tradeoff",
-        "missing_result"
-      ],
-      "gap_overlap": [
-        "missing_result",
-        "missing_tradeoff"
-      ],
-      "gap_exact_match": true,
-      "gap_recall": 1.0,
-      "gap_precision": 1.0,
-      "primary_pass": false,
-      "evaluation": {
-        "question": "Как вы подходите к оптимизации SQL-запросов и выбору индексов?",
-        "topic": "SQL and indexing basics",
-        "score_0_10": 4,
-        "relevance": "medium",
-        "correctness": "heuristic",
-        "completeness": "medium",
-        "clarity": "high",
-        "terminology_precision": "medium",
-        "confidence_markers": "text_only_stage",
-        "justification": "Ответ пока слишком поверхностный для уверенного перехода к следующей теме.",
-        "detected_gaps": [
-          "missing_tradeoff",
-          "missing_result"
-        ],
-        "follow_up_needed": true,
-        "suggested_follow_up": "Можешь раскрыть тему \"SQL and indexing basics\" глубже и добавить пример, trade-offs, риски и итог?"
-      }
-    },
-    {
-      "id": "java_006",
-      "role": "Java Backend Developer",
-      "seniority": "Junior",
-      "interview_type": "Technical Core",
-      "topic": "Caching basics",
-      "question": "Когда кэш может помочь сервису и какие риски у него есть?",
-      "answer_quality_label": "weak",
-      "expected_score_range": [
-        0,
-        2
-      ],
-      "predicted_score_0_10": 1,
-      "score_in_range": true,
-      "score_distance": 0,
-      "expected_followup_needed": true,
-      "predicted_followup_needed": true,
-      "follow_up_match": true,
-      "expected_gaps": [
-        "answer_too_short",
-        "missing_example",
-        "missing_tradeoff",
-        "missing_result",
-        "weak_structure"
-      ],
-      "predicted_gaps": [
-        "answer_too_short",
-        "missing_example",
-        "missing_tradeoff",
-        "missing_result",
-        "weak_structure"
-      ],
-      "gap_overlap": [
-        "answer_too_short",
-        "missing_example",
-        "missing_result",
-        "missing_tradeoff",
-        "weak_structure"
-      ],
-      "gap_exact_match": true,
-      "gap_recall": 1.0,
-      "gap_precision": 1.0,
-      "primary_pass": true,
-      "evaluation": {
-        "question": "Когда кэш может помочь сервису и какие риски у него есть?",
-        "topic": "Caching basics",
-        "score_0_10": 1,
-        "relevance": "low",
-        "correctness": "heuristic",
-        "completeness": "low",
-        "clarity": "low",
-        "terminology_precision": "high",
-        "confidence_markers": "text_only_stage",
-        "justification": "Ответ пока слишком поверхностный для уверенного перехода к следующей теме.",
-        "detected_gaps": [
-          "answer_too_short",
-          "missing_example",
-          "missing_tradeoff",
-          "missing_result",
-          "weak_structure"
-        ],
-        "follow_up_needed": true,
-        "suggested_follow_up": "Можешь раскрыть тему \"Caching basics\" глубже и добавить пример, trade-offs, риски и итог?"
-      }
-    },
-    {
-      "id": "java_007",
-      "role": "Java Backend Developer",
-      "seniority": "Middle",
-      "interview_type": "Technical Core",
-      "topic": "Messaging and async communication basics",
-      "question": "Когда вы выбираете асинхронное взаимодействие через брокер сообщений вместо синхронного REST?",
-      "answer_quality_label": "strong",
-      "expected_score_range": [
-        9,
-        10
+        8,
+        9
       ],
       "predicted_score_0_10": 9,
       "score_in_range": true,
@@ -1293,8 +833,8 @@
       "gap_precision": 1.0,
       "primary_pass": true,
       "evaluation": {
-        "question": "Когда вы выбираете асинхронное взаимодействие через брокер сообщений вместо синхронного REST?",
-        "topic": "Messaging and async communication basics",
+        "question": "Как ты приоритизируешь задачи, когда несколько срочных запросов приходят одновременно?",
+        "topic": "prioritization",
         "score_0_10": 9,
         "relevance": "high",
         "correctness": "heuristic",
@@ -1305,419 +845,19 @@
         "justification": "Ответ покрывает тему достаточно глубоко, с конкретикой и признаками инженерного мышления.",
         "detected_gaps": [],
         "follow_up_needed": false,
-        "suggested_follow_up": "Можешь раскрыть тему \"Messaging and async communication basics\" глубже и добавить пример, trade-offs, риски и итог?"
+        "suggested_follow_up": "Можешь раскрыть тему \"prioritization\" глубже и добавить пример, компромиссы, риски и итог?"
       }
     },
     {
-      "id": "java_008",
-      "role": "Java Backend Developer",
-      "seniority": "Middle",
-      "interview_type": "Mixed",
-      "topic": "Resume-based project deep dive",
-      "question": "Расскажите о backend-проекте из резюме и о самом важном техническом решении в нем.",
-      "answer_quality_label": "strong",
-      "expected_score_range": [
-        9,
-        10
-      ],
-      "predicted_score_0_10": 10,
-      "score_in_range": true,
-      "score_distance": 0,
-      "expected_followup_needed": false,
-      "predicted_followup_needed": false,
-      "follow_up_match": true,
-      "expected_gaps": [],
-      "predicted_gaps": [],
-      "gap_overlap": [],
-      "gap_exact_match": true,
-      "gap_recall": 1.0,
-      "gap_precision": 1.0,
-      "primary_pass": true,
-      "evaluation": {
-        "question": "Расскажите о backend-проекте из резюме и о самом важном техническом решении в нем.",
-        "topic": "Resume-based project deep dive",
-        "score_0_10": 10,
-        "relevance": "high",
-        "correctness": "heuristic",
-        "completeness": "high",
-        "clarity": "high",
-        "terminology_precision": "high",
-        "confidence_markers": "text_only_stage",
-        "justification": "Ответ покрывает тему достаточно глубоко, с конкретикой и признаками инженерного мышления.",
-        "detected_gaps": [],
-        "follow_up_needed": false,
-        "suggested_follow_up": "Можешь раскрыть тему \"Resume-based project deep dive\" глубже и добавить пример, trade-offs, риски и итог?"
-      }
-    },
-    {
-      "id": "java_009",
-      "role": "Java Backend Developer",
-      "seniority": "Middle",
-      "interview_type": "Behavioural",
-      "topic": "incident handling / debugging stories",
-      "question": "Расскажите про инцидент на backend, который вам пришлось разбирать на проде.",
-      "answer_quality_label": "strong",
-      "expected_score_range": [
-        9,
-        10
-      ],
-      "predicted_score_0_10": 10,
-      "score_in_range": true,
-      "score_distance": 0,
-      "expected_followup_needed": false,
-      "predicted_followup_needed": false,
-      "follow_up_match": true,
-      "expected_gaps": [],
-      "predicted_gaps": [],
-      "gap_overlap": [],
-      "gap_exact_match": true,
-      "gap_recall": 1.0,
-      "gap_precision": 1.0,
-      "primary_pass": true,
-      "evaluation": {
-        "question": "Расскажите про инцидент на backend, который вам пришлось разбирать на проде.",
-        "topic": "incident handling / debugging stories",
-        "score_0_10": 10,
-        "relevance": "high",
-        "correctness": "heuristic",
-        "completeness": "high",
-        "clarity": "high",
-        "terminology_precision": "high",
-        "confidence_markers": "text_only_stage",
-        "justification": "Ответ покрывает тему достаточно глубоко, с конкретикой и признаками инженерного мышления.",
-        "detected_gaps": [],
-        "follow_up_needed": false,
-        "suggested_follow_up": "Можешь раскрыть тему \"incident handling / debugging stories\" глубже и добавить пример, trade-offs, риски и итог?"
-      }
-    },
-    {
-      "id": "java_010",
-      "role": "Java Backend Developer",
-      "seniority": "Middle",
-      "interview_type": "Behavioural",
-      "topic": "communication of trade-offs",
-      "question": "Опишите случай, когда вам пришлось объяснять trade-off бизнесу или команде.",
-      "answer_quality_label": "medium",
-      "expected_score_range": [
-        5,
-        6
-      ],
-      "predicted_score_0_10": 6,
-      "score_in_range": true,
-      "score_distance": 0,
-      "expected_followup_needed": true,
-      "predicted_followup_needed": true,
-      "follow_up_match": true,
-      "expected_gaps": [
-        "missing_tradeoff",
-        "missing_result"
-      ],
-      "predicted_gaps": [
-        "missing_tradeoff",
-        "missing_result"
-      ],
-      "gap_overlap": [
-        "missing_result",
-        "missing_tradeoff"
-      ],
-      "gap_exact_match": true,
-      "gap_recall": 1.0,
-      "gap_precision": 1.0,
-      "primary_pass": true,
-      "evaluation": {
-        "question": "Опишите случай, когда вам пришлось объяснять trade-off бизнесу или команде.",
-        "topic": "communication of trade-offs",
-        "score_0_10": 6,
-        "relevance": "medium",
-        "correctness": "heuristic",
-        "completeness": "medium",
-        "clarity": "high",
-        "terminology_precision": "high",
-        "confidence_markers": "text_only_stage",
-        "justification": "Ответ базово релевантен, но в нём не хватает части глубины, структуры или project-level контекста.",
-        "detected_gaps": [
-          "missing_tradeoff",
-          "missing_result"
-        ],
-        "follow_up_needed": true,
-        "suggested_follow_up": "Можешь раскрыть тему \"communication of trade-offs\" глубже и добавить пример, trade-offs, риски и итог?"
-      }
-    },
-    {
-      "id": "java_011",
-      "role": "Java Backend Developer",
-      "seniority": "Junior",
-      "interview_type": "Behavioural",
-      "topic": "teamwork",
-      "question": "Как вы обычно работаете в команде backend-разработки?",
-      "answer_quality_label": "weak",
-      "expected_score_range": [
-        0,
-        2
-      ],
-      "predicted_score_0_10": 0,
-      "score_in_range": true,
-      "score_distance": 0,
-      "expected_followup_needed": true,
-      "predicted_followup_needed": true,
-      "follow_up_match": true,
-      "expected_gaps": [
-        "answer_too_short",
-        "missing_example",
-        "missing_tradeoff",
-        "missing_result",
-        "weak_structure"
-      ],
-      "predicted_gaps": [
-        "answer_too_short",
-        "missing_example",
-        "missing_tradeoff",
-        "missing_result",
-        "weak_structure"
-      ],
-      "gap_overlap": [
-        "answer_too_short",
-        "missing_example",
-        "missing_result",
-        "missing_tradeoff",
-        "weak_structure"
-      ],
-      "gap_exact_match": true,
-      "gap_recall": 1.0,
-      "gap_precision": 1.0,
-      "primary_pass": true,
-      "evaluation": {
-        "question": "Как вы обычно работаете в команде backend-разработки?",
-        "topic": "teamwork",
-        "score_0_10": 0,
-        "relevance": "low",
-        "correctness": "heuristic",
-        "completeness": "low",
-        "clarity": "low",
-        "terminology_precision": "medium",
-        "confidence_markers": "text_only_stage",
-        "justification": "Ответ пока слишком поверхностный для уверенного перехода к следующей теме.",
-        "detected_gaps": [
-          "answer_too_short",
-          "missing_example",
-          "missing_tradeoff",
-          "missing_result",
-          "weak_structure"
-        ],
-        "follow_up_needed": true,
-        "suggested_follow_up": "Можешь раскрыть тему \"teamwork\" глубже и добавить пример, trade-offs, риски и итог?"
-      }
-    },
-    {
-      "id": "java_012",
-      "role": "Java Backend Developer",
-      "seniority": "Middle",
-      "interview_type": "Mixed",
-      "topic": "Spring Boot basics",
-      "question": "Как в типичном backend-сервисе сочетаются Spring Boot, SQL и кэширование?",
-      "answer_quality_label": "strong",
-      "expected_score_range": [
-        9,
-        10
-      ],
-      "predicted_score_0_10": 10,
-      "score_in_range": true,
-      "score_distance": 0,
-      "expected_followup_needed": false,
-      "predicted_followup_needed": false,
-      "follow_up_match": true,
-      "expected_gaps": [],
-      "predicted_gaps": [],
-      "gap_overlap": [],
-      "gap_exact_match": true,
-      "gap_recall": 1.0,
-      "gap_precision": 1.0,
-      "primary_pass": true,
-      "evaluation": {
-        "question": "Как в типичном backend-сервисе сочетаются Spring Boot, SQL и кэширование?",
-        "topic": "Spring Boot basics",
-        "score_0_10": 10,
-        "relevance": "high",
-        "correctness": "heuristic",
-        "completeness": "high",
-        "clarity": "high",
-        "terminology_precision": "high",
-        "confidence_markers": "text_only_stage",
-        "justification": "Ответ покрывает тему достаточно глубоко, с конкретикой и признаками инженерного мышления.",
-        "detected_gaps": [],
-        "follow_up_needed": false,
-        "suggested_follow_up": "Можешь раскрыть тему \"Spring Boot basics\" глубже и добавить пример, trade-offs, риски и итог?"
-      }
-    },
-    {
-      "id": "java_013",
-      "role": "Java Backend Developer",
-      "seniority": "Middle",
-      "interview_type": "Technical Core",
-      "topic": "Concurrency and multithreading basics",
-      "question": "Как вы подходите к выбору thread pool и защите сервиса от перегрузки?",
-      "answer_quality_label": "medium",
-      "expected_score_range": [
-        5,
-        6
-      ],
-      "predicted_score_0_10": 5,
-      "score_in_range": true,
-      "score_distance": 0,
-      "expected_followup_needed": true,
-      "predicted_followup_needed": true,
-      "follow_up_match": true,
-      "expected_gaps": [
-        "missing_tradeoff",
-        "missing_result"
-      ],
-      "predicted_gaps": [
-        "missing_tradeoff",
-        "missing_result"
-      ],
-      "gap_overlap": [
-        "missing_result",
-        "missing_tradeoff"
-      ],
-      "gap_exact_match": true,
-      "gap_recall": 1.0,
-      "gap_precision": 1.0,
-      "primary_pass": true,
-      "evaluation": {
-        "question": "Как вы подходите к выбору thread pool и защите сервиса от перегрузки?",
-        "topic": "Concurrency and multithreading basics",
-        "score_0_10": 5,
-        "relevance": "medium",
-        "correctness": "heuristic",
-        "completeness": "medium",
-        "clarity": "high",
-        "terminology_precision": "medium",
-        "confidence_markers": "text_only_stage",
-        "justification": "Ответ базово релевантен, но в нём не хватает части глубины, структуры или project-level контекста.",
-        "detected_gaps": [
-          "missing_tradeoff",
-          "missing_result"
-        ],
-        "follow_up_needed": true,
-        "suggested_follow_up": "Можешь раскрыть тему \"Concurrency and multithreading basics\" глубже и добавить пример, trade-offs, риски и итог?"
-      }
-    },
-    {
-      "id": "java_014",
-      "role": "Java Backend Developer",
-      "seniority": "Junior",
-      "interview_type": "Technical Core",
-      "topic": "Core Java and collections",
-      "question": "Что такое SOLID и зачем эти принципы нужны в backend-разработке?",
-      "answer_quality_label": "weak",
-      "expected_score_range": [
-        0,
-        2
-      ],
-      "predicted_score_0_10": 0,
-      "score_in_range": true,
-      "score_distance": 0,
-      "expected_followup_needed": true,
-      "predicted_followup_needed": true,
-      "follow_up_match": true,
-      "expected_gaps": [
-        "answer_too_short",
-        "missing_example",
-        "missing_tradeoff",
-        "missing_result",
-        "weak_structure"
-      ],
-      "predicted_gaps": [
-        "answer_too_short",
-        "missing_example",
-        "missing_tradeoff",
-        "missing_result",
-        "weak_structure"
-      ],
-      "gap_overlap": [
-        "answer_too_short",
-        "missing_example",
-        "missing_result",
-        "missing_tradeoff",
-        "weak_structure"
-      ],
-      "gap_exact_match": true,
-      "gap_recall": 1.0,
-      "gap_precision": 1.0,
-      "primary_pass": true,
-      "evaluation": {
-        "question": "Что такое SOLID и зачем эти принципы нужны в backend-разработке?",
-        "topic": "Core Java and collections",
-        "score_0_10": 0,
-        "relevance": "low",
-        "correctness": "heuristic",
-        "completeness": "low",
-        "clarity": "low",
-        "terminology_precision": "medium",
-        "confidence_markers": "text_only_stage",
-        "justification": "Ответ пока слишком поверхностный для уверенного перехода к следующей теме.",
-        "detected_gaps": [
-          "answer_too_short",
-          "missing_example",
-          "missing_tradeoff",
-          "missing_result",
-          "weak_structure"
-        ],
-        "follow_up_needed": true,
-        "suggested_follow_up": "Можешь раскрыть тему \"Core Java and collections\" глубже и добавить пример, trade-offs, риски и итог?"
-      }
-    },
-    {
-      "id": "java_015",
-      "role": "Java Backend Developer",
-      "seniority": "Middle",
-      "interview_type": "Technical Core",
-      "topic": "Transactions and data consistency",
-      "question": "Как вы обеспечите консистентность данных, если один API меняет несколько сущностей и отправляет событие наружу?",
-      "answer_quality_label": "strong",
-      "expected_score_range": [
-        9,
-        10
-      ],
-      "predicted_score_0_10": 10,
-      "score_in_range": true,
-      "score_distance": 0,
-      "expected_followup_needed": false,
-      "predicted_followup_needed": false,
-      "follow_up_match": true,
-      "expected_gaps": [],
-      "predicted_gaps": [],
-      "gap_overlap": [],
-      "gap_exact_match": true,
-      "gap_recall": 1.0,
-      "gap_precision": 1.0,
-      "primary_pass": true,
-      "evaluation": {
-        "question": "Как вы обеспечите консистентность данных, если один API меняет несколько сущностей и отправляет событие наружу?",
-        "topic": "Transactions and data consistency",
-        "score_0_10": 10,
-        "relevance": "high",
-        "correctness": "heuristic",
-        "completeness": "high",
-        "clarity": "high",
-        "terminology_precision": "high",
-        "confidence_markers": "text_only_stage",
-        "justification": "Ответ покрывает тему достаточно глубоко, с конкретикой и признаками инженерного мышления.",
-        "detected_gaps": [],
-        "follow_up_needed": false,
-        "suggested_follow_up": "Можешь раскрыть тему \"Transactions and data consistency\" глубже и добавить пример, trade-offs, риски и итог?"
-      }
-    },
-    {
-      "id": "java_016",
-      "role": "Java Backend Developer",
+      "id": "frontend_016",
+      "role": "Frontend Developer",
       "seniority": "Middle",
       "interview_type": "Behavioural",
       "topic": "failure / lessons learned",
-      "question": "Расскажите про неудачное техническое решение и чему вы из него научились.",
+      "question": "Расскажи про неудачное техническое решение и чему ты из него научилась.",
       "answer_quality_label": "strong",
       "expected_score_range": [
-        8,
+        9,
         10
       ],
       "predicted_score_0_10": 10,
@@ -1734,7 +874,7 @@
       "gap_precision": 1.0,
       "primary_pass": true,
       "evaluation": {
-        "question": "Расскажите про неудачное техническое решение и чему вы из него научились.",
+        "question": "Расскажи про неудачное техническое решение и чему ты из него научилась.",
         "topic": "failure / lessons learned",
         "score_0_10": 10,
         "relevance": "high",
@@ -1746,16 +886,16 @@
         "justification": "Ответ покрывает тему достаточно глубоко, с конкретикой и признаками инженерного мышления.",
         "detected_gaps": [],
         "follow_up_needed": false,
-        "suggested_follow_up": "Можешь раскрыть тему \"failure / lessons learned\" глубже и добавить пример, trade-offs, риски и итог?"
+        "suggested_follow_up": "Можешь раскрыть тему \"failure / lessons learned\" глубже и добавить пример, компромиссы, риски и итог?"
       }
     },
     {
       "id": "frontend_017",
       "role": "Frontend Developer",
       "seniority": "Middle",
-      "interview_type": "Technical Core",
-      "topic": "Performance and optimization basics",
-      "question": "Что вы проверяете в первую очередь, если после релиза фронтенд стал заметно медленнее?",
+      "interview_type": "Behavioural",
+      "topic": "communication of trade-offs",
+      "question": "Опиши случай, когда тебе пришлось объяснять сложный технический компромисс бизнесу или команде.",
       "answer_quality_label": "strong",
       "expected_score_range": [
         9,
@@ -1775,8 +915,8 @@
       "gap_precision": 1.0,
       "primary_pass": true,
       "evaluation": {
-        "question": "Что вы проверяете в первую очередь, если после релиза фронтенд стал заметно медленнее?",
-        "topic": "Performance and optimization basics",
+        "question": "Опиши случай, когда тебе пришлось объяснять сложный технический компромисс бизнесу или команде.",
+        "topic": "communication of trade-offs",
         "score_0_10": 9,
         "relevance": "high",
         "correctness": "heuristic",
@@ -1787,154 +927,69 @@
         "justification": "Ответ покрывает тему достаточно глубоко, с конкретикой и признаками инженерного мышления.",
         "detected_gaps": [],
         "follow_up_needed": false,
-        "suggested_follow_up": "Можешь раскрыть тему \"Performance and optimization basics\" глубже и добавить пример, trade-offs, риски и итог?"
+        "suggested_follow_up": "Можешь раскрыть тему \"communication of trade-offs\" глубже и добавить пример, компромиссы, риски и итог?"
       }
     },
     {
       "id": "frontend_018",
       "role": "Frontend Developer",
       "seniority": "Junior",
-      "interview_type": "Behavioural",
-      "topic": "teamwork",
-      "question": "Расскажите про ситуацию, когда вам пришлось тесно работать с backend-командой.",
-      "answer_quality_label": "medium",
-      "expected_score_range": [
-        4,
-        6
-      ],
-      "predicted_score_0_10": 5,
-      "score_in_range": true,
-      "score_distance": 0,
-      "expected_followup_needed": true,
-      "predicted_followup_needed": true,
-      "follow_up_match": true,
-      "expected_gaps": [
-        "missing_tradeoff",
-        "missing_result"
-      ],
-      "predicted_gaps": [
-        "missing_tradeoff",
-        "missing_result"
-      ],
-      "gap_overlap": [
-        "missing_result",
-        "missing_tradeoff"
-      ],
-      "gap_exact_match": true,
-      "gap_recall": 1.0,
-      "gap_precision": 1.0,
-      "primary_pass": true,
-      "evaluation": {
-        "question": "Расскажите про ситуацию, когда вам пришлось тесно работать с backend-командой.",
-        "topic": "teamwork",
-        "score_0_10": 5,
-        "relevance": "medium",
-        "correctness": "heuristic",
-        "completeness": "medium",
-        "clarity": "high",
-        "terminology_precision": "high",
-        "confidence_markers": "text_only_stage",
-        "justification": "Ответ базово релевантен, но в нём не хватает части глубины, структуры или project-level контекста.",
-        "detected_gaps": [
-          "missing_tradeoff",
-          "missing_result"
-        ],
-        "follow_up_needed": true,
-        "suggested_follow_up": "Можешь раскрыть тему \"teamwork\" глубже и добавить пример, trade-offs, риски и итог?"
-      }
-    },
-    {
-      "id": "java_017",
-      "role": "Java Backend Developer",
-      "seniority": "Middle",
-      "interview_type": "Technical Core",
-      "topic": "SQL and indexing basics",
-      "question": "Почему индекс не всегда ускоряет запрос и какие побочные эффекты вы учитываете?",
-      "answer_quality_label": "strong",
-      "expected_score_range": [
-        9,
-        10
-      ],
-      "predicted_score_0_10": 10,
-      "score_in_range": true,
-      "score_distance": 0,
-      "expected_followup_needed": false,
-      "predicted_followup_needed": false,
-      "follow_up_match": true,
-      "expected_gaps": [],
-      "predicted_gaps": [],
-      "gap_overlap": [],
-      "gap_exact_match": true,
-      "gap_recall": 1.0,
-      "gap_precision": 1.0,
-      "primary_pass": true,
-      "evaluation": {
-        "question": "Почему индекс не всегда ускоряет запрос и какие побочные эффекты вы учитываете?",
-        "topic": "SQL and indexing basics",
-        "score_0_10": 10,
-        "relevance": "high",
-        "correctness": "heuristic",
-        "completeness": "high",
-        "clarity": "high",
-        "terminology_precision": "high",
-        "confidence_markers": "text_only_stage",
-        "justification": "Ответ покрывает тему достаточно глубоко, с конкретикой и признаками инженерного мышления.",
-        "detected_gaps": [],
-        "follow_up_needed": false,
-        "suggested_follow_up": "Можешь раскрыть тему \"SQL and indexing basics\" глубже и добавить пример, trade-offs, риски и итог?"
-      }
-    },
-    {
-      "id": "java_018",
-      "role": "Java Backend Developer",
-      "seniority": "Junior",
       "interview_type": "Mixed",
       "topic": "Resume-based project deep dive",
-      "question": "Опишите проект из резюме, где вы улучшали производительность или надежность backend-сервиса.",
-      "answer_quality_label": "medium",
+      "question": "Опиши проект из резюме, где тебе пришлось глубоко разбираться в интеграции с API или в поведении интерфейса.",
+      "answer_quality_label": "weak",
       "expected_score_range": [
-        4,
-        6
+        0,
+        2
       ],
-      "predicted_score_0_10": 5,
+      "predicted_score_0_10": 1,
       "score_in_range": true,
       "score_distance": 0,
       "expected_followup_needed": true,
       "predicted_followup_needed": true,
       "follow_up_match": true,
       "expected_gaps": [
+        "answer_too_short",
+        "missing_example",
         "missing_tradeoff",
-        "missing_result"
+        "missing_result",
+        "weak_structure"
       ],
       "predicted_gaps": [
+        "missing_example",
         "missing_tradeoff",
-        "missing_result"
+        "missing_result",
+        "weak_structure"
       ],
       "gap_overlap": [
+        "missing_example",
         "missing_result",
-        "missing_tradeoff"
+        "missing_tradeoff",
+        "weak_structure"
       ],
-      "gap_exact_match": true,
-      "gap_recall": 1.0,
+      "gap_exact_match": false,
+      "gap_recall": 0.8,
       "gap_precision": 1.0,
       "primary_pass": true,
       "evaluation": {
-        "question": "Опишите проект из резюме, где вы улучшали производительность или надежность backend-сервиса.",
+        "question": "Опиши проект из резюме, где тебе пришлось глубоко разбираться в интеграции с API или в поведении интерфейса.",
         "topic": "Resume-based project deep dive",
-        "score_0_10": 5,
-        "relevance": "medium",
+        "score_0_10": 1,
+        "relevance": "low",
         "correctness": "heuristic",
-        "completeness": "medium",
-        "clarity": "high",
-        "terminology_precision": "high",
+        "completeness": "low",
+        "clarity": "medium",
+        "terminology_precision": "medium",
         "confidence_markers": "text_only_stage",
-        "justification": "Ответ базово релевантен, но в нём не хватает части глубины, структуры или project-level контекста.",
+        "justification": "Ответ пока слишком поверхностный для уверенного перехода к следующей теме.",
         "detected_gaps": [
+          "missing_example",
           "missing_tradeoff",
-          "missing_result"
+          "missing_result",
+          "weak_structure"
         ],
         "follow_up_needed": true,
-        "suggested_follow_up": "Можешь раскрыть тему \"Resume-based project deep dive\" глубже и добавить пример, trade-offs, риски и итог?"
+        "suggested_follow_up": "Можешь раскрыть тему \"Resume-based project deep dive\" глубже и добавить пример, компромиссы, риски и итог?"
       }
     }
   ]

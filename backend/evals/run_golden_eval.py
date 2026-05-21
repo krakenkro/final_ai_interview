@@ -14,7 +14,7 @@ from backend.services.evaluator import build_heuristic_evaluation
 
 
 EVALS_DIR = Path(__file__).resolve().parent
-DEFAULT_DATASET_PATH = EVALS_DIR / "golden_dataset.jsonl"
+DEFAULT_DATASET_PATH = EVALS_DIR / "answer_evaluation_golden_dataset.jsonl"
 REPORTS_DIR = EVALS_DIR / "reports"
 BASE_DIR = ROOT_DIR
 
@@ -48,8 +48,8 @@ def ratio(numerator: int, denominator: int) -> float:
 
 def _default_follow_up(question: str, topic: str) -> str:
     if topic:
-        return f'Можешь раскрыть тему "{topic}" глубже и добавить пример, trade-offs, риски и итог?'
-    return f"Можешь раскрыть ответ на вопрос '{question}' глубже и добавить пример, trade-offs, риски и итог?"
+        return f'Можешь раскрыть тему "{topic}" глубже и добавить пример, компромиссы, риски и итог?'
+    return f"Можешь раскрыть ответ на вопрос '{question}' глубже и добавить пример, компромиссы, риски и итог?"
 
 
 def evaluate_case(case: Dict[str, Any]) -> Dict[str, Any]:

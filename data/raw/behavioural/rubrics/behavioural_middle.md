@@ -25,7 +25,7 @@
 
 ### 3. Decision quality
 
-- `strong`: explains reasoning, trade-offs, and constraints.
+- `strong`: explains reasoning, compromises, and constraints.
 - `medium`: actions are plausible but reasoning is shallow.
 - `weak`: no clear thought process.
 

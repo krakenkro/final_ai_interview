@@ -25,9 +25,16 @@ export type SessionDocuments = {
 
 export type SessionTurn = {
   turn_index: number;
+  topic: string | null;
+  question_kind: "main" | "followup" | null;
   question: string;
   answer: string;
   feedback: string;
+  evaluation_summary: {
+    score_0_10?: number;
+    follow_up_needed?: boolean;
+    detected_gaps?: string[];
+  };
   next_question: string | null;
   created_at: string;
 };

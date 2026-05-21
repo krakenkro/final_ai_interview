@@ -7,28 +7,12 @@
 - Document Type: answer_outline
 - Source URL: internal curated outline
 - Language: Russian
-- Collected On: 2026-05-10
+- Collected On: 2026-05-21
 
 ## Strong Answer Patterns
 
-### Pattern 1. Safety-first explanation
-
-1. Name the TypeScript feature.
-2. Explain what bug or ambiguity it prevents.
-3. Give a small component or API example.
-4. Contrast it with a weaker typing alternative.
-
-### Pattern 2. Design explanation
-
-1. Explain what type model is being expressed.
-2. Show why `any` or loose shapes are unsafe.
-3. Mention inference, narrowing, or contracts.
-4. End with maintainability impact.
-
-## Good Topics For This Outline
-
-- unions
-- interfaces vs type aliases
-- optional fields
-- narrowing
-- generics
+1. Which TypeScript mechanism are you explaining here?
+2. What real bug or ambiguity does it prevent?
+3. Where is inference enough, and where would you annotate explicitly?
+4. Why is this safer than `any` or an overly loose shape?
+5. How does this show up in props, a composable, or an API contract?

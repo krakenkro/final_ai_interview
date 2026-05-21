@@ -19,7 +19,7 @@
 
 ### 2. Depth of reasoning
 
-- `strong`: explains why a mechanism works and discusses trade-offs.
+- `strong`: explains why a mechanism works and discusses compromises.
 - `medium`: gives a surface explanation with limited reasoning.
 - `weak`: gives memorized fragments without causal understanding.
 
@@ -38,5 +38,5 @@
 ## Coaching Hints
 
 - If correctness is weak, suggest core reading before deeper follow-ups.
-- If depth is weak but correctness is acceptable, ask for examples and trade-offs.
+- If depth is weak but correctness is acceptable, ask for examples and compromises.
 - If communication is weak, ask for a step-by-step explanation.

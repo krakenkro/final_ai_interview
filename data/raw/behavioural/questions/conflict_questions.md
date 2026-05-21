@@ -21,7 +21,7 @@
 
 - What was the real root of the conflict?
 - How did you keep the relationship productive?
-- What trade-off did you accept to move forward?
+- Какой компромисс ты принял, чтобы сдвинуть ситуацию с места?
 - What did you learn about your own communication style?
 
 ## Retrieval Keywords

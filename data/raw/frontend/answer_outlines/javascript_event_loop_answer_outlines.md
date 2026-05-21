@@ -7,15 +7,15 @@
 - Document Type: answer_outline
 - Source URL: internal curated outline
 - Language: Russian
-- Collected On: 2026-05-10
+- Collected On: 2026-05-21
 
 ## Strong Answer Patterns
 
-1. Explain call stack and queue in plain language.
-2. Describe run-to-completion.
-3. Connect long synchronous work to blocked UI.
-4. Clarify why scheduled work still waits for current work to finish.
-5. End with a practical frontend implication.
+1. What is in the call stack now, and what is waiting in the queue?
+2. Why does the next task not start immediately?
+3. Where is the main thread being blocked?
+4. How would this show up in the UI?
+5. What practical change would reduce the impact?
 
 ## Good Topics For This Outline
 

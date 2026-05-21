@@ -12,7 +12,7 @@
 
 ## Ожидания
 
-- явные trade-offs
+- явные компромиссы
 - production constraints в примерах
 - end-to-end ownership
 - зрелая рефлексия и debugging thinking

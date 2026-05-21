@@ -21,10 +21,10 @@
 ## Что искать в ответе
 
 - Есть явные критерии приоритизации.
-- Кандидат умеет проговаривать trade-offs.
+- Кандидат умеет проговаривать компромиссы.
 - Видно, как он коммуницирует ограничения.
 - Есть вывод о качестве решения.
 
 ## Retrieval tags
 
-`prioritization`, `trade-offs`, `scope`, `timeline`, `urgency`, `decision making`
+`prioritization`, `компромиссы`, `scope`, `timeline`, `urgency`, `decision making`

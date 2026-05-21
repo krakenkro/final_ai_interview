@@ -12,7 +12,7 @@
 ## Mode Goals
 
 - validate correctness of fundamentals
-- test technical reasoning and trade-offs
+- проверить техническую аргументацию и понимание компромиссов
 - probe debugging and problem-solving depth
 
 ## Typical Signals

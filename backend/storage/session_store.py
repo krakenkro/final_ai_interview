@@ -58,9 +58,12 @@ def initialize_database() -> None:
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 session_id TEXT NOT NULL,
                 turn_index INTEGER NOT NULL,
+                topic TEXT,
+                question_kind TEXT,
                 question TEXT NOT NULL,
                 answer TEXT NOT NULL,
                 feedback TEXT NOT NULL,
+                evaluation_summary_json TEXT NOT NULL DEFAULT '{}',
                 next_question TEXT,
                 created_at TEXT NOT NULL,
                 FOREIGN KEY(session_id) REFERENCES sessions(id)
@@ -107,6 +110,31 @@ def initialize_database() -> None:
                 """
                 ALTER TABLE session_profiles
                 ADD COLUMN hr_analysis_json TEXT NOT NULL DEFAULT '{}'
+                """
+            )
+        turn_columns = {
+            row[1]
+            for row in connection.execute("PRAGMA table_info(session_turns)").fetchall()
+        }
+        if "topic" not in turn_columns:
+            connection.execute(
+                """
+                ALTER TABLE session_turns
+                ADD COLUMN topic TEXT
+                """
+            )
+        if "question_kind" not in turn_columns:
+            connection.execute(
+                """
+                ALTER TABLE session_turns
+                ADD COLUMN question_kind TEXT
+                """
+            )
+        if "evaluation_summary_json" not in turn_columns:
+            connection.execute(
+                """
+                ALTER TABLE session_turns
+                ADD COLUMN evaluation_summary_json TEXT NOT NULL DEFAULT '{}'
                 """
             )
         connection.execute(
@@ -310,6 +338,10 @@ def record_turn(
     answer: str,
     feedback: str,
     next_question: Optional[str],
+    *,
+    topic: Optional[str] = None,
+    question_kind: Optional[str] = None,
+    evaluation_summary: Optional[Dict[str, Any]] = None,
 ) -> None:
     timestamp = utc_now()
     with _connect() as connection:
@@ -320,15 +352,19 @@ def record_turn(
         connection.execute(
             """
             INSERT INTO session_turns (
-                session_id, turn_index, question, answer, feedback, next_question, created_at
-            ) VALUES (?, ?, ?, ?, ?, ?, ?)
+                session_id, turn_index, topic, question_kind, question, answer,
+                feedback, evaluation_summary_json, next_question, created_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 session_id,
                 turn_count + 1,
+                topic,
+                question_kind,
                 question,
                 answer,
                 feedback,
+                json.dumps(evaluation_summary or {}, ensure_ascii=False),
                 next_question,
                 timestamp,
             ),
@@ -448,7 +484,8 @@ def get_session(session_id: str) -> Dict[str, Any]:
         ).fetchone()
         turn_rows = connection.execute(
             """
-            SELECT turn_index, question, answer, feedback, next_question, created_at
+            SELECT turn_index, topic, question_kind, question, answer,
+                   feedback, evaluation_summary_json, next_question, created_at
             FROM session_turns
             WHERE session_id = ?
             ORDER BY turn_index ASC
@@ -461,7 +498,7 @@ def get_session(session_id: str) -> Dict[str, Any]:
         "documents": dict(documents_row) if documents_row else {},
         "analysis": _decode_profile_row(profiles_row),
         "workflow": _decode_workflow_row(workflow_row),
-        "turns": [dict(row) for row in turn_rows],
+        "turns": [_decode_turn_row(row) for row in turn_rows],
     }
 
 
@@ -508,4 +545,18 @@ def _decode_workflow_row(row: Optional[sqlite3.Row]) -> Dict[str, Any]:
         "final_report": json.loads(row["final_report_json"] or "{}"),
         "created_at": row["created_at"],
         "updated_at": row["updated_at"],
+    }
+
+
+def _decode_turn_row(row: sqlite3.Row) -> Dict[str, Any]:
+    return {
+        "turn_index": row["turn_index"],
+        "topic": row["topic"],
+        "question_kind": row["question_kind"],
+        "question": row["question"],
+        "answer": row["answer"],
+        "feedback": row["feedback"],
+        "evaluation_summary": json.loads(row["evaluation_summary_json"] or "{}"),
+        "next_question": row["next_question"],
+        "created_at": row["created_at"],
     }

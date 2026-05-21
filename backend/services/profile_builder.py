@@ -8,44 +8,25 @@ ROLE_SKILLS: Dict[str, Dict[str, List[str]]] = {
     "Frontend Developer": {
         "JavaScript": ["javascript", "js", "ecmascript"],
         "TypeScript": ["typescript", "ts"],
-        "React": ["react", "next.js", "nextjs"],
-        "State Management": ["redux", "zustand", "mobx", "context api"],
+        "Vue": ["vue", "vue.js", "vuejs", "composition api", "pinia", "computed", "watch", "composable"],
+        "Nuxt": ["nuxt", "nuxt.js", "nuxtjs", "ssr", "csr", "ssg", "hydration", "usefetch", "useasyncdata", "middleware", "routing"],
         "HTML/CSS": ["html", "css", "scss", "sass", "tailwind"],
-        "Testing": ["jest", "vitest", "cypress", "playwright", "rtl", "react testing library"],
         "API Integration": ["rest", "graphql", "axios", "fetch api"],
         "Performance": ["performance", "lighthouse", "web vitals", "optimization"],
         "Browser Fundamentals": ["event loop", "rendering", "browser", "dom"],
-    },
-    "Java Backend Developer": {
-        "Java": ["java", "jdk", "jvm"],
-        "Spring": ["spring", "spring boot", "spring mvc", "spring data"],
-        "SQL": ["sql", "postgresql", "mysql", "oracle", "index", "query"],
-        "REST APIs": ["rest", "rest api", "http", "json"],
-        "Concurrency": ["multithreading", "thread", "concurrency", "executor", "synchronization"],
-        "Transactions": ["transaction", "acidity", "isolation", "consistency"],
-        "Caching": ["redis", "cache", "caching"],
-        "Messaging": ["kafka", "rabbitmq", "queue", "messaging"],
-        "Testing": ["junit", "mockito", "integration test", "testcontainers"],
     },
 }
 
 BASELINE_TOPICS: Dict[str, List[str]] = {
     "Frontend Developer": [
-        "JavaScript fundamentals",
-        "TypeScript typing and narrowing",
+        "Vue 3 component model",
+        "Vue reactivity and refs",
+        "Nuxt 3 fundamentals",
+        "Nuxt routing and data fetching",
+        "TypeScript in frontend apps",
         "Browser rendering and event loop",
-        "React component model",
         "API integration and async flows",
-        "Testing fundamentals",
-        "Resume-based project deep dive",
-    ],
-    "Java Backend Developer": [
-        "Core Java and collections",
-        "Spring Boot basics",
-        "REST API design",
-        "SQL and indexing basics",
-        "Transactions and data consistency",
-        "Concurrency and multithreading basics",
+        "Performance and optimization basics",
         "Resume-based project deep dive",
     ],
 }
@@ -180,6 +161,11 @@ def build_interview_topics(
         if baseline not in topic_names:
             topic_names.append(baseline)
 
+    if interview_type == "Mixed" and projects and "Resume-based project deep dive" in topic_names:
+        topic_names = [topic for topic in topic_names if topic != "Resume-based project deep dive"]
+        insert_at = 1 if topic_names else 0
+        topic_names.insert(insert_at, "Resume-based project deep dive")
+
     topics: List[Dict[str, object]] = []
     for index, topic in enumerate(topic_names[:6]):
         priority = "high" if index < max(2, len(missing)) else "medium"
@@ -283,8 +269,8 @@ def infer_strengths(skills: List[str], projects: List[str]) -> List[str]:
         strengths.append("Широкий стек по целевой роли уже просматривается в резюме.")
     if projects:
         strengths.append("Есть проектные эпизоды, которые можно использовать для resume-based interview block.")
-    if "Testing" in skills:
-        strengths.append("Есть сигнал про инженерную зрелость через тестирование.")
+    if "Nuxt" in skills or "Performance" in skills:
+        strengths.append("Есть признаки более зрелого фронтенд-мышления: архитектура страниц, SSR или performance reasoning.")
     return strengths[:4]
 
 
@@ -319,29 +305,16 @@ def infer_risk_level(missing_count: int, required_count: int) -> str:
 
 
 def map_skill_to_topic(role: str, skill: str) -> str:
-    frontend_map = {
-        "JavaScript": "JavaScript fundamentals",
-        "TypeScript": "TypeScript typing and narrowing",
-        "React": "React component model",
-        "State Management": "State management and data flow",
-        "HTML/CSS": "Browser rendering and layout fundamentals",
-        "Testing": "Testing fundamentals",
+    mapper = {
+        "JavaScript": "Browser rendering and event loop",
+        "TypeScript": "TypeScript in frontend apps",
+        "Vue": "Vue 3 component model",
+        "Nuxt": "Nuxt 3 fundamentals",
+        "HTML/CSS": "Browser rendering and event loop",
         "API Integration": "API integration and async flows",
         "Performance": "Performance and optimization basics",
         "Browser Fundamentals": "Browser rendering and event loop",
     }
-    java_map = {
-        "Java": "Core Java and collections",
-        "Spring": "Spring Boot basics",
-        "SQL": "SQL and indexing basics",
-        "REST APIs": "REST API design",
-        "Concurrency": "Concurrency and multithreading basics",
-        "Transactions": "Transactions and data consistency",
-        "Caching": "Caching basics",
-        "Messaging": "Messaging and async communication basics",
-        "Testing": "Testing fundamentals",
-    }
-    mapper = frontend_map if role == "Frontend Developer" else java_map
     return mapper.get(skill, skill)
 
 

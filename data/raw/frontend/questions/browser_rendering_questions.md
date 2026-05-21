@@ -7,24 +7,18 @@
 - Document Type: question_bank
 - Source URL: https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/Critical_rendering_path
 - Language: English
-- Collected On: 2026-05-10
+- Collected On: 2026-05-21
 
 ## Curated Question Set
 
-1. What is the browser's critical rendering path?
-2. How do HTML, CSS, and JavaScript become pixels on screen?
+1. How do HTML, CSS, and JavaScript become pixels on screen?
+2. What is the critical rendering path, and why does it matter?
 3. What is the difference between DOM, CSSOM, render tree, layout, and paint?
-4. Why can some UI changes trigger layout and paint while others are cheaper?
-5. What is reflow and why can frequent reflows hurt performance?
-6. How would you explain jank to a non-frontend teammate?
-7. How does React rendering relate to browser rendering?
-8. Why does understanding the rendering pipeline help debug slow UI?
-
-## Follow-up Prompts
-
-- Which step do you suspect is expensive in this scenario?
-- Is the issue from JavaScript work, layout, paint, or too many DOM nodes?
-- What would you measure or profile first?
+4. Why are some UI updates more expensive than others?
+5. What is reflow, and when does it become a real product problem?
+6. How would you explain jank to a teammate who is not a frontend engineer?
+7. How does a Vue or Nuxt state update eventually turn into browser work?
+8. What would you inspect first if a page feels slow during scroll or input?
 
 ## Retrieval Keywords
 

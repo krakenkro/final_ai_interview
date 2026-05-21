@@ -155,3 +155,66 @@ export function EmptyState({
     </div>
   );
 }
+
+export function ButtonSpinner() {
+  return <span className="buttonSpinner" aria-hidden="true" />;
+}
+
+export function RingScore({
+  label,
+  value,
+  max = 10,
+}: {
+  label: string;
+  value: number;
+  max?: number;
+}) {
+  const safeMax = max <= 0 ? 10 : max;
+  const normalized = Math.max(0, Math.min(value, safeMax));
+  const percent = (normalized / safeMax) * 100;
+
+  return (
+    <article className="ringScoreCard">
+      <div
+        className="ringScoreVisual"
+        style={{ background: `conic-gradient(var(--accent-warm) ${percent}%, rgba(255,255,255,0.08) ${percent}% 100%)` }}
+        aria-hidden="true"
+      >
+        <div className="ringScoreInner">
+          <strong>{normalized}</strong>
+          <span>из {safeMax}</span>
+        </div>
+      </div>
+      <div className="ringScoreMeta">
+        <p className="metricLabel">{label}</p>
+      </div>
+    </article>
+  );
+}
+
+export function TrendBars({
+  items,
+}: {
+  items: Array<{ label: string; value: number; hint?: string }>;
+}) {
+  return (
+    <div className="trendBars">
+      {items.map((item) => {
+        const normalized = Math.max(0, Math.min(item.value, 10));
+        const width = `${(normalized / 10) * 100}%`;
+        return (
+          <article className="trendBarItem" key={item.label}>
+            <div className="trendBarHeader">
+              <strong>{item.label}</strong>
+              <span>{normalized}/10</span>
+            </div>
+            <div className="trendBarTrack" aria-hidden="true">
+              <div className="trendBarFill" style={{ width }} />
+            </div>
+            {item.hint ? <p className="trendBarHint">{item.hint}</p> : null}
+          </article>
+        );
+      })}
+    </div>
+  );
+}

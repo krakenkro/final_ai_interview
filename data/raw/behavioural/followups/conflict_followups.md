@@ -21,4 +21,4 @@
 
 ## Retrieval Keywords
 
-`conflict followups`, `root cause`, `communication`, `compromise`, `relationship`, `trade-offs`
+`conflict followups`, `root cause`, `communication`, `компромиссы`, `relationship`, `reflection`

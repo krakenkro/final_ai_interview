@@ -2,8 +2,6 @@
 
 Working MVP for the final LLM engineering project: a web app for mock technical interviews with document upload, intake parsing, candidate/job profiling, a curated RAG knowledge base, LangGraph orchestration, custom MCP tools, voice mode, and evaluation pipelines.
 
-Текущий прогресс по этапам и уже реализованным частям проекта зафиксирован в [IMPLEMENTED_STEPS.md](/Users/akbota/Desktop/final/IMPLEMENTED_STEPS.md).
-
 ## Что уже реализовано
 
 - frontend на `Next.js + React + TypeScript`
@@ -15,6 +13,7 @@ Working MVP for the final LLM engineering project: a web app for mock technical 
 - SQLite storage для сессий, документов и истории ответов
 - parser layer с fallback для `PDF`, `DOCX`, `HTML`, `TXT`, `MD`
 - RAG-backed mock interview flow с выбором вопросов и follow-up по knowledge base
+- optional LLM final phrasing layer для полировки выбранных main/follow-up вопросов
 - curated knowledge base в `data/raw/` и `data/processed/`
 - stage 3 ingestion pipeline с canonical metadata mapping
 - section-aware chunking и сбор artifacts в `data/vectordb/`
@@ -235,12 +234,18 @@ Intake analysis теперь состоит из двух слоёв:
 - `HR_ANALYSIS_MODEL=gpt-4o-mini`
 - `HR_ANALYSIS_MAX_INPUT_CHARS=16000`
 - `HR_ANALYSIS_MAX_OUTPUT_TOKENS=2200`
+- `QUESTION_PHRASING_ENABLED=true`
+- `QUESTION_PHRASING_PROVIDER=openai`
+- `QUESTION_PHRASING_MODEL=gpt-4o-mini`
+- `QUESTION_PHRASING_TEMPERATURE=0.15`
+- `QUESTION_PHRASING_MAX_TOKENS=120`
 
 ## Model choice and inference settings
 
 Текущий основной LLM-backed сценарий в проекте:
 
 - `OpenAI gpt-4o-mini` для `HR-style resume / vacancy analysis`
+- `OpenAI gpt-4o-mini` для optional final phrasing выбранных interview-вопросов
 - structured JSON output поверх deterministic intake pipeline
 
 Почему выбрана эта модель:
@@ -251,14 +256,15 @@ Intake analysis теперь состоит из двух слоёв:
 
 Текущие inference settings:
 
-- `temperature=0.2`
-- `max_tokens=2200`
+- `HR analysis`: `temperature=0.2`, `max_tokens=2200`
+- `question phrasing`: `temperature=0.15`, `max_tokens=120`
 - `top_p` не переопределяется и остаётся provider default
 
 Почему такие параметры:
 
 - низкая `temperature` уменьшает variance и помогает получать более стабильный JSON
 - `max_tokens=2200` хватает для подробного match analysis без лишнего роста latency и стоимости
+- для question phrasing ещё более низкая `temperature` и короткий `max_tokens` удерживают вопрос компактным и снижают риск странных переформулировок
 - `top_p` оставлен по умолчанию, потому что в этом сценарии основная управляемость уже достигается через низкую `temperature`
 
 Текущий trade-off:
@@ -293,6 +299,7 @@ Intake analysis теперь состоит из двух слоёв:
 - retrieval поддерживает vector search через `Chroma` и lexical fallback по JSONL
 - retrieval eval runner успешно проходит на baseline dataset
 - `build_first_question()` и `evaluate_answer()` используют RAG retrieval для topic-aware question planning
+- selected question candidates проходят через sanitizer и optional LLM final phrasing с graceful fallback
 - LangGraph workflow проходит end-to-end текстовую mock interview сессию
 - workflow trace и final report сохраняются в session storage
 - custom MCP tools реально вызываются в interview workflow и влияют на question planning, follow-up и evaluator context

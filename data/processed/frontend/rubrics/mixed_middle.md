@@ -8,12 +8,12 @@
 - source_url: internal curated rubric
 - source_language: ru
 - normalized_language: ru
-- normalized_on: 2026-05-10
+- normalized_on: 2026-05-21
 
 ## Критерии оценки
 
 1. Technical depth:
-   корректность плюс trade-off reasoning.
+   корректность плюс reasoning по компромиссам.
 2. Product and project ownership:
    ясность ответственности и решений.
 3. Debugging and reasoning:

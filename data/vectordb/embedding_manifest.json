@@ -1,10 +1,10 @@
 {
-  "enabled": true,
-  "backend": "chroma_persistent",
+  "enabled": false,
+  "backend": "jsonl_artifacts",
   "collection_name": "knowledge_chunks",
   "embedding_model": "text-embedding-3-large",
-  "embedding_dimensions": 3072,
-  "chunks_embedded": 525,
-  "notes": "OpenAI embeddings were generated and stored in the local Chroma collection.",
-  "error": ""
+  "embedding_dimensions": null,
+  "chunks_embedded": 0,
+  "notes": "Embedding build failed, so ingestion kept JSONL artifacts and lexical fallback active.",
+  "error": "APIConnectionError: Connection error."
 }

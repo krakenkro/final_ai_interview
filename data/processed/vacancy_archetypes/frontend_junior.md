@@ -8,11 +8,11 @@
 - source_url: internal curated archetype
 - source_language: ru
 - normalized_language: ru
-- normalized_on: 2026-05-10
+- normalized_on: 2026-05-21
 
 ## Типовые требования
 
-- React/TypeScript basics
-- HTML/CSS and component fundamentals
-- simple API integration understanding
-- learning mindset
+- базовое знакомство с Vue 3 и TypeScript
+- понимание HTML/CSS и компонентного подхода
+- простая интеграция с API
+- готовность быстро учиться и принимать обратную связь

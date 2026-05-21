@@ -14,5 +14,5 @@
 1. Describe competing demands.
 2. State prioritization criteria.
 3. Explain communication and alignment.
-4. Show result and trade-off accepted.
+4. Покажи результат и принятый компромисс.
 5. Reflect on whether the prioritization still looks right.
